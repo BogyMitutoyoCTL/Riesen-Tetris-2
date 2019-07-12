@@ -115,6 +115,9 @@ package_check libavformat-dev
 package_check libavcodec-dev
 package_check python3-pip
 
+# Redis Server
+package_check redis-server
+
 if [ "`which pip3 | wc -l`" -eq "1" ]; then
         echo -e "\e[92mFound pip3\e[39m";
 else
