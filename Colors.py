@@ -4,6 +4,9 @@ class Color:
         self.green = green
         self.blue = blue
 
+    def get_color(self):
+        return self.red, self.green, self.blue
+
 
 class Block_color:
     darkblue = Color(0, 0, 139)

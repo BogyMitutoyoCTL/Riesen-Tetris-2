@@ -7,8 +7,12 @@ class Playground:
         self.hight = hight
         self.width = width
         self.list_pixel = []
-        for h in range(hight):
-            for i in range(width):
+        self.clear()
+
+    def clear(self):
+        self.list_pixel = []
+        for h in range(self.hight):
+            for i in range(self.width):
                 self.list_pixel.append((0, 0, 0))
 
     def add_block(self, block: tetris_blocks.Block):
@@ -20,7 +24,7 @@ class Playground:
                 print("Posx: " + str(pos_x))
                 print("Posy: " + str(pos_y))
                 if w > 0:
-                    self.list_pixel[pos_x * self.width + pos_y] = (100,0,0)
+                    self.list_pixel[pos_x * self.width + pos_y] = block.color.get_color()
                 pos_y += 1
             pos_y = 0
             pos_x += 1
