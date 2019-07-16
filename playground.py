@@ -30,8 +30,8 @@ class Playground:
             pos_x += 1
 
     def draw(self):
-        for x in range(self.hight):
-            for y in range(self.width):
+        for x in range(self.width):
+            for y in range(self.hight):
                 print(self.list_pixel[y * self.width + x], end=' ')
             print("")
 
