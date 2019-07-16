@@ -1,0 +1,54 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="{{ static('styleindex.css') }}">
+  <title>Tetris-Control</title>
+</head>
+
+<body>
+
+  <div id="div-control" class="bordered">
+    <div class="box-game-modes">
+      <button type="button" id="btn-id-tetris" class="btn btn-tetris" onclick="showGameStartDialog()">Tetris</button>
+      <button type="button" id="btn-id-startscreen" class="btn btn-tetris" onclick="abortAndShowStartScreen()">Startscreen</button>
+    </div>
+      <div id="userNameInput">
+        <div id="inputWrapper">
+          Bitte gib hier deinen Namen und deine E-Mail Adresse ein:</p>
+          <label for="username">Name:
+              <input id="username" type="text">
+          </label>
+          <label for="email">E-Mail:
+            <input id="email" type="text">
+          </label>
+        </div>
+        <button type="button" id="btn-id-submit-username" class="btn" onclick="startTetris()">Start</button>
+    </div>
+  </div>
+  <div id="div-highscore">
+    <table id="tbod3">
+      <thead>
+        <tr>
+          <th> Name </th>
+          <th> Punktzahl</th>
+        </tr>
+      </thead>
+      <tbody id="table-data">
+          {% for entry in score_list %}
+          <tr>
+              <td>{{entry.name}}</td>
+              <td>{{entry.points}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <script src='{{ static('control.js') }}' charset='utf-8'></script>
+</body>
+
+</html>
