@@ -14,6 +14,12 @@ class Points:
         if reihe_weg == 2:
             all_points += 30
 
+        if reihe_weg == 3:
+            all_points += 50
+
+        if reihe_weg == 4:
+            all_points += 100
+
         if new ==1:
             all_points +=1
 
