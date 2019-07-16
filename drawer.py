@@ -5,6 +5,32 @@ from luma.core.legacy.font import proportional, TINY_FONT
 from luma.core.render import canvas
 from luma.led_matrix.device import neopixel
 
+from Colors import Block_color
+
+
+class playground:
+    def size_x(self):
+        return 10
+
+    def size_y(self):
+        return 20
+
+    def get_pixel(self, x, y):
+        return (75,50,0)
+
+
+class draw:
+    def __init__(self, device, ):
+        self.device = device
+
+    def draw_playground(self, playground):
+        with canvas(device)as draw:
+            for x in range(3, 7):
+                for y in range(1, 10):
+                    color = playground.get_pixel(x, y)
+                    draw.point((x, y), fill=color)
+
+
 HAT = [
     0, 20, 40, 60, 80, 100, 120, 140, 160, 180,
     1, 21, 41, 61, 81, 101, 121, 141, 161, 181,
@@ -27,16 +53,8 @@ HAT = [
     18, 38, 58, 78, 98, 118, 138, 158, 178, 198,
     19, 39, 59, 79, 99, 119, 139, 159, 179, 199,
 ]
-
 device = neopixel(width=10, height=20, rotate=0, mapping=HAT)
-
-def main():
-    with canvas(device) as draw:
-        draw.rectangle(device.bounding_box, outline="Blue", fill="Yellow")
-        text(draw, (+1, 0), "Hi|", fill="Green", font=proportional(TINY_FONT))
-
-    time.sleep(10)
-
-
-
-main()
+Tim=draw(device)
+Thomas=playground()
+Tim.draw_playground(Thomas)
+time.sleep(10)
