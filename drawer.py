@@ -47,8 +47,11 @@ HAT = [
 device = neopixel(width=10, height=20, rotate=0, mapping=HAT)
 Tim = draw(device)
 Thomas = playground.Playground(device.height, device.width)
-for i in range(0,len(tetris_blocks.block_list)):
-    Thomas.clear()
-    Thomas.add_block(tetris_blocks.block_list[i])
-    Tim.draw_playground(Thomas)
-    time.sleep(2)
+for i in range(0, len(tetris_blocks.block_list)):
+    for y in range(0, 4):
+        Thomas.clear()
+        block = tetris_blocks.block_list[i]
+        block.rotation(y)
+        Thomas.add_block(block)
+        Tim.draw_playground(Thomas)
+        time.sleep(2)

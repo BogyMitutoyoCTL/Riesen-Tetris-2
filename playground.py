@@ -18,7 +18,7 @@ class Playground:
     def add_block(self, block: tetris_blocks.Block):
         pos_x = 0
         pos_y = 0
-        for h in block.field:
+        for h in block.field_with_rotations[block.orientation]:
             for w in h:
                 # print(w)
                 print("Posx: " + str(pos_x))
