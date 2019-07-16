@@ -22,8 +22,9 @@ class draw_small:
                 for y in range(0, playground.hight):
                     color = playground.get_pixel(x, y)
                     if color[0] >= 1 or color[1] >= 1 or color[2] >= 1:
-                        draw.point((x, y), fill="White")
-
+                        draw.point((x, y), fill="white")
+                    else:
+                        draw.point((x, y), fill="black")
 
 p2.draw()
 
@@ -31,6 +32,7 @@ serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=4, block_orientation=90,
                  rotate=0, blocks_arranged_in_reverse_order=True)
 Max = draw_small(device)
-p2.add_block(tetris_blocks.block_list[3])
-Max.draw_playground(p2)
-time.sleep(20)
+for i in range (0,6):
+    p2.add_block(tetris_blocks.block_list[i])
+    Max.draw_playground(p2)
+    time.sleep(2)
