@@ -13,11 +13,11 @@ class Playground:
     def draw(self):
         for x in range(self.hight):
             for y in range(self.width):
-                print(self.list_pixel[y*10+x], end=' ')
+                print(self.list_pixel[y*self.width+x], end=' ')
             print("")
 
     def get_pixel(self, x, y):
-        return self.list_pixel[y*10+x]
+        return self.list_pixel[y*self.width+x]
 
 
 p = Playground(20, 10)
