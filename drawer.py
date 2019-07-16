@@ -1,3 +1,4 @@
+import playground
 import time
 
 from luma.core.legacy import text
@@ -8,27 +9,15 @@ from luma.led_matrix.device import neopixel
 from Colors import Block_color
 
 
-class playground:
-    def size_x(self):
-        return 10
-
-    def size_y(self):
-        return 20
-
-    def get_pixel(self, x, y):
-        return (75,50,0)
-
-
 class draw:
     def __init__(self, device, ):
         self.device = device
 
     def draw_playground(self, playground):
         with canvas(device)as draw:
-            for x in range(3, 7):
-                for y in range(1, 10):
-                    color = playground.get_pixel(x, y)
-                    draw.point((x, y), fill=color)
+            for x in range(0, playground.width):
+                color = playground.get_pixel(x, y)
+                draw.point((x, y), fill=color)
 
 
 HAT = [
@@ -54,7 +43,7 @@ HAT = [
     19, 39, 59, 79, 99, 119, 139, 159, 179, 199,
 ]
 device = neopixel(width=10, height=20, rotate=0, mapping=HAT)
-Tim=draw(device)
-Thomas=playground()
+Tim = draw(device)
+Thomas = playground.Playground(device.height, device.width)
 Tim.draw_playground(Thomas)
 time.sleep(10)

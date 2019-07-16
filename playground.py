@@ -2,7 +2,7 @@ class Playground:
     def __init__(self, hight, width):
         self.hight = hight
         self.width = width
-        self.list_pixel = [0] * (hight * width)
+        self.list_pixel = [(100,0,0)] * (hight * width)
 
     def add_block(self):
         pass
@@ -12,6 +12,9 @@ class Playground:
             for y in range(self.width):
                 print(self.list_pixel[x * y], end=' ')
             print("")
+
+    def get_pixel(self, x, y):
+        return self.list_pixel[x * y]
 
 
 p = Playground(20, 10)
