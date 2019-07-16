@@ -16,8 +16,9 @@ class draw:
     def draw_playground(self, playground):
         with canvas(device)as draw:
             for x in range(0, playground.width):
-                color = playground.get_pixel(x, y)
-                draw.point((x, y), fill=color)
+                for y in range(0, playground.hight):
+                    color = playground.get_pixel(x, y)
+                    draw.point((x, y), fill=color)
 
 
 HAT = [
