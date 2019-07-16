@@ -1,3 +1,4 @@
+import tetris_blocks
 import playground
 import time
 
@@ -46,5 +47,6 @@ HAT = [
 device = neopixel(width=10, height=20, rotate=0, mapping=HAT)
 Tim = draw(device)
 Thomas = playground.Playground(device.height, device.width)
+Thomas.add_block(tetris_blocks.block_list[0])
 Tim.draw_playground(Thomas)
 time.sleep(10)
