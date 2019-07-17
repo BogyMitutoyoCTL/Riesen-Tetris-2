@@ -15,7 +15,7 @@ class Block:
         for x in self.field_with_rotations[self.orientation]:
             print(x)
 
-    def rotation(self, orientation):
+    def rotation(self, orientation: int):
         if 0 <= orientation <= len(self.field_with_rotations):
             self.orientation = orientation
 

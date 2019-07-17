@@ -15,7 +15,7 @@ class draw:
         self.device = device
 
     def draw_playground(self, playground):
-        with canvas(device)as draw:
+        with canvas(self.device)as draw:
             for x in range(0, playground.width):
                 for y in range(0, playground.hight):
                     color = playground.get_pixel(x, y)
@@ -44,14 +44,3 @@ HAT = [
     18, 38, 58, 78, 98, 118, 138, 158, 178, 198,
     19, 39, 59, 79, 99, 119, 139, 159, 179, 199,
 ]
-device = neopixel(width=10, height=20, rotate=0, mapping=HAT)
-Tim = draw(device)
-Thomas = playground.Playground(device.height, device.width)
-for i in range(0, len(tetris_blocks.block_list)):
-    for y in range(0, 4):
-        Thomas.clear()
-        block = tetris_blocks.block_list[i]
-        block.rotation(y)
-        Thomas.add_block(block, 4, 10)
-        Tim.draw_playground(Thomas)
-        time.sleep(2)
