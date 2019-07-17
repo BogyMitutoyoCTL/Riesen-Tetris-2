@@ -43,3 +43,4 @@ class Playground:
 
     def get_pixel(self, x, y):
         return self.list_pixel[y * self.width + x]
+
