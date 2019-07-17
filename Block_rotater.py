@@ -10,8 +10,8 @@ class Rotater():
         returned = g.steuern()
         if returned == "Right!":
 
-            blo.rotation(1)
+            blo.rotate(True)
 
         if returned == "Left!":
 
-            blo.rotation(-1)
+            blo.rotate(True)

@@ -31,6 +31,15 @@ class Block:
         if 0 <= orientation <= len(self.field_with_rotations):
             self.orientation = orientation
 
+    def rotate(self, how:int):
+
+        self.orientation += how
+        if self.orientation ==4:
+            self.orientation = 0
+        if self.orientation == -1:
+            self.orientation = 3
+
+
     def strech_block_twice(self):
         block_array = []
         for i in range(len(self.field_with_rotations)):

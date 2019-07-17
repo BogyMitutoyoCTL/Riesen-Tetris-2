@@ -56,5 +56,6 @@ while  i<100:
     rotater.control(g, blo)
     play.add_block(blo, 4, 4)
     Drawer1.draw_playground(play)
+    time.sleep(0.11)
 
 time.sleep(10)
