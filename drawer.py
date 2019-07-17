@@ -52,6 +52,6 @@ for i in range(0, len(tetris_blocks.block_list)):
         Thomas.clear()
         block = tetris_blocks.block_list[i]
         block.rotation(y)
-        Thomas.add_block(block, 0, 10)
+        Thomas.add_block(block, 4, 10)
         Tim.draw_playground(Thomas)
         time.sleep(2)

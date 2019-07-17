@@ -15,7 +15,7 @@ class Playground:
             for i in range(self.width):
                 self.list_pixel.append((0, 0, 0))
 
-    def add_block(self, block: tetris_blocks, pos_x, pos_y):
+    def add_block(self, block: tetris_blocks, columns_right, lines_down):
         x_of_block = 0
         y_of_block = 0
         for h in block.field_with_rotations[block.orientation]:
@@ -23,7 +23,8 @@ class Playground:
                 # print(w)
                 print("Posx: " + str(x_of_block))
                 print("Posy: " + str(y_of_block))
-                pixelnumber = x_of_block * self.width + y_of_block + pos_y * self.width
+                pixelnumber = x_of_block * self.width + y_of_block + lines_down * self.width + columns_right
+
                 if w > 0:
                     self.list_pixel[pixelnumber] = block.color.get_color()
                 else:
