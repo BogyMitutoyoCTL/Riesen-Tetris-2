@@ -49,7 +49,6 @@ color_canvas.clear()
 #Drawer1.draw_playground(play)
 
 red_drawer.draw_playground(red_playground)
-time.sleep(3)
 t = 0
 
 #solange noch kein gameover ist
@@ -66,23 +65,26 @@ while t < 1000:
 
 
     # Spiel
-    tim = 0.15
+
     countdown = 20
     while countdown > 0:
-        print(countdown)#
-        time.sleep(tim)
         countdown = countdown - 1
-
         linecount = 19 - countdown
-
+        time.sleep(0.5)
         color_playground.add_block(current_block, 0, linecount)
-
         color_drawer.draw_playground(color_playground)
-
         color_playground.clear()
 
-        rotater.control(g, current_block)
 
     t=t+1
 #bis hier in die schleife dann...
 
+i = 0
+
+while  i<100:
+    rotater.control(g, current_block)
+    color_playground.add_block(current_block, 4, 4)
+    color_drawer.draw_playground(color_playground)
+    time.sleep(0.11)
+
+time.sleep(10)

@@ -26,13 +26,14 @@ class Points:
         return all_points
 
 
-end_points = 0
-a = Points()
+if __name__ == "__main__":
+    end_points = 0
+    a = Points()
 
 
-end_points += a.points(0, 1, 1)
-end_points += a.points(0, 2, 1)
+    end_points += a.points(0, 1, 1)
+    end_points += a.points(0, 2, 1)
 
-print(end_points)
+    print(end_points)
 
-time.sleep(10)
+    time.sleep(10)
