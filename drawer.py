@@ -1,22 +1,16 @@
-import tetris_blocks
-import playground
-import time
-
-from luma.core.legacy import text
-from luma.core.legacy.font import proportional, TINY_FONT
 from luma.core.render import canvas
-from luma.led_matrix.device import neopixel
-from Colors import Block_color
+
+import playground
 
 
 class draw:
     def __init__(self, device, ):
         self.device = device
 
-    def draw_playground(self, playground):
+    def draw_playground(self, playground: playground.Playground):
         with canvas(self.device)as draw:
             for x in range(0, playground.width):
-                for y in range(0, playground.hight):
+                for y in range(0, playground.height):
                     color = playground.get_pixel(x, y)
                     draw.point((x, y), fill=color)
 
