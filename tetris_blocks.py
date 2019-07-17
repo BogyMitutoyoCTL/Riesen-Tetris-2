@@ -1,3 +1,4 @@
+import playground
 from Colors import Block_color
 
 
@@ -18,7 +19,7 @@ class Block:
         if 0 <= orientation <= len(self.field_with_rotations):
             self.orientation = orientation
 
-# def turn_block(self):
+
 
 
 class Blocktype:
@@ -171,4 +172,4 @@ block_list = [Block(Blocktype.t, Block_color.pink),
               Block(Blocktype.l_left, Block_color.darkblue),
               Block(Blocktype.l_right, Block_color.orange)]
 
-block_list[0].draw_block()
+# block_list[0].draw_block()
