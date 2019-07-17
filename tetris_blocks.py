@@ -1,5 +1,6 @@
 from Colors import Block_color
 
+
 def print_block(block):
     size_x = len(block)
     size_y = len(block[0])
@@ -42,14 +43,16 @@ class Block:
         for x in range(0, size_x):
             for y in range(0, size_y):
                 if self.field_with_rotations[self.orientation][x][y] > 0:
-                    matrix_8_8[x*2][y*2] = 1
-                    matrix_8_8[x*2+1][y*2] = 1
-                    matrix_8_8[x*2][y*2+1] = 1
-                    matrix_8_8[x*2+1][y*2+1] = 1
+                    matrix_8_8[x * 2][y * 2] = 1
+                    matrix_8_8[x * 2 + 1][y * 2] = 1
+                    matrix_8_8[x * 2][y * 2 + 1] = 1
+                    matrix_8_8[x * 2 + 1][y * 2 + 1] = 1
 
         print_block(matrix_8_8)
         return matrix_8_8
-#verdoppelt Blöcke
+
+
+# verdoppelt Blöcke
 # def turn_block(self):
 
 
@@ -202,4 +205,3 @@ block_list = [Block(Blocktype.t, Block_color.pink),
               Block(Blocktype.square, Block_color.yellow),
               Block(Blocktype.l_left, Block_color.darkblue),
               Block(Blocktype.l_right, Block_color.orange)]
-
