@@ -1,5 +1,12 @@
-import playground
 from Colors import Block_color
+
+def print_block(block):
+    size_x = len(block)
+    size_y = len(block[0])
+    for x in range(0, size_x):
+        for y in range(0, size_y):
+            print(block[x][y], end=" ")
+        print("")
 
 
 class Block:
@@ -19,7 +26,31 @@ class Block:
         if 0 <= orientation <= len(self.field_with_rotations):
             self.orientation = orientation
 
+    def strech_block_twice(self):
+        matrix_8_8 = [[0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0]]
+        size_x = 0
+        size_y = 0
+        size_x = len(self.field_with_rotations[self.orientation])
+        size_y = len(self.field_with_rotations[self.orientation][0])
+        for x in range(0, size_x):
+            for y in range(0, size_y):
+                if self.field_with_rotations[self.orientation][x][y] > 0:
+                    matrix_8_8[x*2][y*2] = 1
+                    matrix_8_8[x*2+1][y*2] = 1
+                    matrix_8_8[x*2][y*2+1] = 1
+                    matrix_8_8[x*2+1][y*2+1] = 1
 
+        print_block(matrix_8_8)
+        return matrix_8_8
+#verdoppelt Blöcke
+# def turn_block(self):
 
 
 class Blocktype:
@@ -172,4 +203,3 @@ block_list = [Block(Blocktype.t, Block_color.pink),
               Block(Blocktype.l_left, Block_color.darkblue),
               Block(Blocktype.l_right, Block_color.orange)]
 
-# block_list[0].draw_block()
