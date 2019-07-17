@@ -12,6 +12,17 @@ import playground
 import pygame
 import drawer
 
+from Colors import Block_color
+from numers_for_score import Numbers
+from tetris_blocks import Block
+
+def draw_number(i):
+    digit = Numbers.number[i]
+    rotatable = [digit] * 4
+    b = Block(rotatable, Block_color.red)
+    red_playground.add_block(b, 8, 0)
+    red_drawer.draw_playground(red_playground)
+
 rotater = Block_rotater.Rotater()
 
 pygame.init()
@@ -66,7 +77,7 @@ while t < 1000:
     red_playground.add_block(preview_block, 0, 0)
     red_drawer.draw_playground(red_playground)
 
-
+    draw_number(t%10)
     # Spiel
     tim = 0.15
     countdown = 20
@@ -79,8 +90,8 @@ while t < 1000:
 
         color_playground.add_block(hindernis, 0, 10)
 
-        if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-            print("KOLLISION!!!!!!!!!")
+        # if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
+        #    print("KOLLISION!!!!!!!!!")
 
         color_playground.add_block(current_block, 0, linecount)
 
