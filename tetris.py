@@ -69,24 +69,21 @@ while t < 1000:
 
     countdown = 20
     while countdown > 0:
-        print(countdown)
+        print(countdown)#
+        time.sleep(0.005)
         countdown = countdown - 1
+        time.sleep(0.005)
         linecount = 19 - countdown
-        time.sleep(0.2)
+        time.sleep(0.005)
         color_playground.add_block(current_block, 0, linecount)
+        time.sleep(0.005)
         color_drawer.draw_playground(color_playground)
+        time.sleep(0.005)
+        time.sleep(0.005)
         color_playground.clear()
 
+        rotater.control(g, current_block)
 
     t=t+1
 #bis hier in die schleife dann...
 
-i = 0
-
-while  i<100:
-    rotater.control(g, current_block)
-    color_playground.add_block(current_block, 4, 4)
-    color_drawer.draw_playground(color_playground)
-    time.sleep(0.11)
-
-time.sleep(10)
