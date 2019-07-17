@@ -90,7 +90,8 @@ while t < 1000:
         color_playground.add_block(hindernis, 0, 19)
 
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-            print("KOLLISION!!!!!!!!!")
+            print("Kollision")
+            break
 
         color_playground.add_block(current_block, 0, linecount)
 
