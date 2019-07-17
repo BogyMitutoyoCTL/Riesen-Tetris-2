@@ -49,7 +49,7 @@ class Block:
 
         print_block(matrix_8_8)
         return matrix_8_8
-
+#verdoppelt Blöcke
 # def turn_block(self):
 
 
