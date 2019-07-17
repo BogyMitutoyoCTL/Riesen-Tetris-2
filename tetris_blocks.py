@@ -1,5 +1,13 @@
 from Colors import Block_color
 
+def print_block(block):
+    size_x = len(block)
+    size_y = len(block[0])
+    for x in range(0, size_x):
+        for y in range(0, size_y):
+            print(block[x][y], end=" ")
+        print("")
+
 
 class Block:
     def __init__(self, field, Color):
@@ -26,22 +34,21 @@ class Block:
                       [0, 0, 0, 0, 0, 0, 0, 0],
                       [0, 0, 0, 0, 0, 0, 0, 0],
                       [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
                       [0, 0, 0, 0, 0, 0, 0, 0]]
-        line_nr = 0
-        column_nr = 0
-        for line in self.field_with_rotations[self.orientation]:
-            for pos in line:
-                print("Pos(" + str(line_nr) + "/" + str(column_nr) + ") " + str(pos), end=" ")
-                #
-                # Hier in die 8x8 Matrix schreiben
-                #
-                column_nr += 1
-            # Für Zeilenschaltung
-            print("")
-            line_nr += 1
-            column_nr = 0
+        size_x = 0
+        size_y = 0
+        size_x = len(self.field_with_rotations[self.orientation])
+        size_y = len(self.field_with_rotations[self.orientation][0])
+        for x in range(0, size_x):
+            for y in range(0, size_y):
+                if self.field_with_rotations[self.orientation][x][y] > 0:
+                    matrix_8_8[x*2][y*2] = 1
+                    matrix_8_8[x*2+1][y*2] = 1
+                    matrix_8_8[x*2][y*2+1] = 1
+                    matrix_8_8[x*2+1][y*2+1] = 1
 
+        print_block(matrix_8_8)
+        return matrix_8_8
 
 # def turn_block(self):
 
