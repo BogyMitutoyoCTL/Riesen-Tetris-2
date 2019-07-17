@@ -14,4 +14,4 @@ class Rotater():
 
         if returned == "Left!":
 
-            blo.rotate(True)
+            blo.rotate(False)

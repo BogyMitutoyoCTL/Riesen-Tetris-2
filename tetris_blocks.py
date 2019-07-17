@@ -11,6 +11,7 @@ def print_block(block):
         print("")
     print("")
 
+
 class Block:
     def __init__(self, field, Color):
         self.color = Color
@@ -31,26 +32,36 @@ class Block:
         if 0 <= orientation <= len(self.field_with_rotations):
             self.orientation = orientation
 
-    def rotate(self, how:int):
+    def rotate(self, left: bool = True):
+        orientation = self.orientation
+        if left:
+            orientation += 1
+        else:
+            orientation += -1
+        print("Orientation: " + str(orientation))
+        orientation_value = orientation % len(self.field_with_rotations)
+        print("OrientationValue: " + str(orientation_value))
+        self.orientation = orientation_value
 
-        self.orientation += how
-        if self.orientation ==4:
+    def rotate_old(self, direction: int):
+
+        self.orientation += direction
+        if self.orientation == 4:
             self.orientation = 0
         if self.orientation == -1:
             self.orientation = 3
-
 
     def strech_block_twice(self):
         block_array = []
         for i in range(len(self.field_with_rotations)):
             matrix_8_8 = [[0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0]]
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0]]
 
             size_x = len(self.field_with_rotations[i])
             size_y = len(self.field_with_rotations[i][0])
@@ -221,6 +232,8 @@ block_list = [Block(Blocktype.t, Block_color.pink),
               Block(Blocktype.l_left, Block_color.darkblue),
               Block(Blocktype.l_right, Block_color.orange)]
 
-
 my_block = Block(Blocktype.t, Block_color.pink)
 my_block.strech_block_twice()
+
+for i in range(1000):
+    my_block.rotate(True)
