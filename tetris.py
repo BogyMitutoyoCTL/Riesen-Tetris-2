@@ -1,7 +1,7 @@
 import time
-
+import Block_rotater
 from luma.core.interface.serial import spi, noop
-
+import controller
 import littlemonitor
 from luma.led_matrix.device import neopixel, max7219
 
@@ -9,12 +9,15 @@ import random_blocks
 import playground
 import pygame
 import drawer
-import tetris_blocks
+
+rotater = Block_rotater.Rotater()
 
 pygame.init()
 pygame.joystick.init()
 a = pygame.joystick.Joystick(0)
 a.init()
+
+g = controller.Controller(a)
 
 dev = neopixel(width=10, height=20, rotate=0, mapping=drawer.HAT)
 
@@ -30,6 +33,7 @@ play2.draw()
 
 rand = random_blocks.Randomblock()
 blo = rand.get_random_block()
+blo2 = rand.get_random_block()
 
 Drawer1 = drawer.draw(dev)
 
@@ -38,12 +42,19 @@ Drawer1.draw_playground(play)
 Drawer2 = littlemonitor.draw_small(dev2)
 
 play.add_block(blo, 4, 4)
-play2.add_block(blo, 4, 4)
+play2.add_block(blo2, 0, 0)
 
 dev2.clear()
 dev.clear()
 Drawer1.draw_playground(play)
 
 Drawer2.draw_playground(play2)
+
+i = 0
+
+while  i<100:
+    rotater.control(g, blo)
+    play.add_block(blo, 4, 4)
+    Drawer1.draw_playground(play)
 
 time.sleep(10)

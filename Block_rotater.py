@@ -5,9 +5,9 @@ import tetris_blocks
 
 
 class Rotater():
-    def control(self, a, blo: tetris_blocks.Block):
+    def control(self, g, blo: tetris_blocks.Block):
 
-        returned = a.steuern()
+        returned = g.steuern()
         if returned == "Right!":
 
             blo.rotation(1)
