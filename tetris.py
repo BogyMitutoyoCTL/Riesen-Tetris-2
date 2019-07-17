@@ -76,7 +76,7 @@ while t < 1000:
         color_playground.add_block(current_block, 0, linecount)
         color_drawer.draw_playground(color_playground)
         color_playground.clear()
-    color_playground.add_block(current_block, 4, 4)
+
 
     t=t+1
 #bis hier in die schleife dann...
