@@ -16,12 +16,14 @@ from Colors import Block_color
 from numers_for_score import Numbers
 from tetris_blocks import Block
 
+
 def draw_number(i):
     digit = Numbers.number[i]
     rotatable = [digit] * 4
     b = Block(rotatable, Block_color.red)
     red_playground.add_block(b, 8, 0)
     red_drawer.draw_playground(red_playground)
+
 
 rotater = Block_rotater.Rotater()
 
@@ -39,10 +41,8 @@ red_canvas = max7219(serial, cascaded=4, block_orientation=90,
                      rotate=0, blocks_arranged_in_reverse_order=True)
 
 color_playground = playground.Playground(20, 10)
-color_playground.draw()
 
 red_playground = playground.Playground(8, 32)
-red_playground.draw()
 
 rand = random_blocks.Randomblock()
 current_block = rand.get_random_block()
@@ -54,19 +54,19 @@ color_drawer = drawer.draw(color_canvas)
 # Drawer1.draw_playground(play)
 red_drawer = littlemonitor.draw_small(red_canvas)
 
-#play.add_block(blo, 4, 4)
-#play2.add_block(blo2, 0, 0)
+# play.add_block(blo, 4, 4)
+# play2.add_block(blo2, 0, 0)
 
 red_canvas.clear()
 color_canvas.clear()
-#Drawer1.draw_playground(play)
+# Drawer1.draw_playground(play)
 
 red_drawer.draw_playground(red_playground)
 t = 0
 hindernis = rand.get_random_block()
 fadfaf = Collision.Collision_Dedektor()
-#solange noch kein gameover ist
-#wenn der block sich nicht mehr bewegen kann
+# solange noch kein gameover ist
+# wenn der block sich nicht mehr bewegen kann
 while t < 1000:
     current_block = next_block
     next_block = rand.get_random_block()
@@ -77,21 +77,20 @@ while t < 1000:
     red_playground.add_block(preview_block, 0, 0)
     red_drawer.draw_playground(red_playground)
 
-    draw_number(t%10)
+    draw_number(t % 10)
     # Spiel
     tim = 0.15
     countdown = 20
     while countdown > 0:
-        print(countdown)#
         time.sleep(tim)
         countdown = countdown - 1
 
         linecount = 19 - countdown
 
-        color_playground.add_block(hindernis, 0, 10)
+        color_playground.add_block(hindernis, 0, 19)
 
-        # if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-        #    print("KOLLISION!!!!!!!!!")
+        if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
+            print("KOLLISION!!!!!!!!!")
 
         color_playground.add_block(current_block, 0, linecount)
 
@@ -101,6 +100,5 @@ while t < 1000:
 
         rotater.control(g, current_block)
 
-    t=t+1
-#bis hier in die schleife dann...
-
+    t = t + 1
+# bis hier in die schleife dann...

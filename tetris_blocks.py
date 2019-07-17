@@ -38,9 +38,7 @@ class Block:
             orientation += 1
         else:
             orientation += -1
-        print("Orientation: " + str(orientation))
         orientation_value = orientation % len(self.field_with_rotations)
-        print("OrientationValue: " + str(orientation_value))
         self.orientation = orientation_value
 
     def rotate_old(self, direction: int):
@@ -73,7 +71,6 @@ class Block:
                         matrix_8_8[x * 2][y * 2 + 1] = 1
                         matrix_8_8[x * 2 + 1][y * 2 + 1] = 1
 
-            print_block(matrix_8_8)
             block_array.append(matrix_8_8)
         return Block(block_array, self.color)
 

@@ -10,9 +10,8 @@ class Collision_Dedektor:
         collision = 0
         for y in range(0, 4):
 
-            if cy > 19:
-                bye = "Bye"
-                return bye
+            if (y + cy)>19:
+                break
 
             for x in range(0, 4):
                 num = b.get_field()[x][y]
