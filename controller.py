@@ -7,6 +7,7 @@ import Colors
 class Controller:
     def __init__(self, Joy):
         self.Joy = Joy
+
     def steuern(self):
         pygame.event.get()
         if self.Joy.get_button(1) > 0.001:

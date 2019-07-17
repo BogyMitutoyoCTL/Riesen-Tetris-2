@@ -30,7 +30,6 @@ class Playground:
                 else:
                     self.list_pixel[pixelnumber] = (0, 0, 0)
 
-
                 y_of_block += 1
 
             y_of_block = 0
