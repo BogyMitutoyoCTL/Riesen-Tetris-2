@@ -6,7 +6,6 @@ from luma.core.legacy import text
 from luma.core.legacy.font import proportional, TINY_FONT
 from luma.core.render import canvas
 from luma.led_matrix.device import neopixel
-
 from Colors import Block_color
 
 
