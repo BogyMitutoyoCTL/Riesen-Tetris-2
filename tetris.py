@@ -40,8 +40,8 @@ blo.draw_block()
 Drawer1.draw_playground(play)
 Drawer2 = littlemonitor.draw_small(dev2)
 
-play.add_block(blo)
-play2.add_block(blo)
+play.add_block(blo, 4, 4)
+play2.add_block(blo, 4, 4)
 
 dev2.clear()
 dev.clear()

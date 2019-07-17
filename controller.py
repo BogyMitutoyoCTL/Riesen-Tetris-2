@@ -8,12 +8,6 @@ class Controller:
 
     def steuern(self):
 
-        pygame.init()
-        pygame.joystick.init()
-
-
-        a = pygame.joystick.Joystick(0)
-        a.init()
         pygame.event.get()
         if a.get_button(1)>0.001:
             print("Rechts drehen!")

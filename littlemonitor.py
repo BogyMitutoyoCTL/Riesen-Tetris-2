@@ -6,7 +6,7 @@ class draw_small:
         self.device = device
 
     def draw_playground(self, playground):
-        with canvas(device)as draw:
+        with canvas(self.device)as draw:
             for x in range(0, playground.width):
                 for y in range(0, playground.hight):
                     color = playground.get_pixel(x, y)
