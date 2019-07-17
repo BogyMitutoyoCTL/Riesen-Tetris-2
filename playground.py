@@ -15,10 +15,10 @@ class Playground:
             for i in range(self.width):
                 self.list_pixel.append((0, 0, 0))
 
-    def add_block(self, block: tetris_blocks, columns_right, lines_down):
+    def add_block(self, block: tetris_blocks.Block, columns_right, lines_down):
         x_of_block = 0
         y_of_block = 0
-        for h in block.field_with_rotations[block.orientation]:
+        for h in block.get_field():
             for w in h:
                 # print(w)
                 print("Posx: " + str(x_of_block))
