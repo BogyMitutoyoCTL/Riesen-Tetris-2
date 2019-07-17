@@ -1,6 +1,8 @@
 import time
 import Block_rotater
 from luma.core.interface.serial import spi, noop
+
+import Collision
 import controller
 import littlemonitor
 from luma.led_matrix.device import neopixel, max7219
@@ -51,7 +53,8 @@ color_canvas.clear()
 red_drawer.draw_playground(red_playground)
 time.sleep(3)
 t = 0
-
+hindernis = rand.get_random_block()
+fadfaf = Collision.Collision_Dedektor()
 #solange noch kein gameover ist
 #wenn der block sich nicht mehr bewegen kann
 while t < 1000:
@@ -74,6 +77,11 @@ while t < 1000:
         countdown = countdown - 1
 
         linecount = 19 - countdown
+
+        color_playground.add_block(hindernis, 0, 10)
+
+        if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
+            print("KOLLISION!!!!!!!!!")
 
         color_playground.add_block(current_block, 0, linecount)
 
