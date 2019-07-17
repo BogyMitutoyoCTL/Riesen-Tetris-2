@@ -51,28 +51,30 @@ Drawer1.draw_playground(play)
 
 Drawer2.draw_playground(play2)
 time.sleep(3)
+t = 0
 #solange noch kein gameover ist
 #wenn der block sich nicht mehr bewegen kann
+while t < 1000:
+    blo = blo3
+    blo3 = rand.get_random_block()
+    blo2 = blo3.strech_block_twice()
 
-blo = blo3
-blo3 = rand.get_random_block()
-blo2 = blo3.strech_block_twice()
+    Drawer1 = drawer.draw(dev)
 
-Drawer1 = drawer.draw(dev)
+    blo.draw_block()
+    Drawer1.draw_playground(play)
+    Drawer2 = littlemonitor.draw_small(dev2)
 
-blo.draw_block()
-Drawer1.draw_playground(play)
-Drawer2 = littlemonitor.draw_small(dev2)
+    play.add_block(blo, 4, 4)
+    play2.add_block(blo2, 0, 0)
 
-play.add_block(blo, 4, 4)
-play2.add_block(blo2, 0, 0)
+    dev2.clear()
+    dev.clear()
+    Drawer1.draw_playground(play)
 
-dev2.clear()
-dev.clear()
-Drawer1.draw_playground(play)
-
-Drawer2.draw_playground(play2)
-time.sleep(3)
+    Drawer2.draw_playground(play2)
+    time.sleep(3)
+    t=t+1
 #bis hier in die schleife dann...
 
 i = 0
