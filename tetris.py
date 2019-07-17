@@ -30,6 +30,7 @@ play2.draw()
 
 rand = random_blocks.Randomblock()
 blo = rand.get_random_block()
+blo2 = rand.get_random_block().strech_block_twice()
 
 Drawer1 = drawer.draw(dev)
 
@@ -38,7 +39,7 @@ Drawer1.draw_playground(play)
 Drawer2 = littlemonitor.draw_small(dev2)
 
 play.add_block(blo, 4, 4)
-play2.add_block(blo, 4, 4)
+play2.add_block(blo2, 0, 0)
 
 dev2.clear()
 dev.clear()
