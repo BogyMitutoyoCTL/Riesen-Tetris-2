@@ -66,20 +66,19 @@ while t < 1000:
 
 
     # Spiel
-
+    tim = 0.03
     countdown = 20
     while countdown > 0:
         print(countdown)#
-        time.sleep(0.005)
+        time.sleep(tim)
         countdown = countdown - 1
-        time.sleep(0.005)
+        time.sleep(tim)
         linecount = 19 - countdown
-        time.sleep(0.005)
+        time.sleep(tim)
         color_playground.add_block(current_block, 0, linecount)
-        time.sleep(0.005)
+        time.sleep(tim)
         color_drawer.draw_playground(color_playground)
-        time.sleep(0.005)
-        time.sleep(0.005)
+        time.sleep(tim)
         color_playground.clear()
 
         rotater.control(g, current_block)
