@@ -3,7 +3,7 @@ import numbersforscore
 import color
 
 
-class NumberToBlock():
+class NumberToBlock:
     def get_block(self, number: int):
         numbers_list = self.get_list_of_single_numbers(number)
 
