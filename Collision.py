@@ -67,7 +67,7 @@ class Collision_Dedektor:
         for y in range(block_hight):
             for x in range(block_width):
                 if b.get_field()[y][x] == 1:
-                    if x + block_pos_x > 0 :
+                    if x + block_pos_x < playground_width - 10:
                         return True
         return False
 
