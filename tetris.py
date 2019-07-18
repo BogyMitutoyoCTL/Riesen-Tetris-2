@@ -21,8 +21,32 @@ def draw_number(i):
     digit = Numbers.number[i]
     rotatable = [digit] * 4
     b = Block(rotatable, Block_color.red)
-    red_playground.add_block(b, 8, 0)
+    red_playground.add_block(b, 10, 0)
     red_drawer.draw_playground(red_playground)
+
+
+def draw_number_plus_1r(i):
+    digit = Numbers.number[i]
+    rotatable = [digit] * 4
+    b = Block(rotatable, Block_color.red)
+    red_playground.add_block(b, 15, 0)
+    red_drawer.draw_playground(red_playground)
+
+
+def draw_number_plus_2r(i):
+    digit = Numbers.number[i]
+    rotatable = [digit] * 4
+    b = Block(rotatable, Block_color.red)
+    red_playground.add_block(b, 20, 0)
+    red_drawer.draw_playground((red_playground))
+
+
+def draw_number_plus_3r(i):
+    digit = Numbers.number[i]
+    rotatable = [digit] * 4
+    b = Block(rotatable, Block_color.red)
+    red_playground.add_block(b, 25, 0)
+    red_drawer.draw_playground((red_playground))
 
 
 rotater = Block_rotater.Rotater()
@@ -78,6 +102,11 @@ while t < 1000:
     red_drawer.draw_playground(red_playground)
 
     draw_number(t % 10)
+    numbers_2 = t // 10
+    draw_number_plus_1r(t % 10)
+
+    draw_number_plus_2r(t % 10)
+    draw_number_plus_3r(t % 10)
     # Spiel
     tim = 0.15
     countdown = 20
