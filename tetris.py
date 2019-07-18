@@ -104,8 +104,8 @@ def run_game():
             if collision_detector.check_if_block_at_wall_right(color_playground, current_block, current_block_position[0]) == True:
                 break
 
-            #if fadfaf.check_if_block_at_wall_left(color_playground, current_block, current_block_position[0]) == True:
-                #break
+            if collision_detector.check_if_block_at_wall_left(color_playground, current_block, current_block_position[0]) == True:
+                break
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
