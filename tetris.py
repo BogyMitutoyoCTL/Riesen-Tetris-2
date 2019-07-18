@@ -11,7 +11,7 @@ import drawer
 import deleteline
 import rgbleddrawer
 
-from Colors import Block_color
+from color import Block_color
 from numbersforscore import Numbers
 from tetris_blocks import Block
 

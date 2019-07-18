@@ -1,4 +1,4 @@
-import Colors
+import color
 from playground import Playground
 from tetris_blocks import Block
 

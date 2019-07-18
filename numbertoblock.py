@@ -1,27 +1,22 @@
 import tetris_blocks
 import numbersforscore
+import color
 
 
 class NumberToBlock():
     def get_block(self, number: int):
         numbers_list = self.get_list_of_single_numbers(number)
 
+        blocks = []
         for number in numbers_list:
-            number_block = self.get_digit_block(number)
-            print("Number: " + str(number))
-            print(number_block.draw_block())
+            blocks.append(numbersforscore.NumbersForScore.number[number])
 
-        # draw_digit(i % 10, 10, 0, red_playground, red_drawer)
-        # draw_digit(dritte_nummer % 10, 15, 0, red_playground, red_drawer)
-        # draw_digit(zweite_nummer % 10, 20, 0, red_playground, red_drawer)
-        # draw_digit(erste_nummer % 10, 25, 0, red_playground, red_drawer)
+        field = []
+        for block in blocks:
+            field.extend(block)
 
-    @staticmethod
-    def get_digit_block(i):
-        digit = numbersforscore.NumbersForScore.number[i]
-        rotatable = [digit] * 4
-        b = tetris_blocks.Block(rotatable, tetris_blocks.Block_color.red)
-        return b
+        tetris_blocks.Block(field, color.Color.red)
+
 
     @staticmethod
     def get_list_of_single_numbers(number: int):

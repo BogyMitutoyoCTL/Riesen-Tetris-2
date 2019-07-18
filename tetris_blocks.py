@@ -1,4 +1,4 @@
-from Colors import Block_color
+from color import Block_color
 
 
 def print_block(block):
