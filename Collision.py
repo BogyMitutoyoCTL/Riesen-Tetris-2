@@ -6,7 +6,6 @@ from tetris_blocks import Block
 class Collision_Dedektor:
 
     def collision(self, p:Playground, b:Block, cx, cy):
-
         collision = 0
         for y in range(0, 4):
 
@@ -34,3 +33,15 @@ class Collision_Dedektor:
 
         col = color * number
         return col
+
+    def ground(self, Playground, Block, x_Coords):
+
+        x = 0
+        touch = 0
+        while x < 10:
+            touch += Playground.collision(Playground, Block, x, 20)
+            x += 1
+        if touch > 0:
+            return True
+        else:
+            return False
