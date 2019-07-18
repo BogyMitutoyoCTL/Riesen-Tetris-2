@@ -43,7 +43,7 @@ class Controller:
         if self.Joy.get_axis(0) > 0.001:
             position = (position[0] + 1, position[1])
 
-        if self.Joy.get_axis(1) > 0.001:
-            position = (position[0], position[1]+1)
+
+
 
         return position
