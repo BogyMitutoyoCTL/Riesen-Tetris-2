@@ -1,10 +1,8 @@
 import time
-from luma.core.interface.serial import spi, noop
 
 import Collision
 import controller
-import littlemonitor
-from luma.led_matrix.device import max7219
+import ledmatrixdrawer
 
 import random_blocks
 import playground
@@ -54,10 +52,7 @@ def run_game():
     color_drawer = rgbleddrawer.RgbLedDrawer()
 
     # drawer for scoreboard
-    serial = spi(port=0, device=0, gpio=noop())
-    red_canvas = max7219(serial, cascaded=4, block_orientation=90,
-                         rotate=0, blocks_arranged_in_reverse_order=True)
-    red_drawer = littlemonitor.draw_small(red_canvas)
+    red_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
     # Playgrounds
     color_playground = playground.Playground(20, 10)
