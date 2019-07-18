@@ -1,4 +1,4 @@
-import time
+
 import tetris_blocks
 
 
@@ -27,6 +27,24 @@ class Playground:
 
                 if w > 0:
                     self.list_pixel[pixelnumber] = block.color.get_color()
+
+                y_of_block += 1
+
+            y_of_block = 0
+            x_of_block += 1
+
+    def block_clear(self,block: tetris_blocks.Block, columns_right, lines_down,  x, y):
+        x_of_block = 0
+        y_of_block = 0
+        for h in block.get_field():
+            for w in h:
+                pixelnumber = x_of_block * self.width + y_of_block + lines_down * self.width + columns_right
+
+                if pixelnumber > self.height * self.width - 1:
+                    return
+
+                if w > 0:
+                    self.list_pixel[pixelnumber] = block.color.get_color()
                 else:
                     self.list_pixel[pixelnumber] = (0, 0, 0)
 
@@ -43,4 +61,3 @@ class Playground:
 
     def get_pixel(self, x, y):
         return self.list_pixel[y * self.width + x]
-

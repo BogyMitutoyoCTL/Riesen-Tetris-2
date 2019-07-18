@@ -14,7 +14,7 @@ class Collision_Dedektor:
                 break
 
             for x in range(0, 4):
-                num = b.get_field()[x][y]
+                num = b.get_field()[y][x]
                 color = p.get_pixel(x + cx, y + cy)
                 collision += self.collision_pixel(color, num)
 
@@ -34,4 +34,3 @@ class Collision_Dedektor:
 
         col = color * number
         return col
-
