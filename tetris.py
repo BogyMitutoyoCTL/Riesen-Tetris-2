@@ -91,7 +91,7 @@ while t < 1000:
 
 
     # Spiel
-    tim = 0.15
+    tim = 0.5
     countdown = 20
     rowcount = 0
     while countdown > 0:
@@ -100,18 +100,43 @@ while t < 1000:
 
         linecount = 19 - countdown
 
+        if zweite_nummer == 5:
+            tim = 0.4
 
+        if dritte_nummer == 1:
+            tim = 0.3
+
+        if dritte_nummer == 2:
+            tim = 0.28
+
+        if dritte_nummer == 3:
+            tim = 0.26
+
+        if dritte_nummer == 4:
+            tim = 0.24
+
+        if dritte_nummer == 5:
+            tim = 0.20
+
+        if vierte_nummer == 1:
+            tim = 0.
 
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
             pass
 
         color_playground.add_block(current_block, rowcount, linecount)
 
+
+
+        color_playground.add_block(current_block, 0, linecount)
+
         color_drawer.draw_playground(color_playground)
 
         color_playground.block_clear(current_block, rowcount, linecount)
 
         rotater.control(g, current_block)
+
+
 
     t = t + 1
 # bis hier in die schleife dann...
