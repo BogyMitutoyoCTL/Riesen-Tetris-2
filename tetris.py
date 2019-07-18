@@ -4,12 +4,12 @@ from luma.core.interface.serial import spi, noop
 import Collision
 import controller
 import littlemonitor
-from luma.led_matrix.device import neopixel, max7219
+from luma.led_matrix.device import max7219
 
 import random_blocks
 import playground
 import pygame
-import drawer
+import rgb_led_drawer
 
 from Colors import Block_color
 from numers_for_score import Numbers
@@ -49,8 +49,7 @@ def run_game():
     gamepad = controller.Controller(joystick)
 
     # drawer for playfield
-    color_canvas = neopixel(width=10, height=20, rotate=0, mapping=drawer.HAT)
-    color_drawer = drawer.draw(color_canvas)
+    color_drawer = rgb_led_drawer.rgb_led_drawer()
 
     # drawer for scoreboard
     serial = spi(port=0, device=0, gpio=noop())

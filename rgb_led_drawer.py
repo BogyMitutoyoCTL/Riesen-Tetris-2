@@ -2,7 +2,7 @@ import luma
 import playground
 
 
-class draw_rgb_led:
+class rgb_led_drawer:
     def __init__(self, width=10, height=20):
         device = luma.led_matrix.device.neopixel(width, height, rotate=0, mapping=self.get_hat())
         self.device = device
