@@ -81,7 +81,7 @@ def run_game():
         draw_number(t, red_playground, led_matrix_drawer)
 
         # Spiel
-        tim = 0.5
+        tim = 0.1
         countdown = 20
         rowcount = 0
         while countdown > 0:
@@ -114,21 +114,37 @@ def run_game():
             if t >= 5000:
                 tim = 0.1
 
-            if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-                break
 
-            if fadfaf.check_if_block_on_ground(color_playground, current_block, current_block_position[1]) == True:
-                break
+
+
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
+
+
+
+
+
+            if fadfaf.check_if_block_on_ground(color_playground, current_block, current_block_position[1]+1) == True:
+                countdown = 0
+                break
+
             color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
 
             current_block_position = gamepad.get_button_pressed(current_block, current_block_position)
             if current_block_position == "End!":
                 game_over = True
 
+            if fadfaf.collision(color_playground, current_block, current_block_position[0], current_block_position[1]+1) == True:
+                color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
+                rgg_led_drawer.draw_playground(color_playground)
+                break
+
             current_block_position = (current_block_position[0], current_block_position[1] + 1)
+
+
+
+
 
         current_block_position = (5, 0)
         t = t + 1
