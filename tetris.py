@@ -49,10 +49,10 @@ def run_game():
     gamepad = controller.Controller(joystick)
 
     # drawer for playfield
-    color_drawer = rgbleddrawer.RgbLedDrawer()
+    rgg_led_drawer = rgbleddrawer.RgbLedDrawer()
 
     # drawer for scoreboard
-    red_drawer = ledmatrixdrawer.LedMatrixDrawer()
+    led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
     # Playgrounds
     color_playground = playground.Playground(20, 10)
@@ -76,9 +76,9 @@ def run_game():
         preview_block = next_block.strech_block_twice()
         red_playground.clear()
         red_playground.add_block(preview_block, 0, 0)
-        red_drawer.draw_playground(red_playground)
+        led_matrix_drawer.draw_playground(red_playground)
 
-        draw_number(t, red_playground, red_drawer)
+        draw_number(t, red_playground, led_matrix_drawer)
 
         # Spiel
         tim = 0.5
@@ -118,7 +118,7 @@ def run_game():
                 countdown = 0
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
-            color_drawer.draw_playground(color_playground)
+            rgg_led_drawer.draw_playground(color_playground)
             color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
 
             current_block_position = gamepad.get_button_pressed(current_block, current_block_position)
