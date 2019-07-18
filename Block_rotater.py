@@ -1,14 +1,9 @@
 import controller
-import pygame
 import tetris_blocks
 
 
 class Rotater():
-    def control(self, g, blo: tetris_blocks.Block):
+    def control(self, controller: controller.Controller, blo: tetris_blocks.Block, position):
 
-        returned = g.steuern()
-        if returned == "Right!":
-            blo.rotate(True)
-
-        if returned == "Left!":
-            blo.rotate(False)
+        controller.get_button_pressed(blo, position)
+        return position
