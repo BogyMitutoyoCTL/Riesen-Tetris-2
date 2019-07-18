@@ -1,21 +1,24 @@
-import luma
+from luma.led_matrix.device import neopixel
+from luma.core.render import canvas
 import playground
 
 
-class rgb_led_drawer:
+class RgbLedDrawer:
     def __init__(self, width=10, height=20):
-        device = luma.led_matrix.device.neopixel(width, height, rotate=0, mapping=HAT)
+        hat = self.get_hat()
+        device = neopixel(width=width, height=height, rotate=0, mapping=hat)
         self.device = device
 
     def draw_playground(self, pg: playground.Playground):
-        with luma.core.render.canvas(self.device)as draw:
+        with canvas(self.device)as draw:
             for x in range(0, pg.width):
                 for y in range(0, pg.height):
                     color = pg.get_pixel(x, y)
                     draw.point((x, y), fill=color)
 
-
-HAT = [
+    @staticmethod
+    def get_hat():
+        hat = [
             0, 20, 40, 60, 80, 100, 120, 140, 160, 180,
             1, 21, 41, 61, 81, 101, 121, 141, 161, 181,
             2, 22, 42, 62, 82, 102, 122, 142, 162, 182,
@@ -37,6 +40,8 @@ HAT = [
             18, 38, 58, 78, 98, 118, 138, 158, 178, 198,
             19, 39, 59, 79, 99, 119, 139, 159, 179, 199,
         ]
+        return hat
+
 
 if __name__ == "__main__":
     print("Nothing....")

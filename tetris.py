@@ -9,7 +9,9 @@ from luma.led_matrix.device import max7219
 import random_blocks
 import playground
 import pygame
-import rgb_led_drawer
+import drawer
+import deleteline
+import rgbleddrawer
 
 from Colors import Block_color
 from numers_for_score import Numbers
@@ -49,7 +51,7 @@ def run_game():
     gamepad = controller.Controller(joystick)
 
     # drawer for playfield
-    color_drawer = rgb_led_drawer.rgb_led_drawer()
+    color_drawer = rgbleddrawer.RgbLedDrawer()
 
     # drawer for scoreboard
     serial = spi(port=0, device=0, gpio=noop())
