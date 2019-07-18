@@ -119,7 +119,7 @@ def run_game():
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             color_drawer.draw_playground(color_playground)
-            color_playground.block_clear(current_block, rowcount, linecount)
+            color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
 
             current_block_position = gamepad.get_button_pressed(current_block, current_block_position)
             if current_block_position == "End!":
