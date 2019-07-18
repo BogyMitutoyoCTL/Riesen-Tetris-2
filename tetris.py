@@ -56,8 +56,9 @@ current_block_position = (5, 0)
 
 game_over = False
 while not game_over:
-    next_block = rand.get_random_block()
+
     current_block = next_block
+    next_block = rand.get_random_block()
 
     # Vorschau
     preview_block = next_block.strech_block_twice()
@@ -115,19 +116,15 @@ while not game_over:
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
             pass
 
-        color_playground.add_block(current_block, rowcount, linecount)
-
-
-
-        color_playground.add_block(current_block, 0, linecount)
-
+        color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
         color_drawer.draw_playground(color_playground)
-
         color_playground.block_clear(current_block, rowcount, linecount)
 
-        gamepad.get_button_pressed(current_block, current_block_position)
+        action = gamepad.get_button_pressed(current_block, current_block_position)
+        if action == "End!":
+            game_over = True
 
-
+        current_block_position = (current_block_position[0], current_block_position[1] + 1)
 
 
     t = t + 1
