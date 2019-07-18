@@ -63,7 +63,7 @@ color_canvas.clear()
 
 red_drawer.draw_playground(red_playground)
 t = 0
-hindernis = rand.get_random_block()
+
 fadfaf = Collision.Collision_Dedektor()
 # solange noch kein gameover ist
 # wenn der block sich nicht mehr bewegen kann
@@ -87,7 +87,7 @@ while t < 1000:
 
         linecount = 19 - countdown
 
-        color_playground.add_block(hindernis, 0, 19)
+
 
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
             print("Kollision")
