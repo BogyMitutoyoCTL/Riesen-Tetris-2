@@ -74,13 +74,11 @@ current_block_position = (5, 0)
 
 game_over = False
 while not game_over:
-    next_block = rand.get_random_block()
-# solange noch kein gameover ist
-# wenn der block sich nicht mehr bewegen kann
-while t < 1000:
+
     current_block = next_block
     next_block = rand.get_random_block()
 
+    next_block = rand.get_random_block()
 
     # Vorschau
     preview_block = next_block.strech_block_twice()
@@ -99,6 +97,7 @@ while t < 1000:
     draw_number(dritte_nummer % 10, 15, 0)
     draw_number(zweite_nummer % 10, 20, 0)
     draw_number(erste_nummer % 10, 25, 0)
+
 
     # Spiel
     tim = 0.5
@@ -140,6 +139,7 @@ while t < 1000:
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
             pass
 
+        color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
         color_playground.add_block(current_block, rowcount, linecount)
 
         color_playground.add_block(current_block, 0, linecount)
@@ -148,7 +148,12 @@ while t < 1000:
 
         color_playground.block_clear(current_block, rowcount, linecount)
 
-        rotater.control(g, current_block)
+        action = gamepad.get_button_pressed(current_block, current_block_position)
+        if action == "End!":
+            game_over = True
+
+        current_block_position = (current_block_position[0], current_block_position[1] + 1)
+
 
     t = t + 1
 # bis hier in die schleife dann...
