@@ -24,26 +24,31 @@ def draw_number(i, posx, posy):
     red_playground.add_block(b, posx, posy)
     red_drawer.draw_playground(red_playground)
 
-
-rotater = Block_rotater.Rotater()
-
+# Some stuff needed by PyGame
 pygame.init()
+
+# use Joystick and Controller
 pygame.joystick.init()
-a = pygame.joystick.Joystick(0)
-a.init()
+joystick = pygame.joystick.Joystick(0)
+joystick.init()
+gamepad = controller.Controller(joystick)
 
-g = controller.Controller(a)
-
+# drawer for playfield
 color_canvas = neopixel(width=10, height=20, rotate=0, mapping=drawer.HAT)
+color_drawer = drawer.draw(color_canvas)
 
+# drawer for scoreboard
 serial = spi(port=0, device=0, gpio=noop())
 red_canvas = max7219(serial, cascaded=4, block_orientation=90,
                      rotate=0, blocks_arranged_in_reverse_order=True)
+red_drawer = littlemonitor.draw_small(red_canvas)
 
+# Playgrounds
 color_playground = playground.Playground(20, 10)
 
 red_playground = playground.Playground(8, 32)
 
+# Random block generator and first random block
 rand = random_blocks.Randomblock()
 current_block = rand.get_random_block()
 next_block = rand.get_random_block()
@@ -65,6 +70,11 @@ red_drawer.draw_playground(red_playground)
 t = 0
 
 fadfaf = Collision.Collision_Dedektor()
+current_block_position = (5, 0)
+
+game_over = False
+while not game_over:
+    next_block = rand.get_random_block()
 # solange noch kein gameover ist
 # wenn der block sich nicht mehr bewegen kann
 while t < 1000:
@@ -128,7 +138,7 @@ while t < 1000:
             tim = 0.05
 
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-            break
+            pass
 
         color_playground.add_block(current_block, rowcount, linecount)
 
