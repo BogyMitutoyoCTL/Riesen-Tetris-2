@@ -4,7 +4,7 @@ import playground
 
 class rgb_led_drawer:
     def __init__(self, width=10, height=20):
-        device = luma.led_matrix.device.neopixel(width, height, rotate=0, mapping=self.get_hat())
+        device = luma.led_matrix.device.neopixel(width, height, rotate=0, mapping=HAT)
         self.device = device
 
     def draw_playground(self, pg: playground.Playground):
@@ -14,9 +14,8 @@ class rgb_led_drawer:
                     color = pg.get_pixel(x, y)
                     draw.point((x, y), fill=color)
 
-    @staticmethod
-    def get_hat():
-        return [
+
+HAT = [
             0, 20, 40, 60, 80, 100, 120, 140, 160, 180,
             1, 21, 41, 61, 81, 101, 121, 141, 161, 181,
             2, 22, 42, 62, 82, 102, 122, 142, 162, 182,
@@ -38,7 +37,6 @@ class rgb_led_drawer:
             18, 38, 58, 78, 98, 118, 138, 158, 178, 198,
             19, 39, 59, 79, 99, 119, 139, 159, 179, 199,
         ]
-
 
 if __name__ == "__main__":
     print("Nothing....")
