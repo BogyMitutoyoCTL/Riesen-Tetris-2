@@ -1,7 +1,3 @@
-from Colors import Block_color
-from tetris_blocks import Block
-
-
 class Numbers:
     number = [[[0, 1, 1, 1, 0],
                [0, 1, 0, 1, 0],
@@ -62,16 +58,3 @@ class Numbers:
                [0, 1, 1, 1, 0],
                [0, 0, 0, 1, 0],
                [0, 1, 1, 1, 0]]]
-
-
-if __name__ == "__main__":
-    for i in Numbers.number:
-        print(i)
-        print(" ")
-    for i in range(0, 10):
-        digit = Numbers.number[i]
-        rotatable = digit * 4
-        block = Block(rotatable, Block_color.red)
-
-
-
