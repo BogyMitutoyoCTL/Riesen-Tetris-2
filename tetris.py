@@ -25,8 +25,6 @@ def draw_number(i, posx, posy):
     red_drawer.draw_playground(red_playground)
 
 
-rotater = Block_rotater.Rotater()
-
 pygame.init()
 pygame.joystick.init()
 a = pygame.joystick.Joystick(0)
@@ -65,9 +63,10 @@ red_drawer.draw_playground(red_playground)
 t = 0
 
 fadfaf = Collision.Collision_Dedektor()
-# solange noch kein gameover ist
-# wenn der block sich nicht mehr bewegen kann
-while t < 1000:
+current_block_position = (5, 0)
+
+game_over = False
+while not game_over:
     next_block = rand.get_random_block()
     current_block = next_block
 
@@ -137,7 +136,8 @@ while t < 1000:
 
         color_playground.block_clear(current_block, rowcount, linecount)
 
-        rotater.control(g, current_block)
+        g.get_button_pressed(current_block, current_block_position)
+
 
 
 
