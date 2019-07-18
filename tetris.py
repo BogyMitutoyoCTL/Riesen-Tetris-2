@@ -1,5 +1,4 @@
 import time
-import Block_rotater
 from luma.core.interface.serial import spi, noop
 
 import Collision
