@@ -77,19 +77,24 @@ while t < 1000:
     red_playground.add_block(preview_block, 0, 0)
     red_drawer.draw_playground(red_playground)
 
-    draw_number(t % 10, 10, 0)
-    numbers_divide = t // 10
-    numbers_rest = t % 10
-    draw_number(t % 10, 15, 0)
-    numbers_divide = t // 10
-    numbers_rest = t % 10
-    draw_number(t % 10, 20, 0)
-    numbers_divide = t // 10
-    numbers_rest = t % 10
-    draw_number(t % 10, 25, 0)
-    numbers_divide = t // 10
-    numbers_rest = t % 10
-    print(t)
+    print("Aktuelles T: " + str(t))
+    erste_nummer = t % 10
+    print("Erste Nummer: " + str(erste_nummer))
+    intermediate = t // 10
+    zweite_nummer = intermediate % 10
+    print("Zweite Nummer: " + str(zweite_nummer))
+    intermediate = intermediate // 10
+    dritte_nummer = intermediate % 10
+    print("Dritte Nummer: " + str(dritte_nummer))
+    intermediate = intermediate // 10
+    vierte_nummer = intermediate % 10
+    print("Vierte Nummer: " + str(vierte_nummer))
+    draw_number(vierte_nummer % 10, 10, 0)
+    draw_number(dritte_nummer % 10, 15, 0)
+    draw_number(zweite_nummer % 10, 20, 0)
+    draw_number(erste_nummer % 10, 25, 0)
+
+
     # Spiel
     tim = 0.15
     countdown = 20
