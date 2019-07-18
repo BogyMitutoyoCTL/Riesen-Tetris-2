@@ -1,7 +1,3 @@
-from Colors import Block_color
-from tetris_blocks import Block
-
-
 class Numbers:
     number = [[[0, 1, 1, 1, 0],
                [0, 1, 0, 1, 0],

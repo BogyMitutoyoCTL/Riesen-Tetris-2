@@ -1,39 +1,19 @@
-import time
-
-
 class Points:
-    re_weg = 10
-    new_block = 1
+    def points(self, all_points, number_of_deleted_lines, new):
 
+        if number_of_deleted_lines == 1:
+            all_points += 10
 
-    def points(self, all_points, reihe_weg, new):
-
-        if reihe_weg == 1 :
-            all_points +=10
-
-        if reihe_weg == 2:
+        if number_of_deleted_lines == 2:
             all_points += 30
 
-        if reihe_weg == 3:
+        if number_of_deleted_lines == 3:
             all_points += 50
 
-        if reihe_weg == 4:
+        if number_of_deleted_lines == 4:
             all_points += 100
 
-        if new ==1:
-            all_points +=1
+        if new == 1:
+            all_points += 1
 
         return all_points
-
-
-if __name__ == "__main__":
-    end_points = 0
-    a = Points()
-
-
-    end_points += a.points(0, 1, 1)
-    end_points += a.points(0, 2, 1)
-
-    print(end_points)
-
-    time.sleep(10)
