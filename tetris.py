@@ -68,8 +68,8 @@ fadfaf = Collision.Collision_Dedektor()
 # solange noch kein gameover ist
 # wenn der block sich nicht mehr bewegen kann
 while t < 1000:
-    current_block = next_block
     next_block = rand.get_random_block()
+    current_block = next_block
 
     # Vorschau
     preview_block = next_block.strech_block_twice()
@@ -77,18 +77,13 @@ while t < 1000:
     red_playground.add_block(preview_block, 0, 0)
     red_drawer.draw_playground(red_playground)
 
-    print("Aktuelles T: " + str(t))
     erste_nummer = t % 10
-    print("Erste Nummer: " + str(erste_nummer))
     intermediate = t // 10
     zweite_nummer = intermediate % 10
-    print("Zweite Nummer: " + str(zweite_nummer))
     intermediate = intermediate // 10
     dritte_nummer = intermediate % 10
-    print("Dritte Nummer: " + str(dritte_nummer))
     intermediate = intermediate // 10
     vierte_nummer = intermediate % 10
-    print("Vierte Nummer: " + str(vierte_nummer))
     draw_number(vierte_nummer % 10, 10, 0)
     draw_number(dritte_nummer % 10, 15, 0)
     draw_number(zweite_nummer % 10, 20, 0)
@@ -98,6 +93,7 @@ while t < 1000:
     # Spiel
     tim = 0.15
     countdown = 20
+    rowcount = 0
     while countdown > 0:
         time.sleep(tim)
         countdown = countdown - 1
@@ -107,14 +103,13 @@ while t < 1000:
 
 
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-            print("Kollision")
-            break
+            pass
 
-        color_playground.add_block(current_block, 0, linecount)
+        color_playground.add_block(current_block, rowcount, linecount)
 
         color_drawer.draw_playground(color_playground)
 
-        color_playground.clear()
+        color_playground.block_clear(current_block, rowcount, linecount)
 
         rotater.control(g, current_block)
 
