@@ -127,8 +127,8 @@ def run_game():
 
             current_block_position = (current_block_position[0], current_block_position[1] + 1)
 
+        current_block_position = (5, 0)
         t = t + 1
-        current_block_position = (current_block_position[0], current_block_position[1] - 20)
     # bis hier in die schleife dann...
 
 
