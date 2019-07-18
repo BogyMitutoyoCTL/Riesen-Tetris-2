@@ -72,10 +72,16 @@ def run_game():
         current_block = next_block
         next_block = rand.get_random_block()
 
-        # Vorschau
+        # Get Preview Block
         preview_block = next_block.strech_block_twice()
+
+        # Prepare red_playgound to repaint...
         red_playground.clear()
+
+        # Add preview block to red_playgound
         red_playground.add_block(preview_block, 0, 0)
+
+        #draw red_playgound
         led_matrix_drawer.draw_playground(red_playground)
 
         draw_number(t, red_playground, led_matrix_drawer)
