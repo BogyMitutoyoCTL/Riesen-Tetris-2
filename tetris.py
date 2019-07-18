@@ -87,7 +87,7 @@ def run_game():
         draw_number(t, red_playground, led_matrix_drawer)
 
         # Spiel
-        tim = 0.1
+        tim = 0.5
         countdown = 20
         rowcount = 0
         while countdown > 0:
