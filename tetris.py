@@ -17,36 +17,12 @@ from numers_for_score import Numbers
 from tetris_blocks import Block
 
 
-def draw_number(i):
+def draw_number(i, posx, posy):
     digit = Numbers.number[i]
     rotatable = [digit] * 4
     b = Block(rotatable, Block_color.red)
-    red_playground.add_block(b, 10, 0)
+    red_playground.add_block(b, posx, posy)
     red_drawer.draw_playground(red_playground)
-
-
-def draw_number_plus_1r(i):
-    digit = Numbers.number[i]
-    rotatable = [digit] * 4
-    b = Block(rotatable, Block_color.red)
-    red_playground.add_block(b, 15, 0)
-    red_drawer.draw_playground(red_playground)
-
-
-def draw_number_plus_2r(i):
-    digit = Numbers.number[i]
-    rotatable = [digit] * 4
-    b = Block(rotatable, Block_color.red)
-    red_playground.add_block(b, 20, 0)
-    red_drawer.draw_playground((red_playground))
-
-
-def draw_number_plus_3r(i):
-    digit = Numbers.number[i]
-    rotatable = [digit] * 4
-    b = Block(rotatable, Block_color.red)
-    red_playground.add_block(b, 25, 0)
-    red_drawer.draw_playground((red_playground))
 
 
 rotater = Block_rotater.Rotater()
@@ -101,12 +77,19 @@ while t < 1000:
     red_playground.add_block(preview_block, 0, 0)
     red_drawer.draw_playground(red_playground)
 
-    draw_number(t % 10)
-    numbers_2 = t // 10
-    draw_number_plus_1r(t % 10)
-
-    draw_number_plus_2r(t % 10)
-    draw_number_plus_3r(t % 10)
+    draw_number(t % 10, 10, 0)
+    numbers_divide = t // 10
+    numbers_rest = t % 10
+    draw_number(t % 10, 15, 0)
+    numbers_divide = t // 10
+    numbers_rest = t % 10
+    draw_number(t % 10, 20, 0)
+    numbers_divide = t // 10
+    numbers_rest = t % 10
+    draw_number(t % 10, 25, 0)
+    numbers_divide = t // 10
+    numbers_rest = t % 10
+    print(t)
     # Spiel
     tim = 0.15
     countdown = 20
