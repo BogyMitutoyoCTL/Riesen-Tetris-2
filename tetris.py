@@ -115,7 +115,10 @@ def run_game():
                 tim = 0.1
 
             if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-                pass
+                break
+
+            if fadfaf.check_if_block_on_ground(color_playground, current_block, current_block_position[1]) == True:
+                break
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             color_drawer.draw_playground(color_playground)

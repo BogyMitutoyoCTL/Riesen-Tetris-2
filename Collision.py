@@ -34,14 +34,17 @@ class Collision_Dedektor:
         col = color * number
         return col
 
-    def ground(self, Playground, Block, x_Coords):
+    def check_if_block_on_ground(self, p:Playground, b:Block, block_pos_y:int):
+        block_hight = len(b.field_with_rotations[0])
+        block_width = len(b.field_with_rotations)
+        playground_hight = p.height
 
-        x = 0
-        touch = 0
-        while x < 10:
-            touch += Playground.collision(Playground, Block, x, 20)
-            x += 1
-        if touch > 0:
-            return True
-        else:
-            return False
+        for y in range(block_hight):
+            for x in range(block_width):
+                if b.get_field()[y][x] == 1:
+                    if y +block_pos_y >playground_hight -1:
+                        return True
+        return False
+
+    def inside(self, x, y):
+        return 0<= y< 4 and 0 <= x < 4
