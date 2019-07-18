@@ -16,12 +16,26 @@ from numers_for_score import Numbers
 from tetris_blocks import Block
 
 
-def draw_number(i, posx, posy):
+def draw_digit(i, posx, posy, red_playground, red_drawer):
     digit = Numbers.number[i]
     rotatable = [digit] * 4
     b = Block(rotatable, Block_color.red)
     red_playground.add_block(b, posx, posy)
     red_drawer.draw_playground(red_playground)
+
+
+def draw_number(t, red_playground, red_drawer):
+    erste_nummer = t % 10
+    intermediate = t // 10
+    zweite_nummer = intermediate % 10
+    intermediate = intermediate // 10
+    dritte_nummer = intermediate % 10
+    intermediate = intermediate // 10
+    vierte_nummer = intermediate % 10
+    draw_digit(vierte_nummer % 10, 10, 0, red_playground, red_drawer)
+    draw_digit(dritte_nummer % 10, 15, 0, red_playground, red_drawer)
+    draw_digit(zweite_nummer % 10, 20, 0, red_playground, red_drawer)
+    draw_digit(erste_nummer % 10, 25, 0, red_playground, red_drawer)
 
 
 def run_game():
@@ -68,17 +82,7 @@ def run_game():
         red_playground.add_block(preview_block, 0, 0)
         red_drawer.draw_playground(red_playground)
 
-        erste_nummer = t % 10
-        intermediate = t // 10
-        zweite_nummer = intermediate % 10
-        intermediate = intermediate // 10
-        dritte_nummer = intermediate % 10
-        intermediate = intermediate // 10
-        vierte_nummer = intermediate % 10
-        draw_number(vierte_nummer % 10, 10, 0)
-        draw_number(dritte_nummer % 10, 15, 0)
-        draw_number(zweite_nummer % 10, 20, 0)
-        draw_number(erste_nummer % 10, 25, 0)
+        draw_number(t, red_playground, red_drawer)
 
         # Spiel
         tim = 0.5
@@ -90,35 +94,32 @@ def run_game():
 
             linecount = 19 - countdown
 
-        if erste_nummer == 5:
-            tim = 0.4
+            if t >= 50:
+                tim = 0.4
 
-        if zweite_nummer == 1:
-            tim = 0.3
+            if t >= 100:
+                tim = 0.3
 
-        if zweite_nummer == 2:
-            tim = 0.28
+            if t >= 200:
+                tim = 0.28
 
-        if zweite_nummer == 3:
-            tim = 0.26
+            if t >= 300:
+                tim = 0.26
 
-        if zweite_nummer == 4:
-            tim = 0.24
+            if t >= 400:
+                tim = 0.24
 
-        if zweite_nummer == 5:
-            tim = 0.20
+            if t >= 500:
+                tim = 0.20
 
-        if dritte_nummer == 1:
-            tim = 0.15
+            if t >= 1000:
+                tim = 0.15
 
-        if dritte_nummer == 5:
-            tim = 0.1
+            if t >= 5000:
+                tim = 0.1
 
-        if vierte_nummer == 1:
-            tim = 0.05
-
-        if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
-            pass
+            if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
+                pass
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             color_drawer.draw_playground(color_playground)
