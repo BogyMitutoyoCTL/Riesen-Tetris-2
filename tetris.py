@@ -11,7 +11,7 @@ import drawer
 import deleteline
 import rgbleddrawer
 
-from color import Block_color
+from color import BlockColor
 from numbersforscore import Numbers
 from tetris_blocks import Block
 
@@ -19,7 +19,7 @@ from tetris_blocks import Block
 def draw_digit(i, posx, posy, red_playground, red_drawer):
     digit = Numbers.number[i]
     rotatable = [digit] * 4
-    b = Block(rotatable, Block_color.red)
+    b = Block(rotatable, BlockColor.red)
     red_playground.add_block(b, posx, posy)
     red_drawer.draw_playground(red_playground)
 

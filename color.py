@@ -8,7 +8,7 @@ class Color:
         return self.red, self.green, self.blue
 
 
-class Block_color:
+class BlockColor:
     darkblue = Color(0, 0, 139)
 
     yellow = Color(255, 255, 0)

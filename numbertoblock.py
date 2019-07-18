@@ -15,7 +15,7 @@ class NumberToBlock():
         for block in blocks:
             field.extend(block)
 
-        tetris_blocks.Block(field, color.Color.red)
+        return tetris_blocks.Block(field, color.BlockColor.red)
 
 
     @staticmethod
