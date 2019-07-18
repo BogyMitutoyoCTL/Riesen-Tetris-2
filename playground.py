@@ -14,7 +14,7 @@ class Playground:
             for i in range(self.width):
                 self.list_pixel.append((0, 0, 0))
 
-    def add_block(self, block: tetris_blocks.Block, columns_right, lines_down):
+    def add_block(self, block: tetris_blocks.Block, columns_right=0, lines_down=0):
         x_of_block = 0
         y_of_block = 0
         for h in block.get_field():
