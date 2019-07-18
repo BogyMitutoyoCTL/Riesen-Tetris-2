@@ -1,7 +1,7 @@
 import playground
 import tetris
 class matrix:
-    matrix_20_10 = [[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    matrix_20_10 = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -47,9 +47,5 @@ class matrix:
 
         print_block(matrix_20_10)
 
-    if matrix_20_10.count(0, [1]) > 0:
-        tetris.color_playground.clear()
-        print("Game Over!")
-    else:
-        pass
+
 
