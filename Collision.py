@@ -6,7 +6,6 @@ from tetris_blocks import Block
 class Collision_Dedektor:
 
     def collision(self, p:Playground, b:Block, cx, cy):
-
         collision = 0
         for y in range(0, 4):
 
@@ -34,3 +33,18 @@ class Collision_Dedektor:
 
         col = color * number
         return col
+
+    def check_if_block_on_ground(self, p:Playground, b:Block, block_pos_y:int):
+        block_hight = len(b.field_with_rotations[0])
+        block_width = len(b.field_with_rotations)
+        playground_hight = p.height
+
+        for y in range(block_hight):
+            for x in range(block_width):
+                if b.get_field()[y][x] == 1:
+                    if y +block_pos_y >playground_hight -1:
+                        return True
+        return False
+
+    def inside(self, x, y):
+        return 0<= y< 4 and 0 <= x < 4

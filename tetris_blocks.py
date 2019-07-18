@@ -220,13 +220,14 @@ class Blocktype:
                 [0, 0, 0, 0],
                 [0, 0, 0, 0]]]
 
+
 block_list = [Block(Blocktype.t, Block_color.pink),
-                  Block(Blocktype.z_left, Block_color.red),
-                  Block(Blocktype.z_right, Block_color.turquoise),
-                  Block(Blocktype.i, Block_color.green),
-                  Block(Blocktype.square, Block_color.yellow),
-                  Block(Blocktype.l_left, Block_color.darkblue),
-                  Block(Blocktype.l_right, Block_color.orange)]
+              Block(Blocktype.z_left, Block_color.red),
+              Block(Blocktype.z_right, Block_color.turquoise),
+              Block(Blocktype.i, Block_color.green),
+              Block(Blocktype.square, Block_color.yellow),
+              Block(Blocktype.l_left, Block_color.darkblue),
+              Block(Blocktype.l_right, Block_color.orange)]
 
 if __name__ == "__main__":
     my_block = Block(Blocktype.t, Block_color.pink)
