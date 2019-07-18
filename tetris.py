@@ -122,8 +122,7 @@ def run_game():
                     full_line_detector.delete_full_lines(lines, color_playground)
                     score = calculator.points(score, len(lines), 0)
                     break
-                current_block_position = (current_block_position[0] - 1, current_block_position[1] + 1)
-
+                current_block_position = (current_block_position[0] - 1, current_block_position[1] )
             if collision_detector.check_if_block_at_wall_left(color_playground, current_block,
                                                               current_block_position[0]) == True:
                 color_playground.add_block(current_block, current_block_position[0] + 1, current_block_position[1])
@@ -149,13 +148,13 @@ def run_game():
                     full_line_detector.delete_full_lines(lines, color_playground)
                     score = calculator.points(score, len(lines), 0)
                     break
-                current_block_position = (current_block_position[0] + 1, current_block_position[1] + 1)
+                current_block_position = (current_block_position[0] + 1, current_block_position[1])
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
 
             if collision_detector.check_if_block_on_ground(color_playground, current_block,
-                                                           current_block_position[1] + 1) == True:
+                                                           current_block_position[1]+1) == True:
                 countdown = 0
                 lines = full_line_detector.detect_lines(color_playground)
                 full_line_detector.delete_full_lines(lines, color_playground)
