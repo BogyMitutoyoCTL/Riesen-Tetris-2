@@ -42,7 +42,7 @@ class Collision_Dedektor:
         for y in range(block_hight):
             for x in range(block_width):
                 if b.get_field()[y][x] == 1:
-                    if y +block_pos_y > playground_hight -1:
+                    if x +block_pos_y > playground_hight -1:
                         return True
         return False
 
@@ -55,7 +55,19 @@ class Collision_Dedektor:
         for y in range(block_hight):
             for x in range(block_width):
                 if b.get_field()[y][x] == 1:
-                    if y + block_pos_x > playground_width - 2:
+                    if x + block_pos_x > playground_width - 1:
+                        return True
+        return False
+
+    def check_if_block_at_wall_left(self, p: Playground, b: Block, block_pos_x: int):
+        block_hight = len(b.field_with_rotations[0])
+        block_width = len(b.field_with_rotations)
+        playground_width = p.width
+
+        for y in range(block_hight):
+            for x in range(block_width):
+                if b.get_field()[y][x] == 1:
+                    if x + block_pos_x > 0 :
                         return True
         return False
 
