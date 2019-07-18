@@ -47,7 +47,7 @@ class Collision_Dedektor:
         return False
 
 
-    def check_if_block_at_wall(self, p:Playground, b:Block, block_pos_x:int):
+    def check_if_block_at_wall_right(self, p:Playground, b:Block, block_pos_x:int):
         block_hight = len(b.field_with_rotations[0])
         block_width = len(b.field_with_rotations)
         playground_width = p.width

@@ -120,6 +120,12 @@ def run_game():
             if fadfaf.check_if_block_on_ground(color_playground, current_block, current_block_position[1]) == True:
                 break
 
+            if fadfaf.check_if_block_at_wall_right(color_playground, current_block, current_block_position[0]) == True:
+                break
+
+            #if fadfaf.check_if_block_at_wall_left(color_playground, current_block, current_block_position[0]) == True:
+                #break
+
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
             color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
