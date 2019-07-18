@@ -120,8 +120,8 @@ while not game_over:
         color_drawer.draw_playground(color_playground)
         color_playground.block_clear(current_block, rowcount, linecount)
 
-        action = gamepad.get_button_pressed(current_block, current_block_position)
-        if action == "End!":
+        current_block_position = gamepad.get_button_pressed(current_block, current_block_position)
+        if current_block_position == "End!":
             game_over = True
 
         current_block_position = (current_block_position[0], current_block_position[1] + 1)
