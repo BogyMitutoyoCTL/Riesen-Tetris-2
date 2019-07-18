@@ -7,35 +7,8 @@ import ledmatrixdrawer
 import random_blocks
 import playground
 import pygame
-import drawer
-import deleteline
+import numbertoblock
 import rgbleddrawer
-
-from color import BlockColor
-from numbersforscore import Numbers
-from tetris_blocks import Block
-
-
-def draw_digit(i, posx, posy, red_playground, red_drawer):
-    digit = Numbers.number[i]
-    rotatable = [digit] * 4
-    b = Block(rotatable, BlockColor.red)
-    red_playground.add_block(b, posx, posy)
-    red_drawer.draw_playground(red_playground)
-
-
-def draw_number(t, red_playground, red_drawer):
-    erste_nummer = t % 10
-    intermediate = t // 10
-    zweite_nummer = intermediate % 10
-    intermediate = intermediate // 10
-    dritte_nummer = intermediate % 10
-    intermediate = intermediate // 10
-    vierte_nummer = intermediate % 10
-    draw_digit(vierte_nummer % 10, 10, 0, red_playground, red_drawer)
-    draw_digit(dritte_nummer % 10, 15, 0, red_playground, red_drawer)
-    draw_digit(zweite_nummer % 10, 20, 0, red_playground, red_drawer)
-    draw_digit(erste_nummer % 10, 25, 0, red_playground, red_drawer)
 
 
 def run_game():
@@ -80,11 +53,9 @@ def run_game():
 
         # Add preview block to red_playgound
         red_playground.add_block(preview_block, 0, 0)
-
+        red_playground.add_block(numbertoblock.NumberToBlock.get_block(t) * 4, 10, 0)
         #draw red_playgound
         led_matrix_drawer.draw_playground(red_playground)
-
-        draw_number(t, red_playground, led_matrix_drawer)
 
         # Spiel
         tim = 0.5
