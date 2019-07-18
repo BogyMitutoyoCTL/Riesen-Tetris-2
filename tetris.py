@@ -122,7 +122,7 @@ while t < 1000:
             tim = 0.15
 
         if vierte_nummer == 5:
-            tim = 0,1
+            tim = 0.1
 
         if fadfaf.collision(color_playground, current_block, 0, linecount) == True:
             pass
