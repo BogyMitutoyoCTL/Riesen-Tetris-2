@@ -2,7 +2,9 @@ import time
 
 import Collision
 import controller
+import deleteline
 import ledmatrixdrawer
+import points
 
 import random_blocks
 import playground
@@ -35,14 +37,18 @@ def run_game():
     rand = random_blocks.Randomblock()
     next_block = rand.get_random_block()
 
-    t = 0
-    fadfaf = Collision.Collision_Dedektor()
+    score = 0
+    collision_detector = Collision.Collision_Dedektor()
     current_block_position = (5, 0)
+
+    full_line_detector = deleteline.FullLineDetector()
+    calculator = points.Points()
 
     game_over = False
     while not game_over:
 
         current_block = next_block
+        score = calculator.points(score, 0, 1)
         next_block = rand.get_random_block()
 
         # Get Preview Block
@@ -53,7 +59,7 @@ def run_game():
 
         # Add preview block to red_playgound
         red_playground.add_block(preview_block, 0, 0)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(t) * 4, 10, 0)
+        red_playground.add_block(numbertoblock.NumberToBlock.get_block(score), 10, 0)
         #draw red_playgound
         led_matrix_drawer.draw_playground(red_playground)
 
@@ -67,35 +73,35 @@ def run_game():
 
             linecount = 19 - countdown
 
-            if t >= 50:
+            if score >= 50:
                 tim = 0.4
 
-            if t >= 100:
+            if score >= 100:
                 tim = 0.3
 
-            if t >= 200:
+            if score >= 200:
                 tim = 0.28
 
-            if t >= 300:
+            if score >= 300:
                 tim = 0.26
 
-            if t >= 400:
+            if score >= 400:
                 tim = 0.24
 
-            if t >= 500:
+            if score >= 500:
                 tim = 0.20
 
-            if t >= 1000:
+            if score >= 1000:
                 tim = 0.15
 
-            if t >= 5000:
-                tim = 0.1
+            if score >= 5000:
+                tim = 5
 
 
 
 
 
-            if fadfaf.check_if_block_at_wall_right(color_playground, current_block, current_block_position[0]) == True:
+            if collision_detector.check_if_block_at_wall_right(color_playground, current_block, current_block_position[0]) == True:
                 break
 
             #if fadfaf.check_if_block_at_wall_left(color_playground, current_block, current_block_position[0]) == True:
@@ -108,8 +114,11 @@ def run_game():
 
 
 
-            if fadfaf.check_if_block_on_ground(color_playground, current_block, current_block_position[1]+1) == True:
+            if collision_detector.check_if_block_on_ground(color_playground, current_block, current_block_position[1]+1) == True:
                 countdown = 0
+                lines = full_line_detector.detect_lines(color_playground)
+                full_line_detector.delete_full_lines(lines, color_playground)
+                score = calculator.points(score,len(lines), 0)
                 break
 
             color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
@@ -118,19 +127,23 @@ def run_game():
             if current_block_position == "End!":
                 game_over = True
 
-            if fadfaf.collision(color_playground, current_block, current_block_position[0], current_block_position[1]+1) == True:
+            if collision_detector.collision(color_playground, current_block, current_block_position[0], current_block_position[1]+1) == True:
                 color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
                 rgg_led_drawer.draw_playground(color_playground)
+                lines = full_line_detector.detect_lines(color_playground)
+                full_line_detector.delete_full_lines(lines, color_playground)
+                score = calculator.points(score, len(lines), 0)
                 break
 
+            if collision_detector.check_if_block_at_wall_right(color_playground, current_block, current_block_position[0]) == True:
+                break
             current_block_position = (current_block_position[0], current_block_position[1] + 1)
 
 
 
 
 
-        current_block_position = (5, 0)
-        t = t + 1
+        current_block_position = (color_playground.width // 2, 0)
     # bis hier in die schleife dann...
 
 

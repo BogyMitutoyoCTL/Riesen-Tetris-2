@@ -1,51 +1,27 @@
 import playground
-import tetris
-class matrix:
-    matrix_20_10 = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
-    def print_block(block):
-        print("")
-        for x in range(0, len(block)):
-            for y in range(0, len(block[0])):
-                print(block[x][y], end=" ")
-            print("")
-        print("")
 
 
-    def is_line_full(line):
-        ret = True
-        for pos in line:
-            if pos == 0:
-                ret = False
-        return ret
+class FullLineDetector:
+    def __init__(self):
+        pass
 
-    for line in matrix_20_10:
-            is_full = is_line_full(line)
+    def detect_lines(self, playground: playground.Playground):
+        full_lines = []
+        for line in range(0, playground.height):
+            line_is_full = True
+            for x in range(0, playground.width):
+                pixel = playground.get_pixel(x, line)
+                if pixel[0] + pixel[1] + pixel[2] == 0:
+                    line_is_full = False
+                    break
+            if line_is_full:
+                full_lines.append(line)
+        return full_lines
 
-    while matrix_20_10.count([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) > 0:
-        matrix_20_10.remove([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
-        matrix_20_10.insert(0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-
-        print_block(matrix_20_10)
-
-
-
+    def delete_full_lines(self, full_lines_list, playground: playground.Playground):
+        for line in full_lines_list:
+            last_pixel = line * playground.width + playground.width - 1
+            for pixel in range(last_pixel, playground.width, -1):
+                playground.list_pixel[pixel] = playground.list_pixel[pixel - playground.width]
+            for i in range(playground.width):
+                playground.list_pixel[i] = (0, 0, 0)

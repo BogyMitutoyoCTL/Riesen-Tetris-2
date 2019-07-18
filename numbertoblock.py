@@ -4,8 +4,9 @@ import color
 
 
 class NumberToBlock:
-    def get_block(self, number: int):
-        numbers_list = self.get_list_of_single_numbers(number)
+    @staticmethod
+    def get_block(number: int):
+        numbers_list = NumberToBlock.get_list_of_single_numbers(number)
 
         blocks = []
         for number in numbers_list:
@@ -15,7 +16,7 @@ class NumberToBlock:
         for block in blocks:
             field.extend(block)
 
-        return tetris_blocks.Block(field, color.BlockColor.red)
+        return tetris_blocks.Block([field]*4, color.BlockColor.red)
 
 
     @staticmethod
