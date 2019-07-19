@@ -1,7 +1,7 @@
 class GameSpeed:
     @staticmethod
     def game_speed(score):
-        sleep_time = 0
+        sleep_time = 0.4
         if score >= 50:
             sleep_time = 0.35
         if score >= 100:

@@ -74,31 +74,8 @@ def run_game():
             time.sleep(gamespeed.GameSpeed.game_speed(score))
             countdown = countdown - 1
 
-            if collision.at_wall(color_playground, current_block,
-                                 current_block_position[0]) == True:
-                color_playground.add_block(current_block, current_block_position[0] - 1, current_block_position[1])
-                rgg_led_drawer.draw_playground(color_playground)
+            linecount = 19 - countdown
 
-                if collision.on_ground(color_playground, current_block,
-                                       current_block_position[1] + 1) == True:
-                    lines = full_line_detector.detect_lines(color_playground)
-                    full_line_detector.delete_full_lines(lines, color_playground)
-                    score = calculator.points(score, len(lines), 0)
-                    break
-                color_playground.block_clear(current_block, current_block_position[0] - 1, current_block_position[1])
-
-                if current_block_position == "End!":
-                    game_over = True
-
-                if collision.with_block(color_playground, current_block, current_block_position[0],
-                                        current_block_position[1] + 1) == True:
-                    color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
-                    rgg_led_drawer.draw_playground(color_playground)
-                    lines = full_line_detector.detect_lines(color_playground)
-                    full_line_detector.delete_full_lines(lines, color_playground)
-                    score = calculator.points(score, len(lines), 0)
-                    break
-                current_block_position = (current_block_position[0] - 1, current_block_position[1])
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
@@ -112,7 +89,7 @@ def run_game():
 
             color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
 
-            current_block_position = gamepad.get_button_pressed(current_block, current_block_position)
+            current_block_position = gamepad.get_button_pressed(current_block, current_block_position, collision, color_playground)
             if current_block_position == "End!":
                 game_over = True
                 break
