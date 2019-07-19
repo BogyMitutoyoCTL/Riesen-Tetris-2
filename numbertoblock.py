@@ -19,7 +19,6 @@ class NumberToBlock:
         single_block_width = len(blocks[len(blocks) - 1])
         for block_index in range(len(blocks)):
             for line_index in range(len(blocks[block_index])):
-                print("LineWidth: " + str(len(blocks[block_index][line_index])))
                 for pos_index in range(len(blocks[block_index])):
                     pos = blocks[block_index][line_index][pos_index]
                     field_x = line_index

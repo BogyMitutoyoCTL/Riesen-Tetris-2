@@ -38,7 +38,7 @@ def run_game():
     next_block = rand.get_random_block()
 
     score = 0
-    collision_detector = Collision.Collision_Dedektor()
+    collision = Collision.Collision_Dedektor()
     current_block_position = (5, 0)
 
     full_line_detector = deleteline.FullLineDetector()
@@ -60,11 +60,11 @@ def run_game():
         # Add preview block to red_playgound
         red_playground.add_block(preview_block, 0, 0)
         red_playground.add_block(numbertoblock.NumberToBlock.get_block(score), 10, 0)
-        #draw red_playgound
+        # draw red_playgound
         led_matrix_drawer.draw_playground(red_playground)
 
         # Spiel
-        tim = 0.5
+        tim = 0.4
         countdown = 20
         rowcount = 0
         while countdown > 0:
@@ -74,7 +74,7 @@ def run_game():
             linecount = 19 - countdown
 
             if score >= 50:
-                tim = 0.4
+                tim = 0.35
 
             if score >= 100:
                 tim = 0.3
@@ -97,28 +97,43 @@ def run_game():
             if score >= 5000:
                 tim = 5
 
+            if collision.at_wall(color_playground, current_block,
+                                          current_block_position[0]) == True:
+                color_playground.add_block(current_block, current_block_position[0] - 1, current_block_position[1])
+                rgg_led_drawer.draw_playground(color_playground)
 
+                if collision.on_ground(color_playground, current_block,
+                                                               current_block_position[1] + 1) == True:
+                    countdown = 0
+                    lines = full_line_detector.detect_lines(color_playground)
+                    full_line_detector.delete_full_lines(lines, color_playground)
+                    score = calculator.points(score, len(lines), 0)
+                    break
+                color_playground.block_clear(current_block, current_block_position[0] - 1, current_block_position[1])
 
+                if current_block_position == "End!":
+                    game_over = True
 
+                if collision.with_block(color_playground, current_block, current_block_position[0],
+                                                current_block_position[1] + 1) == True:
+                    color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
+                    rgg_led_drawer.draw_playground(color_playground)
+                    lines = full_line_detector.detect_lines(color_playground)
+                    full_line_detector.delete_full_lines(lines, color_playground)
+                    score = calculator.points(score, len(lines), 0)
+                    break
+                current_block_position = (current_block_position[0] - 1, current_block_position[1] )
 
-            if collision_detector.check_if_block_at_wall_right(color_playground, current_block, current_block_position[0]) == True:
-                break
-
-            #if fadfaf.check_if_block_at_wall_left(color_playground, current_block, current_block_position[0]) == True:
-                #break
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
 
-
-
-
-
-            if collision_detector.check_if_block_on_ground(color_playground, current_block, current_block_position[1]+1) == True:
+            if collision.on_ground(color_playground, current_block,
+                                                           current_block_position[1]+1) == True:
                 countdown = 0
                 lines = full_line_detector.detect_lines(color_playground)
                 full_line_detector.delete_full_lines(lines, color_playground)
-                score = calculator.points(score,len(lines), 0)
+                score = calculator.points(score, len(lines), 0)
                 break
 
             color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
@@ -127,7 +142,8 @@ def run_game():
             if current_block_position == "End!":
                 game_over = True
 
-            if collision_detector.collision(color_playground, current_block, current_block_position[0], current_block_position[1]+1) == True:
+            if collision.with_block(color_playground, current_block, current_block_position[0],
+                                            current_block_position[1] + 1) == True:
                 color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
                 rgg_led_drawer.draw_playground(color_playground)
                 lines = full_line_detector.detect_lines(color_playground)
@@ -135,16 +151,9 @@ def run_game():
                 score = calculator.points(score, len(lines), 0)
                 break
 
-            if collision_detector.check_if_block_at_wall_right(color_playground, current_block, current_block_position[0]) == True:
-                break
             current_block_position = (current_block_position[0], current_block_position[1] + 1)
 
-
-
-
-
         current_block_position = (color_playground.width // 2, 0)
-    # bis hier in die schleife dann...
 
 
 if __name__ == "__main__":

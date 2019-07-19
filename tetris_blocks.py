@@ -13,10 +13,18 @@ def print_block(block):
 
 
 class Block:
-    def __init__(self, field, Color):
-        self.color = Color
+    def __init__(self, field, color):
+        self.color = color
         self.field_with_rotations = field
         self.orientation = 0
+
+    @property
+    def height(self):
+        return len(self.get_field())
+
+    @property
+    def width(self):
+        return len(self.get_field()[0])
 
     def set_color(self, color):
         self.color = color
@@ -73,10 +81,6 @@ class Block:
 
             block_array.append(matrix_8_8)
         return Block(block_array, self.color)
-
-
-# verdoppelt Blöcke
-# def turn_block(self):
 
 
 class Blocktype:
