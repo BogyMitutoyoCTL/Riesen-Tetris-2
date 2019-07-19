@@ -1,8 +1,6 @@
 import time
 import gamespeed
 
-
-
 import Collision
 import controller
 import deleteline
@@ -25,6 +23,11 @@ def run_game():
     pygame.joystick.init()
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
+
+    pygame.mixer.init()
+    pygame.mixer.music.load('./Music/Tetris Edit 1 Export 3.mp3')
+    pygame.mixer.music.play(-1)
+
     gamepad = controller.Controller(joystick)
 
     # drawer for playfield
@@ -73,12 +76,12 @@ def run_game():
             countdown = countdown - 1
 
             if collision.at_wall(color_playground, current_block,
-                                          current_block_position[0]) == True:
+                                 current_block_position[0]) == True:
                 color_playground.add_block(current_block, current_block_position[0] - 1, current_block_position[1])
                 rgg_led_drawer.draw_playground(color_playground)
 
                 if collision.on_ground(color_playground, current_block,
-                                                               current_block_position[1] + 1) == True:
+                                       current_block_position[1] + 1) == True:
                     lines = full_line_detector.detect_lines(color_playground)
                     full_line_detector.delete_full_lines(lines, color_playground)
                     score = calculator.points(score, len(lines), 0)
@@ -89,21 +92,20 @@ def run_game():
                     game_over = True
 
                 if collision.with_block(color_playground, current_block, current_block_position[0],
-                                                current_block_position[1] + 1) == True:
+                                        current_block_position[1] + 1) == True:
                     color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
                     rgg_led_drawer.draw_playground(color_playground)
                     lines = full_line_detector.detect_lines(color_playground)
                     full_line_detector.delete_full_lines(lines, color_playground)
                     score = calculator.points(score, len(lines), 0)
                     break
-                current_block_position = (current_block_position[0] - 1, current_block_position[1] )
-
+                current_block_position = (current_block_position[0] - 1, current_block_position[1])
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
 
             if collision.on_ground(color_playground, current_block,
-                                                           current_block_position[1]+1) == True:
+                                   current_block_position[1] + 1) == True:
                 lines = full_line_detector.detect_lines(color_playground)
                 full_line_detector.delete_full_lines(lines, color_playground)
                 score = calculator.points(score, len(lines), 0)
@@ -117,7 +119,7 @@ def run_game():
                 break
 
             if collision.with_block(color_playground, current_block, current_block_position[0],
-                                            current_block_position[1] + 1) == True:
+                                    current_block_position[1] + 1) == True:
                 color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
                 rgg_led_drawer.draw_playground(color_playground)
                 lines = full_line_detector.detect_lines(color_playground)
@@ -129,14 +131,6 @@ def run_game():
 
         current_block_position = (color_playground.width // 2, 0)
 
-
-pygame.mixer.init()
-
-Name = './Music/Tetris Edit 1 Export 3.mp3'
-
-pygame.mixer.music.load(Name)
-
-pygame.mixer.music.play(-1)
 
 if __name__ == "__main__":
     run_game()
