@@ -1,5 +1,7 @@
 import time
 
+import  Music
+
 import Collision
 import controller
 import deleteline
@@ -46,6 +48,8 @@ def run_game():
 
     game_over = False
     while not game_over:
+
+
 
         current_block = next_block
         score = calculator.points(score, 0, 1)
@@ -155,6 +159,13 @@ def run_game():
 
         current_block_position = (color_playground.width // 2, 0)
 
+
+pygame.mixer.init()
+Name = '/home/pi/Downloads/Tetris Edit 1 Export 3.mp3'
+
+pygame.mixer.music.load(Name)
+
+pygame.mixer.music.play(-1)
 
 if __name__ == "__main__":
     run_game()
