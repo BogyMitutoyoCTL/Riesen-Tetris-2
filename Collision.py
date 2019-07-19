@@ -28,12 +28,10 @@ class Collision_Dedektor:
         return True
 
     def on_ground(self, p: Playground, b: Block, block_pos_y: int):
-        playground_hight = p.height
-
         for y in range(b.height):
             for x in range(b.width):
                 if b.get_field()[y][x] == 1:
-                    if x + block_pos_y > playground_hight - 1:
+                    if not p.is_inside_field(x, y + block_pos_y):
                         return True
         return False
 
