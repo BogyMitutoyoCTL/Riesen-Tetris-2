@@ -106,8 +106,12 @@ def run_game():
                     break
                 color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
                 rgg_led_drawer.draw_playground(color_playground)
+                old_score = score
                 score = check_for_full_lines(calculator, color_playground, full_line_detector, score)
-
+                new_score = score
+                if (new_score - old_score) == 10:
+                    red_playground.add_block(numbertoblock.NumberToBlock.get_block(10).strech_block_twice(), 0, 0)
+                    pygame.mixer.Sound.play(lines1_3)
                 break
             if (countdown%10 == 0):
                 current_block_position = (current_block_position[0], current_block_position[1] + 1)
