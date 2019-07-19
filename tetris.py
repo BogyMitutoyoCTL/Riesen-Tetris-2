@@ -159,7 +159,7 @@ def run_game():
 
 
 pygame.mixer.init()
-Name = '/home/pi/Downloads/Tetris Edit 1 Export 3.mp3'
+Name = '/home/pi/Riesen-Tetris-2/Music/Tetris Edit 1 Export 3.mp3'
 
 pygame.mixer.music.load(Name)
 
