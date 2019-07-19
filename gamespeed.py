@@ -1,24 +1,26 @@
 class GameSpeed:
     @staticmethod
     def game_speed(score):
-        sleep_time = 0.4
+        frame_rate = 20
         if score >= 50:
-            sleep_time = 0.35
+            frame_rate = 21
         if score >= 100:
-            sleep_time = 0.3
+            frame_rate = 22
         if score >= 200:
-            sleep_time = 0.28
+            frame_rate = 23
         if score >= 300:
-            sleep_time = 0.26
+            frame_rate = 24
         if score >= 400:
-            sleep_time = 0.24
+            frame_rate = 25
         if score >= 500:
-            sleep_time = 0.20
+            frame_rate = 26
         if score >= 1000:
-            sleep_time = 0.15
+            frame_rate = 27
         if score >= 3000:
-            sleep_time = 3000 / (0.0 + score*10)
-        return sleep_time
+            frame_rate = 28 * (0 + score/3000.0)
+            if frame_rate > 60:
+                frame_rate = 60
+        return frame_rate
 
 
 if __name__ == "__main__":

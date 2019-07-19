@@ -23,7 +23,6 @@ def run_game():
     joystick.init()
 
     pygame.mixer.init()
-
     pygame.mixer.music.load('./Music/Tetris Edit 1 Export 3.mp3')
     new_block = pygame.mixer.Sound('./Music/New_Block.wav')
     game_over_sound = pygame.mixer.Sound('./Music/GameOver.wav')
@@ -78,9 +77,7 @@ def run_game():
         # Spiel
         countdown = 200
         while countdown > 0:
-
-            framerate = 25
-            clock.tick(framerate)
+            clock.tick(gamespeed.GameSpeed.game_speed(score))
             countdown = countdown - 1
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
@@ -137,8 +134,6 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
 
 
 if __name__ == "__main__":
-
     while True:
-        print("run")
         run_game()
 
