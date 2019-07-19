@@ -40,5 +40,10 @@ class NumberToBlock:
 
     @staticmethod
     def get_list_of_single_numbers(number: int):
-        numbers_list = [number // 1000 % 10, number // 100 % 10,number // 10 % 10, number % 10]
+        numbers_list = [number // 1000 % 10, number // 100 % 10, number // 10 % 10, number % 10]
         return numbers_list
+
+
+if __name__ == "__main__":
+    block = NumberToBlock.get_block(1234)
+    block.draw_block()
