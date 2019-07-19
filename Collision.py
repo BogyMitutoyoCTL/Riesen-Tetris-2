@@ -1,40 +1,31 @@
-
 from playground import Playground
 from tetris_blocks import Block
 
 
 class Collision_Dedektor:
 
-    def collision(self, p:Playground, b:Block, cx, cy):
-        collision = 0
-        for y in range(0, 4):
-
-            if (y + cy)>19:
+    def collision(self, p: Playground, b: Block, cx, cy):
+        for y in range(0, b.height):
+            if (y + cy) > p.height:
                 break
-
-            for x in range(0, 4):
+            for x in range(0, b.width):
                 num = b.get_field()[y][x]
                 color = p.get_pixel(x + cx, y + cy)
-                collision += self.collision_pixel(color, num)
+                if self.collision_pixel(color, num):
+                    return True
 
-        if collision > 0:
-            return True
-        else:
+        return False
+
+    def collision_pixel(self, c: tuple, number):
+        if number == 0:  # block has no pixel
             return False
 
+        if (c[0] + c[1] + c[2]) == 0:  # field is black
+            return False
 
+        return True
 
-    def collision_pixel(self, c:tuple, number):
-        if (c[0] + c[1] + c[2]) == 0:
-            color = 0
-
-        else:
-            color = 1
-
-        col = color * number
-        return col
-
-    def check_if_block_on_ground(self, p:Playground, b:Block, block_pos_y:int):
+    def check_if_block_on_ground(self, p: Playground, b: Block, block_pos_y: int):
         block_hight = len(b.field_with_rotations[0])
         block_width = len(b.field_with_rotations)
         playground_hight = p.height
@@ -42,12 +33,11 @@ class Collision_Dedektor:
         for y in range(block_hight):
             for x in range(block_width):
                 if b.get_field()[y][x] == 1:
-                    if x +block_pos_y > playground_hight -1:
+                    if x + block_pos_y > playground_hight - 1:
                         return True
         return False
 
-
-    def check_if_block_at_wall_right(self, p:Playground, b:Block, block_pos_x:int):
+    def check_if_block_at_wall_right(self, p: Playground, b: Block, block_pos_x: int):
         block_hight = len(b.field_with_rotations[0])
         block_width = len(b.field_with_rotations)
         playground_width = p.width
@@ -72,4 +62,4 @@ class Collision_Dedektor:
         return False
 
     def inside(self, x, y):
-        return 0<= y< 4 and 0 <= x < 4
+        return 0 <= y < 4 and 0 <= x < 4
