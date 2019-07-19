@@ -17,7 +17,7 @@ class NumberToBlock:
         field = NumberToBlock.create_number_field(blocks)
 
         single_block_width = len(blocks[len(blocks) - 1])
-        for block_index in range(len(blocks)):
+        for block_index in range(len(blocks) - 1, -1, -1):
             for line_index in range(len(blocks[block_index])):
                 for pos_index in range(len(blocks[block_index])):
                     pos = blocks[block_index][line_index][pos_index]
@@ -25,7 +25,7 @@ class NumberToBlock:
                     field_y = block_index * single_block_width + pos_index
                     field[field_x][field_y] = pos
 
-        return tetris_blocks.Block([field]*4, color.BlockColor.red)
+        return tetris_blocks.Block([field] * 4, color.BlockColor.red)
 
     @staticmethod
     def create_number_field(blocks):
@@ -42,4 +42,3 @@ class NumberToBlock:
     def get_list_of_single_numbers(number: int):
         numbers_list = [number % 10, number // 10 % 10, number // 100 % 10, number // 1000 % 10]
         return numbers_list
-
