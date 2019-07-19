@@ -117,7 +117,7 @@ def run_game():
                     red_playground.add_block(numbertoblock.NumberToBlock.get_block(10), 0, 0)
                     led_matrix_drawer.draw_playground(red_playground)
                     pygame.mixer.Sound.play(lines1_3)
-                    clock.tick(5)
+                    pygame.time.wait(250)
                 pygame.mixer.Sound(break_sound)
 
                 break
