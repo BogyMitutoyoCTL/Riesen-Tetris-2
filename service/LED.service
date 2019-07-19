@@ -5,9 +5,9 @@ After=sound.target
 
 [Service]
 Type=idle
-ExecStart=/home/pi/Riesen-Tetris/start_main.sh
-ExecStop=/home/pi/Riesen-Tetris/stop_main.sh
-WorkingDirectory=/home/pi/Riesen-Tetris
+ExecStart=/home/pi/Riesen-Tetris-2/start_main.sh
+ExecStop=/home/pi/Riesen-Tetris-2/stop_main.sh
+WorkingDirectory=/home/pi/Riesen-Tetris-2
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=tetris
