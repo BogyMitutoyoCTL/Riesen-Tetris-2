@@ -17,9 +17,14 @@ class Block:
         self.color = color
         self.field_with_rotations = field
         self.orientation = 0
-        current_field = self.field_with_rotations[self.orientation]
-        self.height = len(current_field)
-        self.width = len(current_field[0])
+
+    @property
+    def height(self):
+        return len(self.get_field())
+
+    @property
+    def width(self):
+        return len(self.get_field()[0])
 
     def set_color(self, color):
         self.color = color
