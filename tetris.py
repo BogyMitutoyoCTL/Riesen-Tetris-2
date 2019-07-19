@@ -1,6 +1,6 @@
 import time
-
 import pygame
+
 
 import Collision
 import controller
@@ -25,6 +25,7 @@ def run_game():
 
     pygame.mixer.init()
     pygame.mixer.music.load('./Music/Tetris Edit 1 Export 3.mp3')
+    new_block = pygame.mixer.Sound('./Music/New_Block.wav')
     pygame.mixer.music.play(-1)
 
     gamepad = controller.Controller(joystick)
@@ -52,6 +53,7 @@ def run_game():
 
     game_over = False
     while not game_over:
+        pygame.mixer.Sound.play(new_block)
         current_block = next_block
         score = calculator.points(score, 0, 1)
         next_block = rand.get_random_block()
@@ -71,6 +73,7 @@ def run_game():
         # Spiel
         countdown = 20
         while countdown > 0:
+
             time.sleep(gamespeed.GameSpeed.game_speed(score))
             countdown = countdown - 1
 

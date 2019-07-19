@@ -23,5 +23,5 @@ class GameSpeed:
 
 if __name__ == "__main__":
     for score in range(10000):
-        sleep_time = GameSpeed.game_speed(score)
-        print("Score: " + str(score) + " Sleeptime: " + str(sleep_time))
+        st = GameSpeed.game_speed(score)
+        print("Score: " + str(score) + " Sleeptime: " + str(st))

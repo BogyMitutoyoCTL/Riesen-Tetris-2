@@ -6,15 +6,12 @@ class Collision_Dedektor:
 
     def with_block(self, p: Playground, b: Block, cx, cy):
         for y in range(0, b.height):
-            if (y + cy) > p.height:
-                break
             for x in range(0, b.width):
                 num = b.get_field()[y][x]
-                if not p.is_inside_field(x+cx, y+cy):
-                    break
-                color = p.get_pixel(x + cx, y + cy)
-                if self.is_collision(color, num):
-                    return True
+                if p.is_inside_field(x + cx, y + cy):
+                    color = p.get_pixel(x + cx, y + cy)
+                    if self.is_collision(color, num):
+                        return True
 
         return False
 
@@ -28,12 +25,10 @@ class Collision_Dedektor:
         return True
 
     def on_ground(self, p: Playground, b: Block, block_pos_y: int):
-        playground_hight = p.height
-
         for y in range(b.height):
             for x in range(b.width):
                 if b.get_field()[y][x] == 1:
-                    if x + block_pos_y > playground_hight - 1:
+                    if not p.is_inside_field(x, y + block_pos_y):
                         return True
         return False
 
@@ -48,4 +43,3 @@ class Collision_Dedektor:
                     if x + block_pos_x < 0:  # hits left wall
                         return True
         return False
-
