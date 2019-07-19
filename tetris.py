@@ -26,8 +26,7 @@ def run_game():
     pygame.mixer.init()
     pygame.mixer.music.load('./Music/Tetris Edit 1 Export 3.mp3')
     new_block = pygame.mixer.Sound('./Music/New_Block.wav')
-    game_over_sound = pygame.mixer.Sound('./Music/game over.wav')
-    rotate_sound = pygame.mixer.Sound('./Music/rotate.wav')
+    pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
 
     gamepad = controller.Controller(joystick)

@@ -59,8 +59,11 @@ class Controller:
         return position
 
     def rotate_if_possible(self, blo, collision, direction, playground, position):
+        rotate_sound = pygame.mixer.Sound('./Music/rotate.wav')
+
         if direction is not None:
             blo.rotate(direction)
+            pygame.mixer.Sound.play(rotate_sound)
             if collision.at_wall(playground, blo, position[0]) or \
                     collision.on_ground(playground, blo, position[1]) or \
                     collision.with_block(playground, blo, position[0], position[1]):
