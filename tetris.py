@@ -75,10 +75,10 @@ def run_game():
         led_matrix_drawer.draw_playground(red_playground)
 
         # Spiel
-        countdown = 20
+        countdown = 200
         while countdown > 0:
 
-            clock.tick(1/gamespeed.GameSpeed.game_speed(score))
+            clock.tick(1/(gamespeed.GameSpeed.game_speed(score)*10))
             countdown = countdown - 1
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
@@ -107,8 +107,8 @@ def run_game():
                 score = check_for_full_lines(calculator, color_playground, full_line_detector, score)
 
                 break
-
-            current_block_position = (current_block_position[0], current_block_position[1] + 1)
+            if (countdown%10 == 0):
+                current_block_position = (current_block_position[0], current_block_position[1] + 1)
 
         current_block_position = (color_playground.width // 2, 0)
 
