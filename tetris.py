@@ -1,5 +1,5 @@
 import time
-import os
+import gamespeed
 
 
 
@@ -50,9 +50,6 @@ def run_game():
 
     game_over = False
     while not game_over:
-
-
-
         current_block = next_block
         score = calculator.points(score, 0, 1)
         next_block = rand.get_random_block()
@@ -70,38 +67,10 @@ def run_game():
         led_matrix_drawer.draw_playground(red_playground)
 
         # Spiel
-        tim = 0.4
         countdown = 20
-        rowcount = 0
         while countdown > 0:
-            time.sleep(tim)
+            time.sleep(gamespeed.GameSpeed.game_speed(score))
             countdown = countdown - 1
-
-            linecount = 19 - countdown
-
-            if score >= 50:
-                tim = 0.35
-
-            if score >= 100:
-                tim = 0.3
-
-            if score >= 200:
-                tim = 0.28
-
-            if score >= 300:
-                tim = 0.26
-
-            if score >= 400:
-                tim = 0.24
-
-            if score >= 500:
-                tim = 0.20
-
-            if score >= 1000:
-                tim = 0.15
-
-            if score >= 5000:
-                tim = 5
 
             if collision.at_wall(color_playground, current_block,
                                           current_block_position[0]) == True:
@@ -110,7 +79,6 @@ def run_game():
 
                 if collision.on_ground(color_playground, current_block,
                                                                current_block_position[1] + 1) == True:
-                    countdown = 0
                     lines = full_line_detector.detect_lines(color_playground)
                     full_line_detector.delete_full_lines(lines, color_playground)
                     score = calculator.points(score, len(lines), 0)
@@ -136,7 +104,6 @@ def run_game():
 
             if collision.on_ground(color_playground, current_block,
                                                            current_block_position[1]+1) == True:
-                countdown = 0
                 lines = full_line_detector.detect_lines(color_playground)
                 full_line_detector.delete_full_lines(lines, color_playground)
                 score = calculator.points(score, len(lines), 0)
