@@ -113,9 +113,9 @@ def run_game():
                 score = check_for_full_lines(calculator, color_playground, full_line_detector, score)
                 new_score = score
                 score_diff = new_score - old_score
-                print(score_diff)
                 if score_diff == 10:
                     red_playground.add_block(numbertoblock.NumberToBlock.get_block(10), 0, 0)
+                    led_matrix_drawer.draw_playground(red_playground)
                     pygame.mixer.Sound.play(lines1_3)
                 pygame.mixer.Sound(break_sound)
 
