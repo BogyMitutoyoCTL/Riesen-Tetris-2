@@ -1,7 +1,5 @@
 import time
 
-import  Music
-
 import Collision
 import controller
 import deleteline
