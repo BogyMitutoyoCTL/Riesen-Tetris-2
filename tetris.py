@@ -78,10 +78,9 @@ def run_game():
         led_matrix_drawer.draw_playground(red_playground)
 
         # Spiel
-        countdown = 20
+        countdown = 200
         while countdown > 0:
-
-            clock.tick(1/gamespeed.GameSpeed.game_speed(score))
+            clock.tick(gamespeed.GameSpeed.game_speed(score))
             countdown = countdown - 1
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
@@ -95,7 +94,7 @@ def run_game():
 
             current_block_position = gamepad.get_button_pressed(current_block, current_block_position, collision,
                                                                 color_playground)
-            if current_block_position == "End!":
+            if current_block_position == "Restart":
                 game_over = True
                 break
 
@@ -110,10 +109,15 @@ def run_game():
                 score = check_for_full_lines(calculator, color_playground, full_line_detector, score)
 
                 break
-
-            current_block_position = (current_block_position[0], current_block_position[1] + 1)
+            if (countdown%10 == 0):
+                current_block_position = (current_block_position[0], current_block_position[1] + 1)
 
         current_block_position = (color_playground.width // 2, 0)
+
+    del led_matrix_drawer
+    del rgg_led_drawer
+    pygame.event.get()
+    pygame.quit()
 
 
 def block_is_above_beginning(block, line):
@@ -133,4 +137,6 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
 
 
 if __name__ == "__main__":
-    run_game()
+    while True:
+        run_game()
+
