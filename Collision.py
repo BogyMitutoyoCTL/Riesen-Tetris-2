@@ -28,7 +28,7 @@ class Collision_Dedektor:
         for y in range(b.height):
             for x in range(b.width):
                 if b.get_field()[y][x] == 1:
-                    if not p.is_inside_field(x, y + block_pos_y):
+                    if not p.is_inside_field(x, y + block_pos_y+1):
                         return True
         return False
 

@@ -232,10 +232,3 @@ block_list = [Block(Blocktype.t, BlockColor.pink),
               Block(Blocktype.square, BlockColor.yellow),
               Block(Blocktype.l_left, BlockColor.darkblue),
               Block(Blocktype.l_right, BlockColor.orange)]
-
-if __name__ == "__main__":
-    my_block = Block(Blocktype.t, BlockColor.pink)
-    my_block.strech_block_twice()
-
-    for i in range(1000):
-        my_block.rotate(True)

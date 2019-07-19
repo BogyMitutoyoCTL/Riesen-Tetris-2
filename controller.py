@@ -19,26 +19,15 @@ class Controller:
                 if hat_x == 1 and hat_y == 0:
                     direction = False  # right
             if event.type == pygame.JOYBUTTONDOWN:
-                try:
-                    if event.button == 1:
-                        direction = False  # right
-                    if event.button == 0:
-                        direction = True  # left
-                    if event.button == 7:
-                        pass
-                except KeyError:
-                    pass
+                if event.button == 1:
+                    direction = False  # right
+                if event.button == 0:
+                    direction = True  # left
+                if event.button == 7:
+                    return "End!"
+
             self.rotate_if_possible(blo, collision, direction, playground, position)
 
-        direction = None
-        # Check if button is currently pressed
-        if self.Joy.get_button(1) > 0.001:
-            direction = False  # right
-
-        if self.Joy.get_button(0) > 0.001:
-            direction = True  # left
-
-        self.rotate_if_possible(blo, collision, direction, playground, position)
 
         if self.Joy.get_button(7) > 0.001:
             pass
@@ -63,8 +52,9 @@ class Controller:
 
         if direction is not None:
             blo.rotate(direction)
-            pygame.mixer.Sound.play(rotate_sound)
             if collision.at_wall(playground, blo, position[0]) or \
                     collision.on_ground(playground, blo, position[1]) or \
                     collision.with_block(playground, blo, position[0], position[1]):
                 blo.rotate(not direction)
+            else:
+                pygame.mixer.Sound.play(rotate_sound)

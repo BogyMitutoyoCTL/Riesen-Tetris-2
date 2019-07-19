@@ -1,7 +1,6 @@
 import time
 import pygame
 
-
 import Collision
 import controller
 import deleteline
@@ -26,6 +25,8 @@ def run_game():
     pygame.mixer.init()
     pygame.mixer.music.load('./Music/Tetris Edit 1 Export 3.mp3')
     new_block = pygame.mixer.Sound('./Music/New_Block.wav')
+    game_over_sound = pygame.mixer.Sound('./Music/GameOver.wav')
+    #pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
 
@@ -52,6 +53,8 @@ def run_game():
     full_line_detector = deleteline.FullLineDetector()
     calculator = points.Points()
 
+    clock = pygame.time.Clock()  # type: pygame.time.Clock
+
     game_over = False
     while not game_over:
         pygame.mixer.Sound.play(new_block)
@@ -75,41 +78,55 @@ def run_game():
         countdown = 20
         while countdown > 0:
 
-            time.sleep(gamespeed.GameSpeed.game_speed(score))
+            clock.tick(1/gamespeed.GameSpeed.game_speed(score))
             countdown = countdown - 1
-
-            linecount = 19 - countdown
-
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
             rgg_led_drawer.draw_playground(color_playground)
 
-            if collision.on_ground(color_playground, current_block,
-                                   current_block_position[1] + 1) == True:
-                lines = full_line_detector.detect_lines(color_playground)
-                full_line_detector.delete_full_lines(lines, color_playground)
-                score = calculator.points(score, len(lines), 0)
+            if collision.on_ground(color_playground, current_block, current_block_position[1]):
+                score = check_for_full_lines(calculator, color_playground, full_line_detector, score)
                 break
 
             color_playground.block_clear(current_block, current_block_position[0], current_block_position[1])
 
-            current_block_position = gamepad.get_button_pressed(current_block, current_block_position, collision, color_playground)
+            current_block_position = gamepad.get_button_pressed(current_block, current_block_position, collision,
+                                                                color_playground)
             if current_block_position == "End!":
                 game_over = True
                 break
 
             if collision.with_block(color_playground, current_block, current_block_position[0],
-                                    current_block_position[1] + 1) == True:
+                                    current_block_position[1] + 1):
+                if block_is_above_beginning(current_block, current_block_position[1]):
+                    game_over = True
+                    pygame.mixer.Sound.play(game_over_sound)
+                    break
                 color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
                 rgg_led_drawer.draw_playground(color_playground)
-                lines = full_line_detector.detect_lines(color_playground)
-                full_line_detector.delete_full_lines(lines, color_playground)
-                score = calculator.points(score, len(lines), 0)
+                score = check_for_full_lines(calculator, color_playground, full_line_detector, score)
+
                 break
 
             current_block_position = (current_block_position[0], current_block_position[1] + 1)
 
         current_block_position = (color_playground.width // 2, 0)
+
+
+def block_is_above_beginning(block, line):
+    for y in range(block.height):
+        for x in range(block.width):
+            if block.get_field()[y][x] == 1:
+                if y + line <= 0:
+                    return True
+    return False
+
+
+def check_for_full_lines(calculator, color_playground, full_line_detector, score):
+    lines = full_line_detector.detect_lines(color_playground)
+    full_line_detector.delete_full_lines(lines, color_playground)
+    score = calculator.points(score, len(lines), 0)
+    return score
 
 
 if __name__ == "__main__":
