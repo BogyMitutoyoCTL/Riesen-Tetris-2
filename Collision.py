@@ -10,6 +10,8 @@ class Collision_Dedektor:
                 break
             for x in range(0, b.width):
                 num = b.get_field()[y][x]
+                if not p.is_inside_field(x+cx, y+cy):
+                    break
                 color = p.get_pixel(x + cx, y + cy)
                 if self.is_collision(color, num):
                     return True
@@ -36,12 +38,10 @@ class Collision_Dedektor:
         return False
 
     def at_wall(self, p: Playground, b: Block, block_pos_x: int):
-        block_height = len(b.field_with_rotations[0])
-        block_width = len(b.field_with_rotations)
         playground_width = p.width
 
-        for y in range(block_height):
-            for x in range(block_width):
+        for y in range(b.height):
+            for x in range(b.width):
                 if b.get_field()[y][x] == 1:
                     if x + block_pos_x > playground_width - 1:  # hits right wall
                         return True
@@ -49,5 +49,3 @@ class Collision_Dedektor:
                         return True
         return False
 
-    def inside(self, x, y):
-        return 0 <= y < 4 and 0 <= x < 4

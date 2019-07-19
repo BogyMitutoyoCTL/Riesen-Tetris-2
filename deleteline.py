@@ -20,8 +20,9 @@ class FullLineDetector:
 
     def delete_full_lines(self, full_lines_list, playground: playground.Playground):
         for line in full_lines_list:
-            last_pixel = line * playground.width + playground.width - 1
-            for pixel in range(last_pixel, playground.width, -1):
-                playground.list_pixel[pixel] = playground.list_pixel[pixel - playground.width]
-            for i in range(playground.width):
-                playground.list_pixel[i] = (0, 0, 0)
+            for line_above in range(line, 1, -1):
+                for x in range(playground.width):
+                    color_from_above = playground.get_pixel(x, line_above-1)
+                    playground.set_pixel(x, line_above, color_from_above)
+            for x in range(playground.width):
+                playground.set_pixel(x, 0, (0,0,0))

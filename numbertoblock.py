@@ -17,7 +17,7 @@ class NumberToBlock:
         field = NumberToBlock.create_number_field(blocks)
 
         single_block_width = len(blocks[len(blocks) - 1])
-        for block_index in range(len(blocks) - 1, -1, -1):
+        for block_index in range(len(blocks)):
             for line_index in range(len(blocks[block_index])):
                 for pos_index in range(len(blocks[block_index])):
                     pos = blocks[block_index][line_index][pos_index]
