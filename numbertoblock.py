@@ -40,5 +40,5 @@ class NumberToBlock:
 
     @staticmethod
     def get_list_of_single_numbers(number: int):
-        numbers_list = [number % 10, number // 10 % 10, number // 100 % 10, number // 1000 % 10]
+        numbers_list = [number // 1000 % 10, number // 100 % 10,number // 10 % 10, number % 10]
         return numbers_list
