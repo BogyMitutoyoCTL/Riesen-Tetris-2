@@ -23,6 +23,7 @@ def run_game():
     joystick.init()
 
     pygame.mixer.init()
+
     pygame.mixer.music.load('./Music/Tetris Edit 1 Export 3.mp3')
     new_block = pygame.mixer.Sound('./Music/New_Block.wav')
     game_over_sound = pygame.mixer.Sound('./Music/GameOver.wav')
@@ -79,7 +80,6 @@ def run_game():
         while countdown > 0:
 
             framerate = 25
-            print("Framerate: " + str(framerate))
             clock.tick(framerate)
             countdown = countdown - 1
 
@@ -94,7 +94,7 @@ def run_game():
 
             current_block_position = gamepad.get_button_pressed(current_block, current_block_position, collision,
                                                                 color_playground)
-            if current_block_position == "End!":
+            if current_block_position == "Restart":
                 game_over = True
                 break
 
@@ -114,6 +114,11 @@ def run_game():
 
         current_block_position = (color_playground.width // 2, 0)
 
+    del led_matrix_drawer
+    del rgg_led_drawer
+    pygame.event.get()
+    pygame.quit()
+
 
 def block_is_above_beginning(block, line):
     for y in range(block.height):
@@ -132,4 +137,8 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
 
 
 if __name__ == "__main__":
-    run_game()
+
+    while True:
+        print("run")
+        run_game()
+

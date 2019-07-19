@@ -24,20 +24,19 @@ class Controller:
                 if event.button == 0:
                     direction = True  # left
                 if event.button == 7:
-                    tetris.run_game()
+                    return "Restart"
 
             self.rotate_if_possible(blo, collision, direction, playground, position)
 
-
-        if self.Joy.get_button(7) > 0.001:
-            pass
-
         newposition = None
-        if self.Joy.get_axis(0) < -0.001:
+        if self.Joy.get_axis(0) < -0.3:
             newposition = (position[0] - 1, position[1])
 
-        if self.Joy.get_axis(0) > 0.001:
+        if self.Joy.get_axis(0) > 0.3:
             newposition = (position[0] + 1, position[1])
+
+        if self.Joy.get_axis(1) > 0.3:
+            newposition = (position[0], position[1]+1)
 
         if newposition is not None:
             if not collision.at_wall(playground, blo, newposition[0]) and \
