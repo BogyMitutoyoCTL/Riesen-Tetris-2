@@ -78,7 +78,7 @@ def run_game():
         countdown = 200
         while countdown > 0:
 
-            framerate = 1/(gamespeed.GameSpeed.game_speed(score))
+            framerate = 25
             print("Framerate: " + str(framerate))
             clock.tick(framerate)
             countdown = countdown - 1
