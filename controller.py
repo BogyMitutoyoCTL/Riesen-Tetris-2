@@ -1,12 +1,14 @@
 import pygame
 from pygame.joystick import Joystick
+import Collision
+from playground import Playground
 
 
 class Controller:
     def __init__(self, joystick: Joystick):
         self.Joy = joystick
 
-    def get_button_pressed(self, blo, position):
+    def get_button_pressed(self, blo, position, collision: Collision.Collision_Dedektor, playground: Playground):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.JOYHATMOTION:
@@ -38,12 +40,13 @@ class Controller:
             return end
 
         if self.Joy.get_axis(0) < -0.001:
-            position = (position[0] - 1, position[1])
+            newposition = (position[0] - 1, position[1])
+            if not collision.at_wall(playground, blo, newposition[0]):
+                position = newposition
 
         if self.Joy.get_axis(0) > 0.001:
-            position = (position[0] + 1, position[1])
-
-
-
+            newposition = (position[0] + 1, position[1])
+            if not collision.at_wall(playground, blo, newposition[0]):
+                position = newposition
 
         return position
