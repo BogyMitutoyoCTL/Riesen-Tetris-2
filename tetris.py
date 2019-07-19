@@ -1,4 +1,5 @@
 import time
+import os
 
 
 
@@ -34,7 +35,6 @@ def run_game():
 
     # Playgrounds
     color_playground = playground.Playground(20, 10)
-    color_playground.set_pixel(0,10, color.BlockColor.orange.get_color())
     red_playground = playground.Playground(8, 32)
 
     # Random block generator and first random block
@@ -164,11 +164,12 @@ def run_game():
 
 
 pygame.mixer.init()
-Name = '/home/pi/Downloads/Tetris Edit 1 Export 3.mp3'
 
-#pygame.mixer.music.load(Name)
+Name = './Music/Tetris Edit 1 Export 3.mp3'
 
-#pygame.mixer.music.play(-1)
+pygame.mixer.music.load(Name)
+
+pygame.mixer.music.play(-1)
 
 if __name__ == "__main__":
     run_game()
