@@ -16,6 +16,12 @@ class GameSpeed:
             sleep_time = 0.20
         if score >= 1000:
             sleep_time = 0.15
-        if score >= 5000:
-            sleep_time = 5
+        if score >= 3000:
+            sleep_time = 3000 / (0.0 + score*10)
         return sleep_time
+
+
+if __name__ == "__main__":
+    for score in range(10000):
+        st = GameSpeed.game_speed(score)
+        print("Score: " + str(score) + " Sleeptime: " + str(st))

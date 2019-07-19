@@ -25,7 +25,7 @@ class Controller:
                     if event.button == 0:
                         direction = True  # left
                     if event.button == 7:
-                        return "End!"
+                        pass
                 except KeyError:
                     pass
             self.rotate_if_possible(blo, collision, direction, playground, position)
@@ -41,8 +41,7 @@ class Controller:
         self.rotate_if_possible(blo, collision, direction, playground, position)
 
         if self.Joy.get_button(7) > 0.001:
-            end = "End!"
-            return end
+            pass
 
         newposition = None
         if self.Joy.get_axis(0) < -0.001:
