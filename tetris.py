@@ -43,7 +43,7 @@ def run_game():
     rand = random_blocks.Randomblock()
     next_block = rand.get_random_block()
 
-    score = 0
+    score = -1
     collision = Collision.Collision_Dedektor()
     current_block_position = (5, 0)
 
