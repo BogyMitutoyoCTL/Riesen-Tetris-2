@@ -77,10 +77,7 @@ def run_game():
         # Spiel
         countdown = 200
         while countdown > 0:
-
-            framerate = 25
-            print("Framerate: " + str(framerate))
-            clock.tick(framerate)
+            clock.tick(gamespeed.GameSpeed.game_speed(score))
             countdown = countdown - 1
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
