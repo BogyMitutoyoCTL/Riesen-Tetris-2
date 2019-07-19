@@ -28,7 +28,7 @@ def run_game():
     game_over_sound = pygame.mixer.Sound('./Music/GameOver.wav')
     break_sound = pygame.mixer.Sound('./Music/break.wav')
     lines1_3 = pygame.mixer.Sound('./Music/1.-3.lane.wav')
-    line4 = pygame.mixer.Sound('./Music/4.lane.mp3')
+    line4 = pygame.mixer.Sound('./Music/4.lane.wav')
     #pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)

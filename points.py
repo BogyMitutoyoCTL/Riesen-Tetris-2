@@ -4,6 +4,7 @@ class Points:
         if number_of_deleted_lines == 1:
             all_points += 10
 
+
         if number_of_deleted_lines == 2:
             all_points += 30
 
