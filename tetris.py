@@ -1,18 +1,17 @@
 import time
-import gamespeed
+
+import pygame
 
 import Collision
 import controller
 import deleteline
+import gamespeed
 import ledmatrixdrawer
-import points
-
-import random_blocks
-import playground
-import pygame
 import numbertoblock
+import playground
+import points
+import random_blocks
 import rgbleddrawer
-import color
 
 
 def run_game():
