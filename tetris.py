@@ -1,4 +1,5 @@
 import time
+import os
 
 import Collision
 import controller
@@ -159,7 +160,8 @@ def run_game():
 
 
 pygame.mixer.init()
-Name = '/home/pi/Riesen-Tetris-2/Music/Tetris Edit 1 Export 3.mp3'
+
+Name = './Music/Tetris Edit 1 Export 3.mp3'
 
 pygame.mixer.music.load(Name)
 
