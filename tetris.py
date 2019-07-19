@@ -26,9 +26,9 @@ def run_game():
     pygame.mixer.music.load('./Music/Tetris Edit 1 Export 3.mp3')
     new_block = pygame.mixer.Sound('./Music/New_Block.wav')
     game_over_sound = pygame.mixer.Sound('./Music/GameOver.wav')
-    # break_sound = pygame.mixer.Sound('./Music/break.wav')
+    break_sound = pygame.mixer.Sound('./Music/break.wav')
     lines1_3 = pygame.mixer.Sound('./Music/1.-3.lane.wav')
-    # line4 = pygame.mixer.Sound('./Music/4.lane.mp3')
+    line4 = pygame.mixer.Sound('./Music/4.lane.wav')
     #pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
@@ -103,6 +103,9 @@ def run_game():
                 if block_is_above_beginning(current_block, current_block_position[1]):
                     game_over = True
                     pygame.mixer.Sound.play(game_over_sound)
+                    pygame.mixer.music.stop()
+                    time.sleep(10)
+
                     break
                 color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
                 rgg_led_drawer.draw_playground(color_playground)
@@ -115,6 +118,8 @@ def run_game():
                     led_matrix_drawer.draw_playground(red_playground)
                     pygame.mixer.Sound.play(lines1_3)
                     clock.tick(5)
+                pygame.mixer.Sound(break_sound)
+
                 break
             if (countdown%10 == 0):
                 current_block_position = (current_block_position[0], current_block_position[1] + 1)
