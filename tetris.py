@@ -78,7 +78,7 @@ def run_game():
         countdown = 200
         while countdown > 0:
 
-            clock.tick(1/gamespeed.GameSpeed.game_speed(score))
+            clock.tick(1/(gamespeed.GameSpeed.game_speed(score)*10))
             countdown = countdown - 1
 
             color_playground.add_block(current_block, current_block_position[0], current_block_position[1])
