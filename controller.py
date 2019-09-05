@@ -2,7 +2,7 @@ import pygame
 from pygame.joystick import Joystick
 import Collision
 from playground import Playground
-import tetris
+
 
 class Controller:
     def __init__(self, joystick: Joystick):
