@@ -12,7 +12,7 @@ import playground
 import points
 import random_blocks
 import rgbleddrawer
-
+import titlescreens
 
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
@@ -40,6 +40,10 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
         next_block = rand.get_random_block()
         result = controller.get_button_pressed(next_block,(1,1), Collision.Collision_Dedektor(), playground.Playground(20, 10))
         if result == "Restart":
+            break
+        elif result == "Left Title":
+            break
+        elif result == "Right Title":
             break
     color_playground.clear()
     red_playground.clear()
