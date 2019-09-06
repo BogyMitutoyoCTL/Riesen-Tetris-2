@@ -41,7 +41,7 @@ def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matr
         result = controller.get_button_pressed(next_block, (1, 1), Collision.Collision_Dedektor(),
                                                playground.Playground(20, 10))
         if result == "Restart":
-            break
+            pass
         elif result == "Left Title":
             break
         elif result == "Right Title":
