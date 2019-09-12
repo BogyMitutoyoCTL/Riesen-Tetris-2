@@ -77,11 +77,11 @@ def tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, led_mat
         result = controller.get_button_pressed(next_block, (1, 1), Collision.Collision_Dedektor(),
                                                playground.Playground(20, 10))
         if result == "Restart":
-            game == 1
+            break
         elif result == "Left Title":
-            titlescreen = 2
+            break
         elif result == "Right Title":
-            titlescreen = 0
+            break
     color_playground.clear()
     red_playground.clear()
 
@@ -113,15 +113,15 @@ def pong_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matri
         result = controller.get_button_pressed(next_block, (1, 1), Collision.Collision_Dedektor(),
                                                playground.Playground(20, 10))
         if result == "Restart":
-            game == 1
+            break
         elif result == "Left Title":
-            titlescreen = 0
+            break
         elif result == "Right Title":
-            titlescreen = 1
+            break
     color_playground.clear()
     red_playground.clear()
 
-    tetris_titlescreen()
+    tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
 def run_game():
     # Some stuff needed by PyGame
     pygame.init()
