@@ -166,13 +166,7 @@ def run_game():
     calculator = points.Points()
 
     clock = pygame.time.Clock()  # type: pygame.time.Clock
-    while game == 0:
-        if titlescreen == 0:
-            clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, gamepad)
-        elif titlescreen == 1:
-            tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
-        elif titlescreen == 2:
-            pong_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
+    clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
     game_over = False
     while not game_over:
         pygame.mixer.Sound.play(new_block)
