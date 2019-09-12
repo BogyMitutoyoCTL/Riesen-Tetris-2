@@ -2,7 +2,7 @@ import pygame
 from pygame.joystick import Joystick
 import Collision
 from playground import Playground
-import tetris
+
 
 class Controller:
     def __init__(self, joystick: Joystick):
@@ -25,7 +25,10 @@ class Controller:
                     direction = True  # left
                 if event.button == 7:
                     return "Restart"
-
+                if event.button == 4:
+                    return "Left Title"
+                if event.button == 5:
+                    return "Right Title"
             self.rotate_if_possible(blo, collision, direction, playground, position)
 
         newposition = None

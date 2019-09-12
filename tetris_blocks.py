@@ -7,7 +7,7 @@ def print_block(block):
     print("")
     for x in range(0, size_x):
         for y in range(0, size_y):
-            print(block[x][y], end=" ")
+            print(block[x][y], end =" ")
         print("")
     print("")
 
@@ -114,8 +114,8 @@ class Blocktype:
                [0, 0, 1, 0],
                [0, 0, 0, 0]],
 
-              [[0, 0, 1, 1],
-               [0, 1, 1, 0],
+              [[0, 1, 1, 0],
+               [0, 0, 1, 1],
                [0, 0, 0, 0],
                [0, 0, 0, 0]],
 
