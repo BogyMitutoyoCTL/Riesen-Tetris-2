@@ -42,10 +42,6 @@ def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matr
                                                playground.Playground(20, 10))
         if result == "Restart":
             break
-        elif result == "Left Title":
-            break
-        elif result == "Right Title":
-            break
     color_playground.clear()
     red_playground.clear()
 clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
