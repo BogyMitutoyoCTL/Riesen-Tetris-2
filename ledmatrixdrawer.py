@@ -1,7 +1,6 @@
 from luma.core.render import canvas
 from luma.core.interface.serial import spi, noop
 from luma.led_matrix.device import max7219
-
 from playground import Playground
 
 

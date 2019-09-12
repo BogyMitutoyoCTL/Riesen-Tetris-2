@@ -12,8 +12,8 @@ import playground
 import points
 import random_blocks
 import rgbleddrawer
-titlscreen = 0
-
+titlescreen = 0
+game = 0
 def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
         color_playground.clear()
@@ -41,7 +41,7 @@ def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matr
         result = controller.get_button_pressed(next_block, (1, 1), Collision.Collision_Dedektor(),
                                                playground.Playground(20, 10))
         if result == "Restart":
-            pass
+            game == 1
         elif result == "Left Title":
             titlescreen = 1
         elif result == "Right Title":
@@ -77,7 +77,7 @@ def tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, led_mat
         result = controller.get_button_pressed(next_block, (1, 1), Collision.Collision_Dedektor(),
                                                playground.Playground(20, 10))
         if result == "Restart":
-            pass
+            game == 1
         elif result == "Left Title":
             titlescreen = 2
         elif result == "Right Title":
@@ -113,7 +113,7 @@ def pong_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matri
         result = controller.get_button_pressed(next_block, (1, 1), Collision.Collision_Dedektor(),
                                                playground.Playground(20, 10))
         if result == "Restart":
-            pass
+            game == 1
         elif result == "Left Title":
             titlescreen = 0
         elif result == "Right Title":
@@ -166,13 +166,7 @@ def run_game():
     calculator = points.Points()
 
     clock = pygame.time.Clock()  # type: pygame.time.Clock
-    while True:
-        if titlescreen == 0:
-            clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, gamepad)
-        elif titlescreen == 1:
-            tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
-        elif titlescreen == 2:
-            pong_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
+    clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
     game_over = False
     while not game_over:
         pygame.mixer.Sound.play(new_block)
