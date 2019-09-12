@@ -48,7 +48,7 @@ def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matr
             break
     color_playground.clear()
     red_playground.clear()
-    tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
+tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
 def run_game():
     # Some stuff needed by PyGame
     pygame.init()
