@@ -12,6 +12,7 @@ import playground
 import points
 import random_blocks
 import rgbleddrawer
+import titlescreens
 titlescreen = 0
 game = 0
 def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
@@ -88,7 +89,7 @@ def run_game():
     calculator = points.Points()
 
     clock = pygame.time.Clock()  # type: pygame.time.Clock
-    clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
+    titlescreens.titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
     game_over = False
     while not game_over:
         pygame.mixer.Sound.play(new_block)
