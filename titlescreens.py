@@ -13,7 +13,7 @@ import points
 import random_blocks
 import rgbleddrawer
 def titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
-    #todo hier kommt die allgemeine titlescreen methode hin, in der ausgesucht wird welcher angezeigt wird usw.
+    #todo hier kommt die allgemeine titlescreen methode hin, in der ausgesucht wird welcher angezeigt wird usw
     clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller)
 def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
