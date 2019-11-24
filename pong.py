@@ -27,7 +27,7 @@ def clock_titlescreen(color_playground, rgg_led_drawer, red_playground, led_matr
         today = now.date().day
         sec = now.time().second
         year = now.date().year % 100
-        color_playground.add_block(numbertoblock.NumberToBlock.get_block(hour * 100), 0, 0)
+        color_playground.add_block(numbertoblock.NumberToBlock.get_block(hour * 100), 1, 0)
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(min * 100), 0, 6)
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(sec * 100), 0, 12)
         red_playground.add_block(numbertoblock.NumberToBlock.get_block(today * 100 + mon), 0, 0)
