@@ -1,9 +1,9 @@
 from playground import Playground
-from tetris_blocks import Block
+from objects import Object
 
 class Collision_Dedektor:
 
-    def with_block(self, p: Playground, b: Block, cx, cy):
+    def with_object(self, p: Playground, b: Object, cx, cy):
         for y in range(0, b.height):
             for x in range(0, b.width):
                 num = b.get_field()[y][x]
@@ -23,7 +23,7 @@ class Collision_Dedektor:
 
         return True
 
-    def on_ground(self, p: Playground, b: Block, block_pos_y: int):
+    def on_ground(self, p: Playground, b: Object, block_pos_y: int):
         for y in range(b.height):
             for x in range(b.width):
                 if b.get_field()[y][x] == 1:
@@ -31,7 +31,7 @@ class Collision_Dedektor:
                         return True
         return False
 
-    def at_wall(self, p: Playground, b: Block, block_pos_x: int):
+    def at_wall(self, p: Playground, b: Object, block_pos_x: int):
         playground_width = p.width
 
         for y in range(b.height):
