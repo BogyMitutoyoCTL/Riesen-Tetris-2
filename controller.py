@@ -37,17 +37,11 @@ class Controller:
 
         if self.Joy.get_axis(0) > 0.3:
             newposition = (position[0] + 1, position[1])
-
-        if self.Joy.get_axis(1) > 0.3:
-            newposition = (position[0], position[1]+1)
-
         if newposition is not None:
             if not collision.at_wall(playground, blo, newposition[0]) and \
                     not collision.on_ground(playground, blo, newposition[1]) and \
                     not collision.with_block(playground, blo, newposition[0], newposition[1]):
                 position = newposition
-
-        return position
 
     def rotate_if_possible(self, blo, collision, direction, playground, position):
         rotate_sound = pygame.mixer.Sound('./Music/rotate.wav')
