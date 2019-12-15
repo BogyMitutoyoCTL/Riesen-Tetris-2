@@ -1,6 +1,4 @@
 from color import ObjectColor
-
-
 def print_object(object):
     size_x = len(object)
     size_y = len(object[0])
