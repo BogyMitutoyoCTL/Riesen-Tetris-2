@@ -36,7 +36,7 @@ class Block:
         for x in self.field_with_rotations[self.orientation]:
             print(x)
 
-    def rotation(self, orientation: int):
+    def rotation(self, orientation : int):
         if 0 <= orientation <= len(self.field_with_rotations):
             self.orientation = orientation
 
@@ -82,6 +82,18 @@ class Block:
             block_array.append(matrix_8_8)
         return Block(block_array, self.color)
 
+class Objecttype:
+    paddle_left =   [[1, 0, 0],
+                     [1, 0, 0],
+                     [1, 0, 0]]
+
+    paddle_right = [[0, 0, 1],
+                    [0, 0, 1],
+                    [0, 0, 1]]
+
+    ball = [[0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0]]
 
 class Blocktype:
     t = [[[0, 1, 0, 0],

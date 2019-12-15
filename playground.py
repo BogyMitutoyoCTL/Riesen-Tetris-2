@@ -27,7 +27,7 @@ class Playground:
                         break
                     self.set_pixel(x_of_block + columns_right, y_of_block + lines_down, block.color.get_color())
 
-    def block_clear(self, block: tetris_blocks.Block, columns_right, lines_down):
+    def block_clear(self, block : tetris_blocks.Block, columns_right, lines_down):
         for y_of_block in range(block.height):
             for x_of_block in range(block.width):
                 ispixel = block.get_field()[y_of_block][x_of_block]
