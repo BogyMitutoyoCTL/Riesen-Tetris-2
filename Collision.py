@@ -1,7 +1,6 @@
 from playground import Playground
 from tetris_blocks import Block
 
-
 class Collision_Dedektor:
 
     def with_block(self, p: Playground, b: Block, cx, cy):
