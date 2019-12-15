@@ -9,7 +9,7 @@ def run_game():
     while i<20:
         i+=1
     color_playground.clear()
-    color_playground.add_object(objects.Objecttype.paddle_left)
+    color_playground.add_object(objects.Objecttype.paddle_left,0,6)
     rgb_led_drawer.draw_playground(color_playground)
 
 if __name__ == "__main__":
