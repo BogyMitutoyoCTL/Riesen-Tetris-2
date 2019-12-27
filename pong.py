@@ -80,10 +80,10 @@ def run_game():
 
         # Spiel
         countdown = 200
-    del led_matrix_drawer
-    del rgb_led_drawer
-    pygame.event.get()
-    pygame.quit()
+    #del led_matrix_drawer
+    #del rgb_led_drawer
+    #pygame.event.get()
+    #pygame.quit()
 
 
 def block_is_above_beginning(block, line):
