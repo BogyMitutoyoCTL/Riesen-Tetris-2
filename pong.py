@@ -33,11 +33,11 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
         led_matrix_drawer.draw_playground(red_playground)
         pygame.time.Clock().tick(1)
 
-        rand = random_blocks.Randomblock()
-        next_block = rand.get_random_block()
-        result = controller.get_button_pressed(next_block,(1,1), Collision.Collision_Dedektor(), playground.Playground(20, 10))
-        if result == "Restart":
-            break
+        #rand = random_blocks.Randomblock()
+        #next_block = rand.get_random_block()
+       # result = controller.get_button_pressed(next_block,(1,1), Collision.Collision_Dedektor(), playground.Playground(20, 10))
+        #if result == "Restart":
+        #    break
     color_playground.clear()
     red_playground.clear()
 
