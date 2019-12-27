@@ -1,8 +1,8 @@
 import objects
-import ledmatrixdrawer
+#import ledmatrixdrawer
 import playground
 import points
-import random_blocks
+#import random_blocks
 import rgbleddrawer
 import controller
 import pygame
@@ -56,7 +56,7 @@ def run_game():
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
 
     # drawer for scoreboard
-    led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
+    #led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
     # Playgrounds
     color_playground = playground.Playground(20, 10)
