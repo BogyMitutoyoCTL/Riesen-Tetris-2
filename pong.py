@@ -1,5 +1,5 @@
 import objects
-#import ledmatrixdrawer
+import ledmatrixdrawer
 import playground
 import points
 #import random_blocks
@@ -56,7 +56,7 @@ def run_game():
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
 
     # drawer for scoreboard
-    #led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
+    led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
     # Playgrounds
     color_playground = playground.Playground(20, 10)
@@ -81,6 +81,7 @@ def run_game():
         countdown +1
 
         # Spiel
+    show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
