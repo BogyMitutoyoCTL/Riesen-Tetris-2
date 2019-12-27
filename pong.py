@@ -67,7 +67,7 @@ def run_game():
     #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
 
     game_over = False
-    while not game_over:
+    while True:
 
         # Prepare red_playgound to repaint...
         red_playground.clear()
@@ -80,10 +80,10 @@ def run_game():
 
         # Spiel
         countdown = 200
-    #del led_matrix_drawer
-    #del rgb_led_drawer
-    #pygame.event.get()
-    #pygame.quit()
+    del led_matrix_drawer
+    del rgb_led_drawer
+    pygame.event.get()
+    pygame.quit()
 
 
 def block_is_above_beginning(block, line):
