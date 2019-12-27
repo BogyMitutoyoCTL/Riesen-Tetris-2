@@ -74,12 +74,10 @@ def run_game():
         color_playground.clear()
         # Add preview block to red_playgound
         color_playground.add_object(objects.Objecttype.paddle_left, 0, 0)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(score), 10, 0)
         # draw red_playgound
-        led_matrix_drawer.draw_playground(red_playground)
+        rgb_led_drawer.draw_playground(color_playground)
 
         # Spiel
-        countdown = 200
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
