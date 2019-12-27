@@ -63,15 +63,8 @@ def run_game():
     red_playground = playground.Playground(8, 32)
 
     score = -1
-    collision = Collision.Collision_Dedektor()
-    current_block_position = (5, 0)
 
-    full_line_detector = deleteline.FullLineDetector()
-    calculator = points.Points()
-
-    clock = pygame.time.Clock()  # type: pygame.time.Clock
-
-    show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
+    #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
 
     game_over = False
     while not game_over:
