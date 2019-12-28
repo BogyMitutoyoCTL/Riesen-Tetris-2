@@ -8,7 +8,7 @@ class Controller:
     def __init__(self, joystick: Joystick):
         self.Joy = joystick
 
-    def get_button_pressed(self, blo, position, collision: Collision.Collision_Dedektor, playground: Playground):
+    def get_button_pressed(self):
         events = pygame.event.get()
         for event in events:
             direction = None
@@ -29,7 +29,6 @@ class Controller:
                     return "Left Title"
                 if event.button == 5:
                     return "Right Title"
-            self.rotate_if_possible(blo, collision, direction, playground, position)
 
         newposition = None
         if self.Joy.get_axis(0) < -0.3:

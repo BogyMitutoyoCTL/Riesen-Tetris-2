@@ -35,22 +35,22 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
 
         #rand = random_blocks.Randomblock()
         #next_block = rand.get_random_block()
-       # result = controller.get_button_pressed(next_block,(1,1), Collision.Collision_Dedektor(), playground.Playground(20, 10))
-        #if result == "Restart":
-        #    break
+        result = controller.get_button_pressed()
+        if result == "Restart":
+            break
     color_playground.clear()
     red_playground.clear()
 
 def run_game():
     # Some stuff needed by PyGame
-    pygame.init()
+    #pygame.init()
 
     # use Joystick and Controller
-    pygame.joystick.init()
-    joystick = pygame.joystick.Joystick(0)
-    joystick.init()
+    #pygame.joystick.init()
+    #joystick = pygame.joystick.Joystick(0)
+    #joystick.init()
 
-    gamepad = controller.Controller(joystick)
+    #gamepad = controller.Controller(joystick)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -68,7 +68,7 @@ def run_game():
     countdown =0
 
     game_over = False
-    while contdown < 10:
+    #while contdown < 10:
 
         # Prepare red_playgound to repaint...
         red_playground.clear()
@@ -77,15 +77,15 @@ def run_game():
         color_playground.add_object(objects.Objecttype.paddle_left, 1, 1)
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
-        time.sleep(1)
-        countdown +1
+        #time.sleep(1)
+        #countdown +1
 
         # Spiel
-    show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
-    del led_matrix_drawer
-    del rgb_led_drawer
-    pygame.event.get()
-    pygame.quit()
+    #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
+    #del led_matrix_drawer
+    #del rgb_led_drawer
+   # pygame.event.get()
+    #pygame.quit()
 
 
 def block_is_above_beginning(block, line):
