@@ -1,8 +1,6 @@
 import pygame
 from objects import Object
 from pygame.joystick import Joystick
-import Collision
-from playground import Playground
 
 class Controller:
     def __init__(self, joystick: Joystick):
@@ -30,6 +28,7 @@ class Controller:
                     return "Left Title"
                 if event.button == 5:
                     return "Right Title"
+
     def Paddle_Steuerung(self, paddle:Object):
         events = pygame.event.get()
 
