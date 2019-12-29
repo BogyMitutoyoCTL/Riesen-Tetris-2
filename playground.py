@@ -1,5 +1,5 @@
 import objects
-
+import tetris_blocks
 
 class Playground:
     def __init__(self, hight, width):
@@ -36,6 +36,15 @@ class Playground:
                     if not self.is_inside_field(x_of_block + columns_right, y_of_block + lines_down):
                         break
                     self.set_pixel(x_of_block + columns_right, y_of_block + lines_down, (0, 0, 0))
+
+    def add_block(self, block: tetris_blocks.Block, columns_right=0, lines_down=0):
+        for y_of_block in range(block.height):
+            for x_of_block in range(block.width):
+                ispixel = block.get_field()[y_of_block][x_of_block]
+                if ispixel > 0:
+                    if not self.is_inside_field(x_of_block + columns_right, y_of_block + lines_down):
+                        break
+                    self.set_pixel(x_of_block + columns_right, y_of_block + lines_down, block.color.get_color())
 
     def draw(self):
         for x in range(self.width):
