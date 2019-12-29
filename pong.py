@@ -54,39 +54,39 @@ def run_game():
     #gamepad = controller.Controller(joystick)
 
     # drawer for playfield
-    rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
+    #rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
 
     # drawer for scoreboard
-    led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
+    #led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
     # Playgrounds
-    color_playground = playground.Playground(20, 10)
-    red_playground = playground.Playground(8, 32)
+    #color_playground = playground.Playground(20, 10)
+    #red_playground = playground.Playground(8, 32)
 
-    score = -1
+    #score = -1
 
-    #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
-    countdown =0
+    show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
+    #countdown =0
 
-    game_over = False
-    while countdown < 10:
+    #game_over = False
+    #while countdown < 10:
 
     # Prepare red_playgound to repaint...
-        red_playground.clear()
-        color_playground.clear()
+        #red_playground.clear()
+        #color_playground.clear()
         # Add preview block to red_playgound
-        color_playground.add_object(objects.Objecttype.paddle_left, 1, 1)
+        #color_playground.add_object(objects.Objecttype.paddle_left, 1, 1)
         # draw red_playgound
-        rgb_led_drawer.draw_playground(color_playground)
-        time.sleep(1)
-        countdown +1
+        #rgb_led_drawer.draw_playground(color_playground)
+        #time.sleep(1)
+        #countdown +1
 
         # Spiel
     #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
-    del led_matrix_drawer
-    del rgb_led_drawer
-    pygame.event.get()
-    pygame.quit()
+    #del led_matrix_drawer
+    #del rgb_led_drawer
+    #pygame.event.get()
+    #pygame.quit()
 
 
 def block_is_above_beginning(block, line):

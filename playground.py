@@ -27,7 +27,7 @@ class Playground:
                         break
                     self.set_pixel(x_of_block + columns_right, y_of_block + lines_down, block.color.get_color())
 
-    def clear_object(self, object : objects.Object, columns_right, lines_down):
+    def clear_object(self, object: objects.Object, columns_right, lines_down):
         for y_of_block in range(object.height):
             for x_of_block in range(object.width):
                 ispixel = object.get_field()[y_of_block][x_of_block]
