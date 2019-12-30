@@ -64,7 +64,7 @@ def run_game():
     color_playground = playground.Playground(20, 10)
     red_playground = playground.Playground(8, 32)
 
-    #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
+    show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
 
     # Prepare red_playgound to repaint...
     while True:
