@@ -19,10 +19,10 @@ class Object:
         self.orientation_y = 0
         self.posx = 0
         self.posy = 0
-
+    @property
     def height(self):
         return len(self.get_field())
-
+    @property
     def width(self):
         return len(self.get_field()[0])
 
