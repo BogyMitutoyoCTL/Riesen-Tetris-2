@@ -13,15 +13,13 @@ def print_object(object):
 class Object:
     def __init__(self, field, color):
         self.color = color
-        self.orientation = 0
         self.field_with_rotations = field
-        #self.orientation_x = 0
-        #self.orientation_y = 0
-        #self.posx = 0
-        #self.posy = 0
+        self.orientation = 0
+
     @property
     def height(self):
         return len(self.get_field())
+
     @property
     def width(self):
         return len(self.get_field()[0])
@@ -32,7 +30,7 @@ class Object:
     def get_field(self):
         return self.field_with_rotations[self.orientation]
 
-    def draw_block(self):
+    def draw_object(self):
         for x in self.field_with_rotations[self.orientation]:
             print(x)
 
