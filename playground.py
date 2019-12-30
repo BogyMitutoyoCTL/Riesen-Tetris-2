@@ -18,14 +18,14 @@ class Playground:
             for x in range(self.width):
                 self.set_pixel(x, y, (0, 0, 0))
 
-    def add_object(self, Object: objects.Object, columns_right=0, lines_down=0):
-        for y_of_block in range(Object.height):
-            for x_of_block in range(Object.width):
-                ispixel = Object.get_field()[y_of_block][x_of_block]
+    def add_object(self, object: objects.Object, columns_right=0, lines_down=0):
+        for y_of_object in range(object.height):
+            for x_of_object in range(object.width):
+                ispixel = object.get_field()[y_of_object][x_of_object]
                 if ispixel > 0:
-                    if not self.is_inside_field(x_of_block + columns_right, y_of_block + lines_down):
+                    if not self.is_inside_field(x_of_object + columns_right, y_of_object + lines_down):
                         break
-                    self.set_pixel(x_of_block + columns_right, y_of_block + lines_down, block.color.get_color())
+                    self.set_pixel(x_of_object + columns_right, y_of_object + lines_down, object.color.get_color())
 
     def clear_object(self, object: objects.Object, columns_right, lines_down):
         for y_of_block in range(object.height):
