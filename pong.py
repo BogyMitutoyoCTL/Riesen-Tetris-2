@@ -65,20 +65,17 @@ def run_game():
     red_playground = playground.Playground(8, 32)
 
     #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
-    countdown =0
-
-    while True:
 
     # Prepare red_playgound to repaint...
-        red_playground.clear()
-        color_playground.clear()
+    while True:
+        #red_playground.clear()
+        #color_playground.clear()
         # Add preview block to red_playgound
         color_playground.add_object(objects.Objecttype.ball, 1, 1)
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
 
         # Spiel
-    #show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
