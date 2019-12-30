@@ -56,8 +56,8 @@ class Objecttype:
                  [0, 1, 0],
                  [0, 0, 0]]
 
-object_list = [Object(Objecttype.paddle_left, ObjectColor.yellow),
-               Object(Objecttype.paddle_right, ObjectColor.yellow),
-               Object(Objecttype.paddle_top, ObjectColor.yellow),
-               Object(Objecttype.paddle_bot, ObjectColor.yellow),
-               Object(Objecttype.ball, ObjectColor.red)]
+    object_list = [Object(paddle_left, ObjectColor.yellow),
+               Object(paddle_right, ObjectColor.yellow),
+               Object(paddle_top, ObjectColor.yellow),
+               Object(paddle_bot, ObjectColor.yellow),
+               Object(ball, ObjectColor.red)]
