@@ -71,7 +71,7 @@ def run_game():
         #red_playground.clear()
         #color_playground.clear()
         # Add preview block to red_playgound
-        color_playground.add_object(objects.object_list[0], 1, 1)
+        color_playground.add_object(objects.Object.object_list[0], 1, 1)
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
 
