@@ -11,7 +11,8 @@ import datetime
 import Collision
 import gamespeed
 import time
-import tetris_blocks
+from controller import Controller
+from Ball_Steuerung import Ball_Steuerung
 
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
@@ -44,42 +45,51 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
     red_playground.clear()
 
 def run_game():
-    # Some stuff needed by PyGame
-    pygame.init()
+    while bs.end_game(p, b, c) == False :
 
-    # use Joystick and Controller
-    pygame.joystick.init()
-    joystick = pygame.joystick.Joystick(0)
-    joystick.init()
+        # Some stuff needed by PyGame
+        pygame.init()
 
-    gamepad = controller.Controller(joystick)
+        # use Joystick and Controller
+        pygame.joystick.init()
+        joystick = pygame.joystick.Joystick(0)
+        joystick.init()
 
-    # drawer for playfield
-    rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
+        gamepad = controller.Controller(joystick)
 
-    # drawer for scoreboard
-    led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
+        # drawer for playfield
+        rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
 
-    # Playgrounds
-    color_playground = playground.Playground(20, 10)
-    red_playground = playground.Playground(8, 32)
+        # drawer for scoreboard
+        led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
-    show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
+        # Playgrounds
+        color_playground = playground.Playground(20, 10)
+        red_playground = playground.Playground(8, 32)
 
-    # Prepare red_playgound to repaint...
-    while True:
-        #red_playground.clear()
-        #color_playground.clear()
-        # Add preview block to red_playgound
-        color_playground.add_object(objects.Objecttype.ball, 1, 1)
-        # draw red_playgound
-        rgb_led_drawer.draw_playground(color_playground)
+        show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
 
-        # Spiel
-    del led_matrix_drawer
-    del rgb_led_drawer
-    pygame.event.get()
-    pygame.quit()
+        #Objects
+        ball = objects.Objecttype.ball
+        paddle1 = objects.Objecttype.paddle_top
+        paddle2 = objects.Objecttype.paddle_bot
+
+        # Prepare red_playgound to repaint...
+        while True:
+            #red_playground.clear()
+            #color_playground.clear()
+            # Add preview block to red_playgound
+            color_playground.add_object(objects.Objecttype.ball, 1, 1)
+            # draw red_playgound
+            rgb_led_drawer.draw_playground(color_playground)
+
+            # Spiel
+            color_playground.add_block(ball, )
+
+        del led_matrix_drawer
+        del rgb_led_drawer
+        pygame.event.get()
+        pygame.quit()
 
 
 def block_is_above_beginning(block, line):
@@ -96,6 +106,11 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
     full_line_detector.delete_full_lines(lines, color_playground)
     score = calculator.points(score, len(lines), 0)
     return score
+
+def round(b:object, b1:object, b2:object, c:Collision.Collision_Dedektor, p:playground, bs:Ball_Steuerung, joy1: pygame.joystick.Joystick(), joy2: pygame.joystick.Joystick()):
+    Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)#
+    Controller.Paddle_Steuerung(joy1, b1)
+    Controller.Paddle_Steuerung(joy2, b2)
 
 
 if __name__ == "__main__":
