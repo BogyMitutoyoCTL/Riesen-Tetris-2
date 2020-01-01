@@ -45,8 +45,11 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
     red_playground.clear()
 
 def run_game():
-
-
+    paddle_left = objects.object_list[0]
+    paddle_right = objects.object_list[1]
+    paddle_top = objects.object_list[2]
+    paddle_bot = objects.object_list[3]
+    ball = objects.object_list[4]
     # Some stuff needed by PyGame
     pygame.init()
 
@@ -74,7 +77,7 @@ def run_game():
         #red_playground.clear()
         #color_playground.clear()
         # Add preview block to red_playgound
-        color_playground.add_object(objects.object_list[4], 1, 1)
+        color_playground.add_object(ball, 1, 1)
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
 
