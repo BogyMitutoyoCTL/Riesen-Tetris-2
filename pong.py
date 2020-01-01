@@ -86,6 +86,9 @@ def run_game():
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
         # Spiel
+        result12 = controller.get_button_pressed()
+        if result12 == "Left Title" or result12 == "Right Title":
+            break
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
