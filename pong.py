@@ -90,7 +90,7 @@ def run_game():
     del rgb_led_drawer
     pygame.event.get()
     pygame.quit()
-#lll
+
 
 def block_is_above_beginning(block, line):
     for y in range(block.height):
