@@ -2,7 +2,7 @@ import objects
 import ledmatrixdrawer
 import playground
 import points
-#import random_blocks
+# import random_blocks
 import rgbleddrawer
 import controller
 import pygame
@@ -13,6 +13,7 @@ import gamespeed
 import time
 from controller import Controller
 from Ball_Steuerung import Ball_Steuerung
+
 
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
@@ -26,23 +27,24 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
         today = now.date().day
         sec = now.time().second
         year = now.date().year % 100
-        color_playground.add_block(numbertoblock.NumberToBlock.get_block(hour*100), 0,0)
-        color_playground.add_block(numbertoblock.NumberToBlock.get_block(min*100), 0, 6)
+        color_playground.add_block(numbertoblock.NumberToBlock.get_block(hour * 100), 0, 0)
+        color_playground.add_block(numbertoblock.NumberToBlock.get_block(min * 100), 0, 6)
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(sec * 100), 0, 12)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(today*100+mon), 0, 0)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(year*100), 21, 0)
+        red_playground.add_block(numbertoblock.NumberToBlock.get_block(today * 100 + mon), 0, 0)
+        red_playground.add_block(numbertoblock.NumberToBlock.get_block(year * 100), 21, 0)
 
         rgg_led_drawer.draw_playground(color_playground)
         led_matrix_drawer.draw_playground(red_playground)
         pygame.time.Clock().tick(1)
 
-        #rand = random_blocks.Randomblock()
-        #next_block = rand.get_random_block()
+        # rand = random_blocks.Randomblock()
+        # next_block = rand.get_random_block()
         result = controller.get_button_pressed()
         if result == "Restart":
             break
     color_playground.clear()
     red_playground.clear()
+
 
 def run_game():
     # variables for objects
@@ -75,14 +77,14 @@ def run_game():
 
     # Prepare red_playgound to repaint...
     while True:
-        #red_playground.clear()
-        #color_playground.clear()
+        # red_playground.clear()
+        # color_playground.clear()
         # Add preview block to red_playgound
         color_playground.add_object(ball, 1, 1)
+        color_playground.add_object(paddle_left, 0, 7)
+        color_playground.add_object(paddle_left, 10, 7)
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
-        if result == "Restart":
-            break
         # Spiel
     del led_matrix_drawer
     del rgb_led_drawer
@@ -99,13 +101,24 @@ def block_is_above_beginning(block, line):
     return False
 
 
+def block_is_below_beginning(block, line):
+    for y in range(block.height):
+        for x in range(block.width):
+            if block.get_field()[y][x] == 1:
+                if y + line > 20:
+                    return True
+    return False
+
+
 def check_for_full_lines(calculator, color_playground, full_line_detector, score):
     lines = full_line_detector.detect_lines(color_playground)
     full_line_detector.delete_full_lines(lines, color_playground)
     score = calculator.points(score, len(lines), 0)
     return score
 
-def round(b:object, b1:object, b2:object, c:Collision.Collision_Dedektor, p:playground, bs:Ball_Steuerung, joy1, joy2):
+
+def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p: playground, bs: Ball_Steuerung, joy1,
+          joy2):
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
     Controller.Paddle_Steuerung(joy1, b1)
     Controller.Paddle_Steuerung(joy2, b2)
