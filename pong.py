@@ -86,7 +86,7 @@ def run_game():
     rgb_led_drawer.draw_playground(color_playground)
     # Spiel
     result12 = controller.get_button_pressed()
-    pygame.time.wait(250)
+    pygame.time.wait(5000)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
