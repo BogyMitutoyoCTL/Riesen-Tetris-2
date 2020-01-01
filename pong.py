@@ -76,19 +76,17 @@ def run_game():
     show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
 
     # Prepare red_playgound to repaint...
-    while True:
-        # red_playground.clear()
-        # color_playground.clear()
-        # Add preview block to red_playgound
-        color_playground.add_object(ball, 1, 1)
-        color_playground.add_object(paddle_left, 2, 2)
-        color_playground.add_object(paddle_left, 5, 5)
-        # draw red_playgound
-        rgb_led_drawer.draw_playground(color_playground)
-        # Spiel
-        result12 = controller.get_button_pressed()
-        if result12 == "Left Title" or result12 == "Right Title":
-            break
+    # red_playground.clear()
+    # color_playground.clear()
+    # Add preview block to red_playgound
+    color_playground.add_object(ball, 1, 1)
+    color_playground.add_object(paddle_left, 2, 2)
+    color_playground.add_object(paddle_left, 5, 5)
+    # draw red_playgound
+    rgb_led_drawer.draw_playground(color_playground)
+    # Spiel
+    result12 = controller.get_button_pressed()
+    pygame.time.wait(250)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
