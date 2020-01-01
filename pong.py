@@ -81,7 +81,8 @@ def run_game():
         color_playground.add_object(ball, 1, 1)
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
-
+        if result == "Restart":
+            break
         # Spiel
     del led_matrix_drawer
     del rgb_led_drawer
