@@ -43,7 +43,7 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
     color_playground.clear()
     red_playground.clear()
 
-def run_game(): #joel hat nix geleistet
+def run_game(): #joel hat nix geleistet!
     # Some stuff needed by PyGame
     pygame.init()
 
