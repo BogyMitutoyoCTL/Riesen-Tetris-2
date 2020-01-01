@@ -79,7 +79,7 @@ def run_game():
     # red_playground.clear()
     # color_playground.clear()
     # Add preview block to red_playgound
-    color_playground.add_object(ball, 4, 9)
+    color_playground.add_object(ball, 2, 9)
     color_playground.add_object(paddle_left, 0, 9)
     color_playground.add_object(paddle_left, 9, 9)
     # draw red_playgound
