@@ -81,8 +81,8 @@ def run_game():
         # color_playground.clear()
         # Add preview block to red_playgound
         color_playground.add_object(ball, 1, 1)
-        color_playground.add_object(paddle_left, 0, 7)
-        color_playground.add_object(paddle_left, 10, 7)
+        color_playground.add_object(paddle_left, 2, 2)
+        color_playground.add_object(paddle_left, 5, 5)
         # draw red_playgound
         rgb_led_drawer.draw_playground(color_playground)
         # Spiel
