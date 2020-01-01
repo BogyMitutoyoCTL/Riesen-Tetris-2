@@ -13,8 +13,7 @@ def print_object(object):
 class Object:
     def __init__(self, field, color):
         self.color = color
-        self.field_with_rotations = field
-        self.orientation = 0
+        self.field = field
         self.orientation_x = 0
         self.orientation_y = 0
         self.posx = 0
@@ -22,20 +21,20 @@ class Object:
 
     @property
     def height(self):
-        return len(self.get_field())
+        return len(self.field)
 
     @property
     def width(self):
-        return len(self.get_field()[0])
+        return len(self.field[0])
 
     def set_color(self, color):
         self.color = color
 
     def get_field(self):
-        return self.field_with_rotations[self.orientation]
+        return self.field
 
     def draw_object(self):
-        for x in self.field_with_rotations[self.orientation]:
+        for x in self.field:
             print(x)
 
 
@@ -56,9 +55,7 @@ class Objecttype:
                     [0, 0, 0],
                     [1, 1, 1]]
 
-    ball =      [[0, 0, 0],
-                 [0, 1, 0],
-                 [0, 0, 0]]
+    ball =      [[1]]
 
 object_list = [Object(Objecttype.paddle_left, ObjectColor.yellow),
                Object(Objecttype.paddle_right, ObjectColor.yellow),
