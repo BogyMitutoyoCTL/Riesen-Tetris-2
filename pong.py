@@ -45,6 +45,7 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
     red_playground.clear()
 
 def run_game():
+    # variables for objects
     paddle_left = objects.object_list[0]
     paddle_right = objects.object_list[1]
     paddle_top = objects.object_list[2]
