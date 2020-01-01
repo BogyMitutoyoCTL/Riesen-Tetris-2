@@ -82,7 +82,7 @@ def run_game():
     #machec vllt noch nen zufall algorithmus, auf welcher seite der ball startet
     color_playground.add_object(ball, 4, 9)
     color_playground.add_object(paddle_top, 4, 0)
-    color_playground.add_object(paddle_bot, 4, 18)
+    color_playground.add_object(paddle_bot, 4, 17)
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     # Spiel
