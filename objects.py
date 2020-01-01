@@ -15,10 +15,10 @@ class Object:
         self.color = color
         self.field_with_rotations = field
         self.orientation = 0
-        self.orientation_x
-        self.orientation_y
-        self.posx
-        self.posy
+        self.orientation_x = 0
+        self.orientation_y = 0
+        self.posx = 0
+        self.posy =    0
 
     @property
     def height(self):
