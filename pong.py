@@ -11,7 +11,8 @@ import datetime
 import Collision
 import gamespeed
 import time
-import tetris_blocks
+from controller import Controller
+from Ball_Steuerung import Ball_Steuerung
 
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
@@ -43,7 +44,9 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
     color_playground.clear()
     red_playground.clear()
 
-def run_game(): #joel hat nix geleistet!
+def run_game():
+
+
     # Some stuff needed by PyGame
     pygame.init()
 
@@ -96,6 +99,11 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
     full_line_detector.delete_full_lines(lines, color_playground)
     score = calculator.points(score, len(lines), 0)
     return score
+
+def round(b:object, b1:object, b2:object, c:Collision.Collision_Dedektor, p:playground, bs:Ball_Steuerung, joy1, joy2):
+    Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
+    Controller.Paddle_Steuerung(joy1, b1)
+    Controller.Paddle_Steuerung(joy2, b2)
 
 
 if __name__ == "__main__":

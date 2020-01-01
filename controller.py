@@ -29,6 +29,7 @@ class Controller:
                 if event.button == 5:
                     return "Right Title"
 
+
     def Paddle_Steuerung(self, paddle:Object):
         events = pygame.event.get()
 
