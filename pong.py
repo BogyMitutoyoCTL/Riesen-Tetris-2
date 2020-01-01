@@ -79,6 +79,7 @@ def run_game():
     # red_playground.clear()
     # color_playground.clear()
     # Add preview block to red_playgound
+    #machec vllt noch nen zufall algorithmus, auf welcher seite der ball startet
     color_playground.add_object(ball, 2, 9)
     color_playground.add_object(paddle_left, 0, 9)
     color_playground.add_object(paddle_left, 9, 9)
