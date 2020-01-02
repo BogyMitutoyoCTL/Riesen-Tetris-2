@@ -1,5 +1,6 @@
 import Collision
 import playground
+import pong
 from objects import Object
 from random import random
 
@@ -18,11 +19,10 @@ class Ball_Steuerung:
         b.posx = b.posx + b.orientation_x
         b.posy = b.posy + b.orientation_y
 
-    def start_calculator(self, b:object):
-        randomint = random.randint(1, 2)
-        if randomint == 1 :
+    def ball_orientation(self, b:object):
+        if pong.run_game.Loser1 == True :
             b.orientation_x = -1
-        if randomint == 2 :
+        if pong.run_game.Loser1 == True :
             b.orientation_x = 1
 
         randomint = random.randint(1, 2)

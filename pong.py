@@ -11,8 +11,9 @@ import datetime
 import Collision
 import gamespeed
 import time
-from controller import Controller
-from Ball_Steuerung import Ball_Steuerung
+import random
+import Ball_Steuerung
+
 
 
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
@@ -53,6 +54,10 @@ def run_game():
     paddle_top = objects.object_list[2]
     paddle_bot = objects.object_list[3]
     ball = objects.object_list[4]
+    Loser1 = False
+    Loser2 = False
+
+    anfang = random.random()
     # Some stuff needed by PyGame
     pygame.init()
 
@@ -74,29 +79,24 @@ def run_game():
     red_playground = playground.Playground(8, 32)
 
     show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
-    paddle_top.posy = 0
-    paddle_top.posx = 4
-    paddle_bot.posx = 4
-    paddle_bot.posy = 19
-    ball.posx = 4
-    ball.posy = 9
-    # Prepare red_playgound to repaint...
-    # red_playground.clear()
-    # color_playground.clear()
-    # Add preview block to red_playgound
-    i = 0
-    while i < 99999:
-        #color_playground.clear()
-        i += 1
-        gamepad.Paddle_Steuerung(paddle_top)
 
-        color_playground.add_object(ball, ball.posx, ball.posy)
-        color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
-        color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
-        # draw red_playgound
-        rgb_led_drawer.draw_playground(color_playground)
-        #pygame.time.wait(50)
-    #pygame.time.wait(5000)
+    color_playground.add_object(paddle_top, 4, 0)
+    color_playground.add_object(paddle_bot, 4, 17)
+    if anfang > 0.5:
+        Loser1 = True
+        color_playground.add_object(ball, 5, 7)
+        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        Loser1 = False
+    else:
+        Loser2 = True
+        color_playground.add_object(ball, 5, 12)
+        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        Loser2 = False
+    # draw red_playgound
+    rgb_led_drawer.draw_playground(color_playground)
+    led_matrix_drawer.draw_playground(red_playground)
+    # Spiel
+    pygame.time.wait(5000)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
@@ -131,8 +131,8 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
 def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p: playground, bs: Ball_Steuerung, joy1,
           joy2):
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
-    Controller.Paddle_Steuerung(joy1, b1)
-    Controller.Paddle_Steuerung(joy2, b2)
+    # Controller.Paddle_Steuerung(joy1, b1)
+    # Controller.Paddle_Steuerung(joy2, b2)
 
 
 if __name__ == "__main__":
