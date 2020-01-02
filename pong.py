@@ -136,6 +136,9 @@ def run_game():
         rgb_led_drawer.draw_playground(color_playground)
         color_playground.clear()
         pygame.time.wait(50)
+        result = controller.get_button_pressed()
+        if result == "Restart":
+            break
     # Spiel
     pygame.time.wait(5000)
     del led_matrix_drawer
