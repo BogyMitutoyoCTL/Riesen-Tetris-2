@@ -19,7 +19,7 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
     while True:
         color_playground.clear()
         red_playground.clear()
-        # TODO: this is a quite ugly hack, since NumberToBlock only supports 4 digit numbers
+        # TODO: this is a quite ugly hack, since NumberToBlock only supports 4 digit numbers.
         now = datetime.datetime.now()
         min = now.time().minute
         hour = now.time().hour
