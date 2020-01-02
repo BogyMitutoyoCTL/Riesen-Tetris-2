@@ -114,7 +114,7 @@ def run_game():
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
     Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-    while i<10:
+    while i<30:
 
         i += 1
         gamepad.Paddle_Steuerung(paddle_top)
@@ -130,8 +130,17 @@ def run_game():
         while paddle_bot.posx < 0:
             paddle_bot.posx += 1
 
+        if ball.posx == 1:
+            ball.orientation_x = -ball.orientation_x
 
-        Ball_Steuerung.Ball_Steuerung.position_calculator(Ball_Steuerung.Ball_Steuerung, color_playground, paddle_top, paddle_bot, Collision.Collision_Dedektor ,ball)
+        if ball.posx == 10:
+            ball.orientation_x = -ball.orientation_x
+
+        if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx, ball.posy) == True:
+            ball.orientation_y = -ball.orientation_y
+
+        ball.posx = ball.posx + ball.orientation_x
+        ball.posy = ball.posy + ball.orientation_y
 
         color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
         color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
@@ -144,6 +153,9 @@ def run_game():
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
+    result = gamepad.get_button_pressed()
+    if result == "Restart":
+        run_game()
     pygame.quit()
 
 
