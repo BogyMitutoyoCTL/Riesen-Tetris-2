@@ -13,41 +13,48 @@ import gamespeed
 import time
 import random
 import Ball_Steuerung
+import titlescreens
 
+def run_game():
+    pygame.init()
 
+    pygame.joystick.init()
+    joystick = pygame.joystick.Joystick(0)
+    joystick.init()
 
-def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
-    while True:
-        color_playground.clear()
-        red_playground.clear()
-        # TODO: this is a quite ugly hack, since NumberToBlock only supports 4 digit numbers
-        now = datetime.datetime.now()
-        min = now.time().minute
-        hour = now.time().hour
-        mon = now.date().month
-        today = now.date().day
-        sec = now.time().second
-        year = now.date().year % 100
-        color_playground.add_block(numbertoblock.NumberToBlock.get_block(hour * 100), 0, 0)
-        color_playground.add_block(numbertoblock.NumberToBlock.get_block(min * 100), 0, 6)
-        color_playground.add_block(numbertoblock.NumberToBlock.get_block(sec * 100), 0, 12)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(today * 100 + mon), 0, 0)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(year * 100), 21, 0)
+    # joystick2 = pygame.joystick.Joystick(1)
+    # joystick2.init()
 
-        rgg_led_drawer.draw_playground(color_playground)
-        led_matrix_drawer.draw_playground(red_playground)
-        pygame.time.Clock().tick(1)
+    gamepad = controller.Controller(joystick)
+    # gamepad2 = controller.Controller(joystick2)
 
-        # rand = random_blocks.Randomblock()
-        # next_block = rand.get_random_block()
-        result = controller.get_button_pressed()
-        if result == "Restart":
-            break
+    rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
+
+    led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
+
+    color_playground = playground.Playground(20, 10)
+    red_playground = playground.Playground(8, 32)
     color_playground.clear()
     red_playground.clear()
 
-
-def run_game():
+    tetrisplay = False
+    pongplay = False
+    clock = True
+    pongtitlescreen = False
+    tetristitlescreen = False
+    while tetrisplay == False or pongplay == False:
+        while clock == True:
+            titlescreens.show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground,
+                                                                    led_matrix_drawer, gamepad)
+        while pongtitlescreen == True:
+            titlescreens.show_pong_titlescreen()
+        while tetristitlescreen == True:
+            titlescreens.show_tetris_titlescreen()
+    if tetrisplay == True:
+        tetris()
+    if pongplay == True:
+        pong()
+def pong():
     # variables for objects
     paddle_left = objects.object_list[0]
     paddle_right = objects.object_list[1]
@@ -66,11 +73,11 @@ def run_game():
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
 
-    #joystick2 = pygame.joystick.Joystick(1)
-    #joystick2.init()
+    # joystick2 = pygame.joystick.Joystick(1)
+    # joystick2.init()
 
     gamepad = controller.Controller(joystick)
-    #gamepad2 = controller.Controller(joystick2)
+    # gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -83,7 +90,6 @@ def run_game():
     red_playground = playground.Playground(8, 32)
     color_playground.clear()
 
-    show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
     # Prepare red_playgound to repaint...
     # red_playground.clear()
     # color_playground.clear()
@@ -95,40 +101,38 @@ def run_game():
     paddle_bot.posy = 19
     ball.posx = 5
 
-
     color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
     color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
     if anfang > 0.5:
         Loser1 = True
         ball.posy = 7
         color_playground.add_object(ball, ball.posx, ball.posy)
-        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        # Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser1 = False
     else:
         Loser2 = True
         ball.posy = 12
         color_playground.add_object(ball, ball.posx, ball.posy)
-        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        # Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser2 = False
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
-    while i<9999999:
+    while i < 9999999:
 
         i += 1
         gamepad.Paddle_Steuerung(paddle_top)
         while paddle_top.posx > 7:
-            paddle_top.posx -=1
+            paddle_top.posx -= 1
         while paddle_top.posx < 0:
-            paddle_top.posx +=1
+            paddle_top.posx += 1
 
-        #gamepad2.Paddle_Steuerung(paddle_bot)
+        # gamepad2.Paddle_Steuerung(paddle_bot)
         while paddle_top.posx > 7:
-            paddle_top.posx -=1
+            paddle_top.posx -= 1
         while paddle_top.posx < 0:
-            paddle_top.posx +=1
-
+            paddle_top.posx += 1
 
         color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
         color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
@@ -142,7 +146,8 @@ def run_game():
     del rgb_led_drawer
     pygame.event.get()
     pygame.quit()
-
+def tetris():
+    pygame.init()
 
 def block_is_above_beginning(block, line):
     for y in range(block.height):
