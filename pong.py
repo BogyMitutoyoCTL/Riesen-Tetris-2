@@ -11,6 +11,7 @@ import datetime
 import Collision
 import gamespeed
 import time
+import random
 from controller import Controller
 from Ball_Steuerung import Ball_Steuerung
 
@@ -53,6 +54,10 @@ def run_game():
     paddle_top = objects.object_list[2]
     paddle_bot = objects.object_list[3]
     ball = objects.object_list[4]
+    loser1 = False
+    loser2 = False
+
+    anfang = random.random()
     # Some stuff needed by PyGame
     pygame.init()
 
@@ -75,14 +80,12 @@ def run_game():
 
     show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
 
-    # Prepare red_playgound to repaint...
-    # red_playground.clear()
-    # color_playground.clear()
-    # Add preview block to red_playgound
-    #machec vllt noch nen zufall algorithmus, auf welcher seite der ball startet
-    color_playground.add_object(ball, 4, 9)
     color_playground.add_object(paddle_top, 4, 0)
     color_playground.add_object(paddle_bot, 4, 17)
+    if anfang > 0.5:
+        color_playground.add_object(ball, 5, 3)
+    else
+        color_playground.add_object(ball, 5, 14)
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     # Spiel
