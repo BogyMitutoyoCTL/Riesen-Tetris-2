@@ -117,6 +117,7 @@ def run_game():
     game_over = False
     score1 = 0
     score2 = 0
+    #gamestruktur
     while score1 < 3 or score2 < 3:
         while game_over == False:
             gamepad.Paddle_Steuerung(paddle_top)
