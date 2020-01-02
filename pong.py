@@ -119,7 +119,7 @@ def pong():
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
-    while i < 9999999:
+    while i < 999:
 
         i += 1
         gamepad.Paddle_Steuerung(paddle_top)
