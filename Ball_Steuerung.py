@@ -22,12 +22,6 @@ class Ball_Steuerung:
         if randomint == 2:
             b.orientation_x = 1
 
-        randomint = random.randint(1, 2)
-        if randomint == 1 :
-            b.orientation_y = -1
-        if randomint == 2 :
-            b.orientation_y = 1
-
     def end_game(self, b:object):
         if b.posy == 0 or b.posy == 19:
             return True

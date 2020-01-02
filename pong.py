@@ -100,9 +100,11 @@ def run_game():
     if anfang > 0.5:
         ball.posy = 7
         color_playground.add_object(ball, ball.posx, ball.posy)
+        ball.orientation_y = 1
     else:
         ball.posy = 12
         color_playground.add_object(ball, ball.posx, ball.posy)
+        ball.orientation_y = -1
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
