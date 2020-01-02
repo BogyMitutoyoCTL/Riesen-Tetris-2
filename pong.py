@@ -162,6 +162,11 @@ def run_game():
             rgb_led_drawer.draw_playground(color_playground)
             color_playground.clear()
             pygame.time.wait(time_to_wait)
+        game_over = False
+        ball.orientation_y -= ball.orientation_y
+        color_playground.clear()
+        red_playground.clear()
+        ball.posy = 9
     # Spiel
     del led_matrix_drawer
     del rgb_led_drawer
