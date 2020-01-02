@@ -66,7 +66,11 @@ def run_game():
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
 
+    #joystick2 = pygame.joystick.Joystick(1)
+    #joystick2.init()
+
     gamepad = controller.Controller(joystick)
+    #gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -77,24 +81,61 @@ def run_game():
     # Playgrounds
     color_playground = playground.Playground(20, 10)
     red_playground = playground.Playground(8, 32)
+    color_playground.clear()
 
     show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
+    # Prepare red_playgound to repaint...
+    # red_playground.clear()
+    # color_playground.clear()
+    # Add preview block to red_playgound
+    i = 0
+    paddle_top.posx = 4
+    paddle_bot.posx = 4
+    paddle_top.posy = 0
+    paddle_bot.posy = 19
+    ball.posx = 5
 
-    color_playground.add_object(paddle_top, 4, 0)
-    color_playground.add_object(paddle_bot, 4, 17)
+
+    color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
+    color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
     if anfang > 0.5:
         Loser1 = True
-        color_playground.add_object(ball, 5, 7)
+        ball.posy = 7
+        color_playground.add_object(ball, ball.posx, ball.posy)
         #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser1 = False
     else:
         Loser2 = True
-        color_playground.add_object(ball, 5, 12)
+        ball.posy = 12
+        color_playground.add_object(ball, ball.posx, ball.posy)
         #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser2 = False
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
+    color_playground.clear()
+    while i<9999999:
+
+        i += 1
+        gamepad.Paddle_Steuerung(paddle_top)
+        while paddle_top.posx > 7:
+            paddle_top.posx -=1
+        while paddle_top.posx < 0:
+            paddle_top.posx +=1
+
+        #gamepad2.Paddle_Steuerung(paddle_bot)
+        while paddle_top.posx > 7:
+            paddle_top.posx -=1
+        while paddle_top.posx < 0:
+            paddle_top.posx +=1
+
+
+        color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
+        color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
+        color_playground.add_object(ball, ball.posx, ball.posy)
+        rgb_led_drawer.draw_playground(color_playground)
+        color_playground.clear()
+        pygame.time.wait(50)
     # Spiel
     pygame.time.wait(5000)
     del led_matrix_drawer

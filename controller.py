@@ -1,6 +1,8 @@
 import pygame
 from objects import Object
 from pygame.joystick import Joystick
+import Collision
+import playground
 
 class Controller:
     def __init__(self, joystick: Joystick):
@@ -10,10 +12,7 @@ class Controller:
         events = pygame.event.get()
 
         for event in events:
-            direction = None
-
             if event.type == pygame.JOYBUTTONDOWN:
-
                 if event.button == 7:
                     return "Restart"
                 if event.button == 4:
