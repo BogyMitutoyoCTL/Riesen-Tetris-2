@@ -119,7 +119,7 @@ def run_game():
     # gamestruktur
     while score1 < 3 or score2 < 3:
         game_over = False
-        ball.orientation_y -= ball.orientation_y
+        #ball.orientation_y -= ball.orientation_y
         color_playground.clear()
         red_playground.clear()
         ball.posy = 9
