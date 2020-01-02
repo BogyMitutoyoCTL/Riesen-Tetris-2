@@ -19,9 +19,9 @@ class Ball_Steuerung:
         b.posy = b.posy + b.orientation_y
 
     def ball_orientation(self, b:object, randomstart):
-        if randomstart == 1 :
+        if randomstart == True :
             b.orientation_x = -1
-        if randomstart == 2 :
+        if randomstart == False :
             b.orientation_x = 1
 
         randomint = random.randint(1, 2)
