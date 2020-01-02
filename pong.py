@@ -114,42 +114,43 @@ def run_game():
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
     Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-    while i<30:
+    game_over = False
+    score1 = 0
+    score2 = 0
+    while score1 < 3 or score2 < 3:
+        while game_over == False:
+            gamepad.Paddle_Steuerung(paddle_top)
+            while paddle_top.posx > 7:
+                paddle_top.posx -=1
 
-        i += 1
-        gamepad.Paddle_Steuerung(paddle_top)
-        while paddle_top.posx > 7:
-            paddle_top.posx -=1
+            while paddle_top.posx < 0:
+                paddle_top.posx +=1
 
-        while paddle_top.posx < 0:
-            paddle_top.posx +=1
+            # gamepad2.Paddle_Steuerung(paddle_bot)
+            while paddle_bot.posx > 7:
+                paddle_bot.posx -= 1
+            while paddle_bot.posx < 0:
+                paddle_bot.posx += 1
 
-        # gamepad2.Paddle_Steuerung(paddle_bot)
-        while paddle_bot.posx > 7:
-            paddle_bot.posx -= 1
-        while paddle_bot.posx < 0:
-            paddle_bot.posx += 1
+            if ball.posx == 1:
+                ball.orientation_x = -ball.orientation_x
 
-        if ball.posx == 1:
-            ball.orientation_x = -ball.orientation_x
+            if ball.posx == 10:
+                ball.orientation_x = -ball.orientation_x
 
-        if ball.posx == 10:
-            ball.orientation_x = -ball.orientation_x
+            if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx, ball.posy) == True:
+                ball.orientation_y = -ball.orientation_y
 
-        if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx, ball.posy) == True:
-            ball.orientation_y = -ball.orientation_y
+            ball.posx = ball.posx + ball.orientation_x
+            ball.posy = ball.posy + ball.orientation_y
 
-        ball.posx = ball.posx + ball.orientation_x
-        ball.posy = ball.posy + ball.orientation_y
-
-        color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
-        color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
-        color_playground.add_object(ball, ball.posx, ball.posy)
-        rgb_led_drawer.draw_playground(color_playground)
-        color_playground.clear()
-        pygame.time.wait(500)
+            color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
+            color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
+            color_playground.add_object(ball, ball.posx, ball.posy)
+            rgb_led_drawer.draw_playground(color_playground)
+            color_playground.clear()
+            pygame.time.wait(500)
     # Spiel
-    pygame.time.wait(5000)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
