@@ -83,9 +83,9 @@ def run_game():
     color_playground.add_object(paddle_top, 4, 0)
     color_playground.add_object(paddle_bot, 4, 17)
     if anfang > 0.5:
-        color_playground.add_object(ball, 5, 3)
+        color_playground.add_object(ball, 5, 7)
     else:
-        color_playground.add_object(ball, 5, 14)
+        color_playground.add_object(ball, 5, 12)
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     # Spiel
