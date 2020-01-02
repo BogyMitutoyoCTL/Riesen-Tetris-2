@@ -118,11 +118,6 @@ def run_game():
     time_to_wait = 500
     # gamestruktur
     while score1 < 3 or score2 < 3:
-        game_over = False
-        #ball.orientation_y -= ball.orientation_y
-        color_playground.clear()
-        red_playground.clear()
-        ball.posy = 9
         while game_over == False:
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
@@ -165,7 +160,11 @@ def run_game():
             rgb_led_drawer.draw_playground(color_playground)
             color_playground.clear()
             pygame.time.wait(time_to_wait)
-    # Spiel
+        game_over = False
+        ball.orientation_y -= ball.orientation_y
+        color_playground.clear()
+        red_playground.clear()
+        ball.posy = 9
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
