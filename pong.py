@@ -91,6 +91,7 @@ def run_game():
         Ball_Steuerung.Ball_Steuerung.ball_orientation(ball, Loser1 ,Loser2)
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
+    led_matrix_drawer.draw_playground(red_playground)
     # Spiel
     pygame.time.wait(5000)
     del led_matrix_drawer
