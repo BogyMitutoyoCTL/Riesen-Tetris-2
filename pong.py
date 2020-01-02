@@ -114,41 +114,30 @@ def run_game():
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
-    while i<9999999:
+    while i<10:
 
         i += 1
         gamepad.Paddle_Steuerung(paddle_top)
         while paddle_top.posx > 7:
             paddle_top.posx -=1
-            result = controller.get_button_pressed()
-            if result == "Left Title" or result == "Right Title":
-                break
+
         while paddle_top.posx < 0:
             paddle_top.posx +=1
-            result = controller.get_button_pressed()
-            if result == "Left Title" or result == "Right Title":
-                break
+
         #gamepad2.Paddle_Steuerung(paddle_bot)
         while paddle_top.posx > 7:
             paddle_top.posx -=1
-            result = controller.get_button_pressed()
-            if result == "Left Title" or result == "Right Title":
-                break
+
         while paddle_top.posx < 0:
             paddle_top.posx +=1
-            result = controller.get_button_pressed()
-            if result == "Left Title" or result == "Right Title":
-                break
+
 
         color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
         color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
         color_playground.add_object(ball, ball.posx, ball.posy)
         rgb_led_drawer.draw_playground(color_playground)
         color_playground.clear()
-        pygame.time.wait(50)
-        result = controller.get_button_pressed()
-        if result == "Left Title" or result == "Right Title":
-            break
+        pygame.time.wait(1000)
     # Spiel
     pygame.time.wait(5000)
     del led_matrix_drawer
