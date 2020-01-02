@@ -15,6 +15,7 @@ import random
 import Ball_Steuerung
 
 
+
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
         color_playground.clear()
@@ -84,11 +85,13 @@ def run_game():
     if anfang > 0.5:
         Loser1 = True
         color_playground.add_object(ball, 5, 7)
-        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball, Loser1, Loser2)
+        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        Loser1 = False
     else:
         Loser2 = True
         color_playground.add_object(ball, 5, 12)
-        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball, Loser1 ,Loser2)
+        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        Loser2 = False
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
@@ -128,8 +131,8 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
 def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p: playground, bs: Ball_Steuerung, joy1,
           joy2):
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
-    #Controller.Paddle_Steuerung(joy1, b1)
-    #Controller.Paddle_Steuerung(joy2, b2)
+    # Controller.Paddle_Steuerung(joy1, b1)
+    # Controller.Paddle_Steuerung(joy2, b2)
 
 
 if __name__ == "__main__":
