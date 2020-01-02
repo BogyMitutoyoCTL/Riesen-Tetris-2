@@ -9,7 +9,7 @@ class Collision_Dedektor:
                 num = b.get_field()[y][x]
                 if p.is_inside_field(x + cx, y + cy):
                     color = p.get_pixel(x + cx, y + cy)
-                    if self.is_collision(color, num):
+                    if self.is_collision(self, color, num):
                         return True
 
         return False

@@ -31,3 +31,9 @@ class Controller:
                     paddle.posx += 1 #right
                 if hat_x == -1 and hat_y == 0:
                     paddle.posx -=1 #left
+            if event.type == pygame.JOYAXISMOTION:
+                x = self.Joy.get_axis(0)
+                if x > 0.3:
+                    paddle.posx += 1
+                if x < -0.3:
+                    paddle.posx -= 1

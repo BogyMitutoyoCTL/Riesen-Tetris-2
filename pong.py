@@ -95,7 +95,6 @@ def run_game():
     paddle_bot.posy = 19
     ball.posx = 5
 
-
     color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
     color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
     if anfang > 0.5:
@@ -114,6 +113,7 @@ def run_game():
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
+    Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
     while i<10:
 
         i += 1
@@ -124,20 +124,21 @@ def run_game():
         while paddle_top.posx < 0:
             paddle_top.posx +=1
 
-        #gamepad2.Paddle_Steuerung(paddle_bot)
-        while paddle_top.posx > 7:
-            paddle_top.posx -=1
+        # gamepad2.Paddle_Steuerung(paddle_bot)
+        while paddle_bot.posx > 7:
+            paddle_bot.posx -= 1
+        while paddle_bot.posx < 0:
+            paddle_bot.posx += 1
 
-        while paddle_top.posx < 0:
-            paddle_top.posx +=1
 
+        Ball_Steuerung.Ball_Steuerung.position_calculator(Ball_Steuerung.Ball_Steuerung, color_playground, paddle_top, paddle_bot, Collision.Collision_Dedektor ,ball)
 
         color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
         color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
         color_playground.add_object(ball, ball.posx, ball.posy)
         rgb_led_drawer.draw_playground(color_playground)
         color_playground.clear()
-        pygame.time.wait(1000)
+        pygame.time.wait(500)
     # Spiel
     pygame.time.wait(5000)
     del led_matrix_drawer
