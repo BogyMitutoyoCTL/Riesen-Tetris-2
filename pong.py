@@ -121,23 +121,23 @@ def run_game():
         while paddle_top.posx > 7:
             paddle_top.posx -=1
             result = controller.get_button_pressed()
-            if result == "Restart":
+            if result == "Left Title" or result == "Right Title":
                 break
         while paddle_top.posx < 0:
             paddle_top.posx +=1
             result = controller.get_button_pressed()
-            if result == "Restart":
+            if result == "Left Title" or result == "Right Title":
                 break
         #gamepad2.Paddle_Steuerung(paddle_bot)
         while paddle_top.posx > 7:
             paddle_top.posx -=1
             result = controller.get_button_pressed()
-            if result == "Restart":
+            if result == "Left Title" or result == "Right Title":
                 break
         while paddle_top.posx < 0:
             paddle_top.posx +=1
             result = controller.get_button_pressed()
-            if result == "Restart":
+            if result == "Left Title" or result == "Right Title":
                 break
 
         color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
@@ -147,7 +147,7 @@ def run_game():
         color_playground.clear()
         pygame.time.wait(50)
         result = controller.get_button_pressed()
-        if result == "Restart":
+        if result == "Left Title" or result == "Right Title":
             break
     # Spiel
     pygame.time.wait(5000)
