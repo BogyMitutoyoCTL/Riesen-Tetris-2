@@ -130,20 +130,21 @@ def run_game():
         while paddle_bot.posx < 0:
             paddle_bot.posx += 1
 
-        if ball.posx == 1:
+        color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
+        color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
+
+        if ball.posx == 0:
             ball.orientation_x = -ball.orientation_x
 
-        if ball.posx == 10:
+        if ball.posx == 9:
             ball.orientation_x = -ball.orientation_x
 
-        if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx, ball.posy) == True:
+        if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
             ball.orientation_y = -ball.orientation_y
 
         ball.posx = ball.posx + ball.orientation_x
         ball.posy = ball.posy + ball.orientation_y
 
-        color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
-        color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
         color_playground.add_object(ball, ball.posx, ball.posy)
         rgb_led_drawer.draw_playground(color_playground)
         color_playground.clear()
