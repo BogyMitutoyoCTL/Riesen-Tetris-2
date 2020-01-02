@@ -12,8 +12,7 @@ import Collision
 import gamespeed
 import time
 import random
-from controller import Controller
-from Ball_Steuerung import Ball_Steuerung
+import Ball_Steuerung
 
 
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
@@ -84,8 +83,10 @@ def run_game():
     color_playground.add_object(paddle_bot, 4, 17)
     if anfang > 0.5:
         color_playground.add_object(ball, 5, 7)
+        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball, 1)
     else:
         color_playground.add_object(ball, 5, 12)
+        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball, 2)
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     # Spiel
