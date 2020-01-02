@@ -120,15 +120,25 @@ def run_game():
         gamepad.Paddle_Steuerung(paddle_top)
         while paddle_top.posx > 7:
             paddle_top.posx -=1
+            result = controller.get_button_pressed()
+            if result == "Restart":
+                break
         while paddle_top.posx < 0:
             paddle_top.posx +=1
-
+            result = controller.get_button_pressed()
+            if result == "Restart":
+                break
         #gamepad2.Paddle_Steuerung(paddle_bot)
         while paddle_top.posx > 7:
             paddle_top.posx -=1
+            result = controller.get_button_pressed()
+            if result == "Restart":
+                break
         while paddle_top.posx < 0:
             paddle_top.posx +=1
-
+            result = controller.get_button_pressed()
+            if result == "Restart":
+                break
 
         color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
         color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
