@@ -1,4 +1,3 @@
-pong.py:
 import objects
 import ledmatrixdrawer
 import playground
