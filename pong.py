@@ -13,7 +13,6 @@ import gamespeed
 import time
 import random
 import Ball_Steuerung
-import titlescreens
 
 def run_game():
     pygame.init()
@@ -198,7 +197,7 @@ def show_pong_titlescreen(color_playground, rgg_led_drawer, red_playground, led_
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(min * 100), 0, 6)
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(sec * 100), 0, 12)
         red_playground.add_block(numbertoblock.NumberToBlock.get_block(today * 100 + mon), 0, 0)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(year * 100), 21, 0)
+        #red_playground.add_block(numbertoblock.NumberToBlock.get_block(year * 100), 21, 0)
 
         rgg_led_drawer.draw_playground(color_playground)
         led_matrix_drawer.draw_playground(red_playground)
@@ -234,8 +233,8 @@ def show_tetris_titlescreen(color_playground, rgg_led_drawer, red_playground, le
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(hour * 100), 0, 0)
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(min * 100), 0, 6)
         color_playground.add_block(numbertoblock.NumberToBlock.get_block(sec * 100), 0, 12)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(today * 100 + mon), 0, 0)
-        red_playground.add_block(numbertoblock.NumberToBlock.get_block(year * 100), 21, 0)
+        #red_playground.add_block(numbertoblock.NumberToBlock.get_block(today * 100 + mon), 0, 0)
+        #red_playground.add_block(numbertoblock.NumberToBlock.get_block(year * 100), 21, 0)
 
         rgg_led_drawer.draw_playground(color_playground)
         led_matrix_drawer.draw_playground(red_playground)
