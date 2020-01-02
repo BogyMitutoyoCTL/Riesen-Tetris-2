@@ -150,10 +150,11 @@ def run_game():
             if object_is_above_beginning(ball) == True:
                 score2 += 1
                 game_over = True
+                break
             if object_is_below_bottom(ball) == True:
                 score1 += 1
                 game_over = True
-
+                break
             ball.posx = ball.posx + ball.orientation_x
             ball.posy = ball.posy + ball.orientation_y
 
