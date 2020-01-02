@@ -173,20 +173,14 @@ def run_game():
 
 
 def object_is_above_beginning(object):
-    for y in range(object.height):
-        for x in range(object.width):
-            if object.get_field()[y][x] == 1:
-                if y <= 0:
-                    return True
+    if object.posy <= 0:
+        return True
     return False
 
 
 def object_is_below_bottom(object):
-    for y in range(object.height):
-        for x in range(object.width):
-            if object.get_field()[y][x] == 1:
-                if y >= 20:
-                    return True
+    if object.posy >= 19:
+        return True
     return False
 
 
