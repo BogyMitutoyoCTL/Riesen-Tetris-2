@@ -127,8 +127,8 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
 def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p: playground, bs: Ball_Steuerung, joy1,
           joy2):
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
-    Controller.Paddle_Steuerung(joy1, b1)
-    Controller.Paddle_Steuerung(joy2, b2)
+    #Controller.Paddle_Steuerung(joy1, b1)
+    #Controller.Paddle_Steuerung(joy2, b2)
 
 
 if __name__ == "__main__":
