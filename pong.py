@@ -53,8 +53,8 @@ def run_game():
     paddle_top = objects.object_list[2]
     paddle_bot = objects.object_list[3]
     ball = objects.object_list[4]
-    loser1 = False
-    loser2 = False
+    Loser1 = False
+    Loser2 = False
 
     anfang = random.random()
     # Some stuff needed by PyGame
@@ -82,11 +82,13 @@ def run_game():
     color_playground.add_object(paddle_top, 4, 0)
     color_playground.add_object(paddle_bot, 4, 17)
     if anfang > 0.5:
+        Loser1 = True
         color_playground.add_object(ball, 5, 7)
-        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball, Loser1, Loser2)
     else:
+        Loser2 = True
         color_playground.add_object(ball, 5, 12)
-        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball, Loser1 ,Loser2)
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     # Spiel

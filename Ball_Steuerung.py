@@ -18,11 +18,11 @@ class Ball_Steuerung:
         b.posx = b.posx + b.orientation_x
         b.posy = b.posy + b.orientation_y
 
-    def ball_orientation(self, b:object):
+    def ball_orientation(self, b:object, Loser1 ,Loser2):
         randomint = random.randint(1, 2)
-        if randomint == 1 :
+        if Loser1 == True :
             b.orientation_x = -1
-        if randomint == 2 :
+        if Loser2 == True :
             b.orientation_x = 1
 
         randomint = random.randint(1, 2)
