@@ -74,19 +74,29 @@ def run_game():
     red_playground = playground.Playground(8, 32)
 
     show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
-
+    paddle_top.posy = 0
+    paddle_top.posx = 4
+    paddle_bot.posx = 4
+    paddle_bot.posy = 19
+    ball.posx = 4
+    ball.posy = 9
     # Prepare red_playgound to repaint...
     # red_playground.clear()
     # color_playground.clear()
     # Add preview block to red_playgound
-    #machec vllt noch nen zufall algorithmus, auf welcher seite der ball startet
-    color_playground.add_object(ball, 4, 9)
-    color_playground.add_object(paddle_top, 4, 0)
-    color_playground.add_object(paddle_bot, 4, 17)
-    # draw red_playgound
-    rgb_led_drawer.draw_playground(color_playground)
-    # Spiel
-    pygame.time.wait(5000)
+    i = 0
+    while i < 99999:
+        #color_playground.clear()
+        i += 1
+        gamepad.Paddle_Steuerung(paddle_top)
+
+        color_playground.add_object(ball, ball.posx, ball.posy)
+        color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
+        color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
+        # draw red_playgound
+        rgb_led_drawer.draw_playground(color_playground)
+        #pygame.time.wait(50)
+    #pygame.time.wait(5000)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()

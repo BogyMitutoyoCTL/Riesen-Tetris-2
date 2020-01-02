@@ -47,13 +47,9 @@ class Objecttype:
                     [0, 0, 1],
                     [0, 0, 1]]
 
-    paddle_top =   [[1, 1, 1],
-                    [0, 0, 0],
-                    [0, 0, 0]]
+    paddle_top =   [[1, 1, 1]]
 
-    paddle_bot =   [[0, 0, 0],
-                    [0, 0, 0],
-                    [1, 1, 1]]
+    paddle_bot =   [[1, 1, 1]]
 
     ball =      [[1]]
 
