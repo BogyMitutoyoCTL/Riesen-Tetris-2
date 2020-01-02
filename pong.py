@@ -117,6 +117,7 @@ def run_game():
     game_over = False
     score1 = 0
     score2 = 0
+    time_to_wait = 500
     #gamestruktur
     while score1 < 3 or score2 < 3:
         while game_over == False:
@@ -144,6 +145,8 @@ def run_game():
 
             if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
                 ball.orientation_y = -ball.orientation_y
+                if time_to_wait > 0:
+                    time_to_wait -=10
 
             ball.posx = ball.posx + ball.orientation_x
             ball.posy = ball.posy + ball.orientation_y
@@ -151,7 +154,7 @@ def run_game():
             color_playground.add_object(ball, ball.posx, ball.posy)
             rgb_led_drawer.draw_playground(color_playground)
             color_playground.clear()
-            pygame.time.wait(500)
+            pygame.time.wait(time_to_wait)
     # Spiel
     del led_matrix_drawer
     del rgb_led_drawer
