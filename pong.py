@@ -85,12 +85,12 @@ def run_game():
     if anfang > 0.5:
         Loser1 = True
         color_playground.add_object(ball, 5, 7)
-        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser1 = False
     else:
         Loser2 = True
         color_playground.add_object(ball, 5, 12)
-        Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser2 = False
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
