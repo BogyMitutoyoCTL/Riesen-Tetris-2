@@ -15,7 +15,6 @@ import random
 import Ball_Steuerung
 
 
-
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
         color_playground.clear()
@@ -66,11 +65,11 @@ def run_game():
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
 
-    #joystick2 = pygame.joystick.Joystick(1)
-    #joystick2.init()
+    # joystick2 = pygame.joystick.Joystick(1)
+    # joystick2.init()
 
     gamepad = controller.Controller(joystick)
-    #gamepad2 = controller.Controller(joystick2)
+    # gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -101,32 +100,32 @@ def run_game():
         Loser1 = True
         ball.posy = 7
         color_playground.add_object(ball, ball.posx, ball.posy)
-        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        # Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser1 = False
     else:
         Loser2 = True
         ball.posy = 12
         color_playground.add_object(ball, ball.posx, ball.posy)
-        #Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
+        # Ball_Steuerung.Ball_Steuerung.ball_orientation(ball)
         Loser2 = False
     # draw red_playgound
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
     Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-    game_over = False
     score1 = 0
     score2 = 0
     time_to_wait = 500
-    #gamestruktur
+    # gamestruktur
     while score1 < 3 or score2 < 3:
+        game_over = False
         while game_over == False:
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
-                paddle_top.posx -=1
+                paddle_top.posx -= 1
 
             while paddle_top.posx < 0:
-                paddle_top.posx +=1
+                paddle_top.posx += 1
 
             # gamepad2.Paddle_Steuerung(paddle_bot)
             while paddle_bot.posx > 7:
@@ -143,11 +142,18 @@ def run_game():
             if ball.posx == 9:
                 ball.orientation_x = -ball.orientation_x
 
-            if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
+            if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball,
+                                                        ball.posx + ball.orientation_x,
+                                                        ball.posy + ball.orientation_y) == True:
                 ball.orientation_y = -ball.orientation_y
                 if time_to_wait > 0:
-                    time_to_wait -=10
-
+                    time_to_wait -= 10
+            if object_is_above_beginning(ball) == True:
+                score2 += 1
+                game_over = True
+            if object_is_below_bottom(ball) == True:
+                score1 += 1
+                game_over = True
             ball.posx = ball.posx + ball.orientation_x
             ball.posy = ball.posy + ball.orientation_y
 
@@ -165,20 +171,20 @@ def run_game():
     pygame.quit()
 
 
-def block_is_above_beginning(block, line):
-    for y in range(block.height):
-        for x in range(block.width):
-            if block.get_field()[y][x] == 1:
-                if y + line <= 0:
+def object_is_above_beginning(object):
+    for y in range(object.height):
+        for x in range(object.width):
+            if object.get_field()[y][x] == 1:
+                if y <= 0:
                     return True
     return False
 
 
-def block_is_below_beginning(block, line):
-    for y in range(block.height):
-        for x in range(block.width):
-            if block.get_field()[y][x] == 1:
-                if y + line > 20:
+def object_is_below_bottom(object):
+    for y in range(object.height):
+        for x in range(object.width):
+            if object.get_field()[y][x] == 1:
+                if y >= 20:
                     return True
     return False
 
