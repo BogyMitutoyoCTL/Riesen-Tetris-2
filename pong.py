@@ -231,10 +231,10 @@ def bot_steuerung(s:object,b:object):
     fail = random.random()
     if fail > 0:
         if s.posx-b.posx >= 0:
-            if s.posx - 1 >= 0 and s.posx - 1 <= 7:
+            if s.posx - 1 >= 0 and s.posx - 1 <= 9:
                 s.posx -= 1
         if s.posx-b.posx-1 < 0:
-            if s.posx + 1 >= 0 and s.posx + 1 <= 7:
+            if s.posx + 1 >= 0 and s.posx + 1 <= 9:
                 s.posx += 1
 
 if __name__ == "__main__":
