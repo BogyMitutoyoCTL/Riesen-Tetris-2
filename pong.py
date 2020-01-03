@@ -126,7 +126,7 @@ def run_game():
                 paddle_top.posx -= 1
 
             while paddle_top.posx < 0:
-                Runde += 3
+                Runde += 1
                 paddle_top.posx += 1
             # bot_steuerung_mit_fail(paddle_top,ball)
             # gamepad2.Paddle_Steuerung(paddle_bot)
@@ -134,22 +134,25 @@ def run_game():
             # paddle_bot.posx -= 1
             # while paddle_bot.posx < 0:
             # paddle_bot.posx += 1
-            bot_steuerung_mit_fail(paddle_bot, ball)
+            bot_steuerung_mit_fail(paddle_bot, ball, score1)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
             if ball.posx == 0:
+                Runde += 1
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
             if ball.posx == 9:
+                Runde += 1
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
             if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball,
                                                         ball.posx + ball.orientation_x,
                                                         ball.posy + ball.orientation_y) == True:
+                Runde += 1
                 ball.orientation_y = -ball.orientation_y
                 pygame.mixer.Sound.play(abpraller_sound)
                 if time_to_wait > 0:
@@ -228,9 +231,14 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
     # Controller.Paddle_Steuerung(joy2, b2)
 
 
-def bot_steuerung_mit_fail(s:object,b:object):
+def bot_steuerung_mit_fail(s:object,b:object,score1):
+    scorediff = 0
+    if score1 == 1:
+        scorediff = 0.5
+    if score1 == 2:
+        scorediff = 1
     fail = random.random()
-    if fail > 0.15:
+    if fail > 0.15-scorediff:
         if s.posx-b.posx >= 0:
             if s.posx > 0:
                 s.posx -= 1
