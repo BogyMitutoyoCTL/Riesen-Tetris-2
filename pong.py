@@ -121,13 +121,13 @@ def run_game():
         ball.posx = 5
         while True:
             Runde += 1
-            #gamepad.Paddle_Steuerung(paddle_top)
-            #while paddle_top.posx > 7:
-                #paddle_top.posx -=1
+            gamepad.Paddle_Steuerung(paddle_top)
+            while paddle_top.posx > 7:
+                paddle_top.posx -=1
 
-            #while paddle_top.posx < 0:
-                #paddle_top.posx +=1
-            bot_steuerung_mit_fail(paddle_top,ball)
+            while paddle_top.posx < 0:
+                paddle_top.posx +=1
+            #bot_steuerung_mit_fail(paddle_top,ball)
             #gamepad2.Paddle_Steuerung(paddle_bot)
             #while paddle_bot.posx > 7:
                 #paddle_bot.posx -= 1
