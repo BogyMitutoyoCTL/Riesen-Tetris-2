@@ -180,9 +180,11 @@ def run_game():
 
             pygame.time.wait(time_to_wait-Runde)
         if score1 == 3:
+            pygame.time.wait(3000)
             game_over = True
             break
         if score2 == 3:
+            pygame.time.wait(3000)
             game_over = True
             break
         pygame.mixer.Sound.play(gameover_sound)
