@@ -86,7 +86,6 @@ def run_game():
     # red_playground.clear()
     # color_playground.clear()
     # Add preview block to red_playgound
-    i = 0
     paddle_top.posx = 4
     paddle_bot.posx = 4
     paddle_top.posy = 0
@@ -151,7 +150,7 @@ def run_game():
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
                 led_matrix_drawer.draw_playground(red_playground)
-                pygame.mixer.Sound.play(fail)
+                #pygame.mixer.Sound.play(fail)
                 break
             if object_is_below_bottom(ball) == True:
                 score1 += 1
@@ -182,7 +181,7 @@ def run_game():
         color_playground.clear()
         red_playground.clear()
 
-    pygame.mixer.Sound.play(gameover_sound)
+    #pygame.mixer.Sound.play(gameover_sound)
     pygame.time.wait(10000)
     del led_matrix_drawer
     del rgb_led_drawer
