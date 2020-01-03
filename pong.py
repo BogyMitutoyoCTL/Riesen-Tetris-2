@@ -240,10 +240,10 @@ def bot_steuerung_mit_fail(s: object, b: object):
 
 
 def bot_steuerung(s: object, b: object):
-    if s.posx - b.posx - 1 > 0:
+    if s.posx - b.posx - 1 >= 0:
         if s.posx > 0:
             s.posx -= 1
-    if s.posx - b.posx + 1 < 0:
+    if s.posx - b.posx + 1 <= 0:
         if s.posx < 7:
             s.posx += 1
 
