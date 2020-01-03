@@ -198,9 +198,7 @@ def run_game():
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
-    result = gamepad.get_button_pressed()
-    if result == "Restart":
-        run_game()
+
 
 def object_is_above_beginning(object):
     if object.posy <= 0:
