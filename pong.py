@@ -154,13 +154,6 @@ def run_game():
                 ball.posy = 12
                 break
 
-            if ball.posy == 0:
-                score1 + 1
-                end_game = True
-            if ball.posy == 19:
-                score2 + 1
-                end_game = True
-
             ball.posx = ball.posx + ball.orientation_x
             ball.posy = ball.posy + ball.orientation_y
 
