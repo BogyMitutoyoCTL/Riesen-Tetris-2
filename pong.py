@@ -240,7 +240,7 @@ def bot_steuerung_mit_fail(s:object,b:object,score1):
     if score1 == 2:
         scorediff = 1
     fail = random.random()
-    if fail > 0.15-scorediff:
+    if fail > 0.2-scorediff:
         if s.posx-b.posx >= 0:
             if s.posx > 0:
                 s.posx -= 1
