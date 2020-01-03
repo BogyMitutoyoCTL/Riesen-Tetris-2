@@ -186,6 +186,9 @@ def run_game():
         result = controller.get_button_pressed()
         if result == "Restart":
             break
+
+
+    pygame.mixer.Sound.play(gameover_sound)
     # Spiel
     pygame.time.wait(10000)
     del led_matrix_drawer
