@@ -227,13 +227,13 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
 
 def bot_steuerung(s:object,b:object):
     fail = random.random()
-    if fail > 0:
-        if s.posx-b.posx >= 0:
-            if s.posx - 1 >= 0 and s.posx - 1 <= 7:
-                s.posx -= 1
-        if s.posx-b.posx-1 < 0:
-            if s.posx + 1 >= 0 and s.posx + 1 <= 7:
-                s.posx += 1
+   #if fail > 0:
+    if s.posx-b.posx >= 0:
+        if s.posx > 0:
+            s.posx -= 1
+    if s.posx-b.posx < 0:
+        if s.posx < 7:
+            s.posx += 1
 
 if __name__ == "__main__":
     while True:
