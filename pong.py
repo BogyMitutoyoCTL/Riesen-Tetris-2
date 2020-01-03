@@ -120,7 +120,7 @@ def run_game():
         time_to_wait = 500-50*(score1+score2)
         ball.posx = 5
         while True:
-            Runde += 5
+            Runde += 1
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
                 paddle_top.posx -=1
