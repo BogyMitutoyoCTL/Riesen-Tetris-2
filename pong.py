@@ -126,6 +126,7 @@ def run_game():
                 paddle_top.posx -= 1
 
             while paddle_top.posx < 0:
+                Runde += 0.5
                 paddle_top.posx += 1
             # bot_steuerung_mit_fail(paddle_top,ball)
             # gamepad2.Paddle_Steuerung(paddle_bot)
@@ -151,7 +152,6 @@ def run_game():
                                                         ball.posy + ball.orientation_y) == True:
                 ball.orientation_y = -ball.orientation_y
                 pygame.mixer.Sound.play(abpraller_sound)
-                Runde += 5
                 if time_to_wait > 0:
                     time_to_wait -= 10
             if object_is_above_beginning(ball) == True:
@@ -230,7 +230,7 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
 
 def bot_steuerung_mit_fail(s:object,b:object):
     fail = random.random()
-    if fail > 0.001:
+    if fail > 0.05:
         if s.posx-b.posx >= 0:
             if s.posx > 0:
                 s.posx -= 1
