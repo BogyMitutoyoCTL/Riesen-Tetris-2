@@ -116,7 +116,7 @@ def run_game():
     game_over = False
     while game_over == False:
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-        time_to_wait = 500-100*(score1+score2)
+        time_to_wait = 500-50*(score1+score2)
         ball.posx = 5
         while True:
             gamepad.Paddle_Steuerung(paddle_top)
