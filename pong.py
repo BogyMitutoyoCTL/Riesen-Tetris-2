@@ -122,10 +122,10 @@ def run_game():
         while True:
             Runde += 1
             gamepad.Paddle_Steuerung(paddle_top)
-            if paddle_top.posx > 7:
+            while paddle_top.posx > 7:
                 paddle_top.posx -=1
 
-            if paddle_top.posx < 0:
+            while paddle_top.posx < 0:
                 paddle_top.posx +=1
 
             #gamepad2.Paddle_Steuerung(paddle_bot)
