@@ -235,10 +235,12 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
 
 def bot_steuerung_mit_fail(s:object,b:object,score1):
     scorediff = 0
-    if score1 == 2:
+    if score1 == 1:
         scorediff = 0.5
+    if score1 == 2:
+        scorediff = 1
     fail = random.random()
-    if fail > 0.1-scorediff:
+    if fail > 0.15-scorediff:
         if s.posx-b.posx >= 0:
             if s.posx > 0:
                 s.posx -= 1
