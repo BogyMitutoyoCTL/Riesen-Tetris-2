@@ -21,3 +21,9 @@ class Ball_Steuerung:
             b.orientation_x = -1
         if randomint == 2:
             b.orientation_x = 1
+
+        randomint = random.randint(1, 2)
+        if randomint == 1:
+            b.orientation_y = -1
+        if randomint == 2:
+            b.orientation_y = 1
