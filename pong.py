@@ -126,7 +126,7 @@ def run_game():
                 paddle_top.posx -= 1
 
             while paddle_top.posx < 0:
-                Runde += 1
+                Runde += 2
                 paddle_top.posx += 1
             # bot_steuerung_mit_fail(paddle_top,ball)
             # gamepad2.Paddle_Steuerung(paddle_bot)
