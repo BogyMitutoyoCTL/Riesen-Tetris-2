@@ -193,7 +193,6 @@ def run_game():
 
     pygame.mixer.Sound.play(gameover_sound)
     # Spiel
-    pygame.time.wait(10000)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
