@@ -115,10 +115,12 @@ def run_game():
     #gamestruktur
     game_over = False
     while game_over == False:
+        Runde = 0
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
         time_to_wait = 500-50*(score1+score2)
         ball.posx = 5
         while True:
+            Runde += 5
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
                 paddle_top.posx -=1
@@ -176,7 +178,7 @@ def run_game():
             color_playground.clear()
             red_playground.clear()
 
-            pygame.time.wait(time_to_wait)
+            pygame.time.wait(time_to_wait-Runde)
         if score1 == 3:
             game_over = True
             break
@@ -228,9 +230,9 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
 def bot_steuerung(s:object,b:object):
     fail = random.random()
     if fail > 0.05:
-        if s.posx-b.posx > 0 and s.posx > 0:
+        if s.posx-b.posx-1 > 0 and s.posx > 0:
             s.posx -= 1
-        if s.posx-b.posx < 0 and s.posx < 7:
+        if s.posx-b.posx-1 < 0 and s.posx < 7:
             s.posx += 1
 
 if __name__ == "__main__":
