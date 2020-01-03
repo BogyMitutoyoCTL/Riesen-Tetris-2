@@ -146,11 +146,11 @@ def run_game():
                     time_to_wait -=10
             if object_is_above_beginning(ball) == True:
                 score2 += 1
-                ball.posy = 7
+                ball.posy = 12
                 break
             if object_is_below_bottom(ball) == True:
                 score1 += 1
-                ball.posy = 12
+                ball.posy = 7
                 break
 
             ball.posx = ball.posx + ball.orientation_x
