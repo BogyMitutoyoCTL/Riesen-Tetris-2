@@ -13,7 +13,6 @@ import gamespeed
 import time
 import random
 import Ball_Steuerung
-import botgegner
 
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
@@ -132,7 +131,7 @@ def run_game():
                 #paddle_bot.posx -= 1
             #while paddle_bot.posx < 0:
                # paddle_bot.posx += 1
-            botgegner.bot_steuerung(paddle_bot,ball)
+            bot_steuerung(paddle_bot,ball)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1),0,0)
@@ -224,7 +223,11 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
     # Controller.Paddle_Steuerung(joy1, b1)
     # Controller.Paddle_Steuerung(joy2, b2)
-
+def bot_steuerung(s:object,b:object):
+    if s.posx-b.posx > 0 and s.posx > 0:
+        s.posx -= 1
+    if s.posx-b.posx < 0 and s.posx < 7:
+        s.posx += 1
 
 if __name__ == "__main__":
     while True:
