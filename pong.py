@@ -115,8 +115,11 @@ def run_game():
     game_over = False
     while game_over == False:
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-        time_to_wait = 500-100*(score1+score2)
+        time_to_wait = 500-50*(score1+score2)
         while True:
+            result = controller.get_button_pressed()
+            if result == "Restart":
+                break
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
                 paddle_top.posx -=1
@@ -180,6 +183,9 @@ def run_game():
 
         color_playground.clear()
         red_playground.clear()
+        result = controller.get_button_pressed()
+        if result == "Restart":
+            break
     # Spiel
     pygame.time.wait(10000)
     del led_matrix_drawer
