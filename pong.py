@@ -147,6 +147,7 @@ def run_game():
             if object_is_above_beginning(ball) == True:
                 score2 += 1
                 ball.posy = 12
+                red_playground.clear()
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
                 led_matrix_drawer.draw_playground(red_playground)
@@ -154,6 +155,7 @@ def run_game():
             if object_is_below_bottom(ball) == True:
                 score1 += 1
                 ball.posy = 7
+                red_playground.clear()
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
                 led_matrix_drawer.draw_playground(red_playground)
