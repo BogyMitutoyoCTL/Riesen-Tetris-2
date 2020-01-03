@@ -65,11 +65,11 @@ def run_game():
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
 
-    joystick2 = pygame.joystick.Joystick(1)
-    joystick2.init()
+    #joystick2 = pygame.joystick.Joystick(1)
+    #joystick2.init()
 
     gamepad = controller.Controller(joystick)
-    gamepad2 = controller.Controller(joystick2)
+    #gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -126,7 +126,7 @@ def run_game():
             while paddle_top.posx < 0:
                 paddle_top.posx +=1
 
-            gamepad2.Paddle_Steuerung(paddle_bot)
+            #gamepad2.Paddle_Steuerung(paddle_bot)
             while paddle_bot.posx > 7:
                 paddle_bot.posx -= 1
             while paddle_bot.posx < 0:
