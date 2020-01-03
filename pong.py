@@ -126,7 +126,7 @@ def run_game():
                 paddle_top.posx -= 1
 
             while paddle_top.posx < 0:
-                Runde += 1
+                Runde += 3
                 paddle_top.posx += 1
             # bot_steuerung_mit_fail(paddle_top,ball)
             # gamepad2.Paddle_Steuerung(paddle_bot)
@@ -230,7 +230,7 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
 
 def bot_steuerung_mit_fail(s:object,b:object):
     fail = random.random()
-    if fail > 0.2:
+    if fail > 0.15:
         if s.posx-b.posx >= 0:
             if s.posx > 0:
                 s.posx -= 1
