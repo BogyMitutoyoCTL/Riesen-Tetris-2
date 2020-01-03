@@ -132,8 +132,8 @@ def run_game():
 
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
-            red_playground.add_block(numbertoblock.NumberToBlock.get_block(score1),0,0)
-            red_playground.add_block(numbertoblock.NumberToBlock.get_block(score2),24,0)
+            red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1),0,0)
+            red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2),24,0)
             if ball.posx == 0:
                 ball.orientation_x = -ball.orientation_x
 
