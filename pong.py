@@ -14,6 +14,7 @@ import time
 import random
 import Ball_Steuerung
 
+
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
         color_playground.clear()
@@ -65,11 +66,11 @@ def run_game():
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
 
-    #joystick2 = pygame.joystick.Joystick(1)
-    #joystick2.init()
+    # joystick2 = pygame.joystick.Joystick(1)
+    # joystick2.init()
 
     gamepad = controller.Controller(joystick)
-    #gamepad2 = controller.Controller(joystick2)
+    # gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -112,32 +113,32 @@ def run_game():
     score1 = 0
     score2 = 0
 
-    #gamestruktur
+    # gamestruktur
     game_over = False
     while game_over == False:
         Runde = 0
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-        time_to_wait = 500-50*(score1+score2)
+        time_to_wait = 500 - 50 * (score1 + score2)
         ball.posx = 5
         while True:
             Runde += 1
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
-                paddle_top.posx -=1
+                paddle_top.posx -= 1
 
             while paddle_top.posx < 0:
-                paddle_top.posx +=1
-            #bot_steuerung_mit_fail(paddle_top,ball)
-            #gamepad2.Paddle_Steuerung(paddle_bot)
-            #while paddle_bot.posx > 7:
-                #paddle_bot.posx -= 1
-            #while paddle_bot.posx < 0:
-               # paddle_bot.posx += 1
-            bot_steuerung(paddle_bot,ball)
+                paddle_top.posx += 1
+            # bot_steuerung_mit_fail(paddle_top,ball)
+            # gamepad2.Paddle_Steuerung(paddle_bot)
+            # while paddle_bot.posx > 7:
+            # paddle_bot.posx -= 1
+            # while paddle_bot.posx < 0:
+            # paddle_bot.posx += 1
+            bot_steuerung(paddle_bot, ball)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
-            red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1),0,0)
-            red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2),24,0)
+            red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
+            red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
             if ball.posx == 0:
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
@@ -146,11 +147,13 @@ def run_game():
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
-            if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
+            if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball,
+                                                        ball.posx + ball.orientation_x,
+                                                        ball.posy + ball.orientation_y) == True:
                 ball.orientation_y = -ball.orientation_y
                 pygame.mixer.Sound.play(abpraller_sound)
                 if time_to_wait > 0:
-                    time_to_wait -=10
+                    time_to_wait -= 10
             if object_is_above_beginning(ball) == True:
                 score2 += 1
                 ball.posy = 12
@@ -178,7 +181,7 @@ def run_game():
             color_playground.clear()
             red_playground.clear()
 
-            pygame.time.wait(time_to_wait-Runde)
+            pygame.time.wait(time_to_wait - Runde)
         if score1 == 3:
             pygame.time.wait(3000)
             game_over = True
@@ -192,7 +195,6 @@ def run_game():
 
         color_playground.clear()
         red_playground.clear()
-
 
     pygame.mixer.Sound.play(gameover_sound)
     del led_matrix_drawer
@@ -225,23 +227,26 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
     # Controller.Paddle_Steuerung(joy1, b1)
     # Controller.Paddle_Steuerung(joy2, b2)
 
-def bot_steuerung_mit_fail(s:object,b:object):
+
+def bot_steuerung_mit_fail(s: object, b: object):
     fail = random.random()
     if fail > 0:
-        if s.posx-b.posx-1 >= 0:
+        if s.posx - b.posx - 1 > 0:
             if s.posx > 0:
                 s.posx -= 1
-        if s.posx-b.posx+3 <= 0:
+        if s.posx - b.posx + 3 < 0:
             if s.posx < 7:
                 s.posx += 1
 
-def bot_steuerung(s:object,b:object):
-    if s.posx-b.posx-1 >= 0:
+
+def bot_steuerung(s: object, b: object):
+    if s.posx - b.posx - 1 > 0:
         if s.posx > 0:
             s.posx -= 1
-    if s.posx-b.posx+3 <= 0:
+    if s.posx - b.posx + 3 < 0:
         if s.posx < 7:
             s.posx += 1
+
 
 if __name__ == "__main__":
     while True:
