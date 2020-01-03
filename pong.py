@@ -179,9 +179,6 @@ def run_game():
             game_over = True
             break
         pygame.time.wait(3000)
-        result = controller.get_button_pressed()
-        if result == "Restart":
-            break
         color_playground.clear()
         red_playground.clear()
 
