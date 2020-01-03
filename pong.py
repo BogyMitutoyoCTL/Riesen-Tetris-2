@@ -151,6 +151,7 @@ def run_game():
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
                 led_matrix_drawer.draw_playground(red_playground)
+                pygame.mixer.Sound.play(fail)
                 break
             if object_is_below_bottom(ball) == True:
                 score1 += 1
@@ -168,6 +169,7 @@ def run_game():
             rgb_led_drawer.draw_playground(color_playground)
             led_matrix_drawer.draw_playground(red_playground)
             color_playground.clear()
+
             red_playground.clear()
             pygame.time.wait(time_to_wait)
         if score1 == 3:
