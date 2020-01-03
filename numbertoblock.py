@@ -29,7 +29,7 @@ class NumberToBlock:
 
     @staticmethod
     def get_block_einzelne_zahl(number: int):
-        numbers_list2 = NumberToBlock.get_list_of_single_numbers(number)
+        numbers_list2 = NumberToBlock.get_list_of_single_numbers2(number)
 
         blocks = []
         for number in numbers_list2:
