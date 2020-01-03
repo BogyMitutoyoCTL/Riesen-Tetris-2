@@ -223,11 +223,14 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
     # Controller.Paddle_Steuerung(joy1, b1)
     # Controller.Paddle_Steuerung(joy2, b2)
+
 def bot_steuerung(s:object,b:object):
-    if s.posx-b.posx > 0 and s.posx > 0:
-        s.posx -= 1
-    if s.posx-b.posx < 0 and s.posx < 7:
-        s.posx += 1
+    fail = random.random()
+    if fail < 0.4:
+        if s.posx-b.posx > 0 and s.posx > 0:
+            s.posx -= 1
+        if s.posx-b.posx < 0 and s.posx < 7:
+            s.posx += 1
 
 if __name__ == "__main__":
     while True:
