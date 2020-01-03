@@ -134,7 +134,7 @@ def run_game():
             # paddle_bot.posx -= 1
             # while paddle_bot.posx < 0:
             # paddle_bot.posx += 1
-            bot_steuerung(paddle_bot, ball)
+            bot_steuerung_mit_fail(paddle_bot, ball)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
