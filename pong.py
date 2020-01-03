@@ -122,10 +122,10 @@ def run_game():
         while True:
             Runde += 1
             gamepad.Paddle_Steuerung(paddle_top)
-            while paddle_top.posx > 7:
+            if paddle_top.posx > 7:
                 paddle_top.posx -=1
 
-            while paddle_top.posx < 0:
+            if paddle_top.posx < 0:
                 paddle_top.posx +=1
 
             #gamepad2.Paddle_Steuerung(paddle_bot)
@@ -231,10 +231,10 @@ def bot_steuerung(s:object,b:object):
     fail = random.random()
     if fail > 0:
         if s.posx-b.posx >= 0:
-            if s.posx - 1 >= 0 and s.posx - 1 <= 9:
+            if s.posx - 1 >= 0 and s.posx - 1 <= 7:
                 s.posx -= 1
         if s.posx-b.posx-1 < 0:
-            if s.posx + 1 >= 0 and s.posx + 1 <= 9:
+            if s.posx + 1 >= 0 and s.posx + 1 <= 7:
                 s.posx += 1
 
 if __name__ == "__main__":
