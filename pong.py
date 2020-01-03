@@ -180,9 +180,11 @@ def run_game():
 
             pygame.time.wait(time_to_wait-Runde)
         if score1 == 3:
+            pygame.time.wait(3000)
             game_over = True
             break
         if score2 == 3:
+            pygame.time.wait(3000)
             game_over = True
             break
         pygame.mixer.Sound.play(gameover_sound)
@@ -193,8 +195,6 @@ def run_game():
 
 
     pygame.mixer.Sound.play(gameover_sound)
-    # Spiel
-    pygame.time.wait(5000)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
