@@ -127,13 +127,13 @@ def run_game():
 
             #while paddle_top.posx < 0:
                 #paddle_top.posx +=1
-            bot_steuerung(paddle_top,ball)
+            bot_steuerung_mit_fail(paddle_top,ball)
             #gamepad2.Paddle_Steuerung(paddle_bot)
             #while paddle_bot.posx > 7:
                 #paddle_bot.posx -= 1
             #while paddle_bot.posx < 0:
                # paddle_bot.posx += 1
-            bot_steuerung(paddle_bot,ball)
+            bot_steuerung_mit_fail(paddle_bot,ball)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1),0,0)
@@ -227,9 +227,17 @@ def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p:
     # Controller.Paddle_Steuerung(joy1, b1)
     # Controller.Paddle_Steuerung(joy2, b2)
 
-def bot_steuerung(s:object,b:object):
+def bot_steuerung_mit_fail(s:object,b:object):
     fail = random.random()
-   #if fail > 0:
+    if fail > 0.05:
+        if s.posx-b.posx >= 0:
+            if s.posx > 0:
+                s.posx -= 1
+        if s.posx-b.posx+2 <= 0:
+            if s.posx < 7:
+                s.posx += 1
+
+def bot_steuerung(s:object,b:object):
     if s.posx-b.posx >= 0:
         if s.posx > 0:
             s.posx -= 1
