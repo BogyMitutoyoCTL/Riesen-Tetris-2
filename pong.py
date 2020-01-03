@@ -14,8 +14,6 @@ import time
 import random
 import Ball_Steuerung
 
-
-
 def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_playground, led_matrix_drawer, controller):
     while True:
         color_playground.clear()
@@ -109,21 +107,17 @@ def run_game():
     rgb_led_drawer.draw_playground(color_playground)
     led_matrix_drawer.draw_playground(red_playground)
     color_playground.clear()
-
+    red_playground.clear()
     score1 = 0
     score2 = 0
 
     #gamestruktur
-    while score1 + score2 !=3:
+    game_over = False
+    while game_over == False:
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-        ball.posx = 5
-        if anfang > 0.5:
-            ball.posy = 7
-        else:
-            ball.posy = 12
-        time_to_wait = 500-10*(score1+score2)
-        end_game = False
-        while end_game == False:
+        time_to_wait = 500-100*(score1+score2)
+        while True:
+
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
                 paddle_top.posx -=1
@@ -139,7 +133,8 @@ def run_game():
 
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
-
+            red_playground.add_block(numbertoblock.NumberToBlock.get_block(score1),0,0)
+            red_playground.add_block(numbertoblock.NumberToBlock.get_block(score2),24,0)
             if ball.posx == 0:
                 ball.orientation_x = -ball.orientation_x
 
@@ -171,22 +166,28 @@ def run_game():
 
             color_playground.add_object(ball, ball.posx, ball.posy)
             rgb_led_drawer.draw_playground(color_playground)
+            led_matrix_drawer.draw_playground(red_playground)
             color_playground.clear()
+            red_playground.clear()
             pygame.time.wait(time_to_wait)
-
+        if score1 == 3:
+            game_over = True
+            break
+        if score2 == 3:
+            game_over = True
+            break
         pygame.time.wait(3000)
 
         color_playground.clear()
         red_playground.clear()
     # Spiel
+    pygame.time.wait(10000)
     del led_matrix_drawer
     del rgb_led_drawer
     pygame.event.get()
     result = gamepad.get_button_pressed()
     if result == "Restart":
         run_game()
-    pygame.quit()
-
 
 def object_is_above_beginning(object):
     if object.posy <= 0:
