@@ -58,9 +58,6 @@ def run_game():
     anfang = random.random()
     # Some stuff needed by PyGame
     pygame.init()
-    gameover_sound = pygame.mixer.Sound('./Music/GameOver.wav')
-    abpraller_sound = pygame.mixer.Sound('./Music/break.wav')
-    fail = pygame.mixer.Sound('./Music/fail_sound.wav')
 
     # use Joystick and Controller
     pygame.joystick.init()
@@ -118,8 +115,11 @@ def run_game():
     game_over = False
     while game_over == False:
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
-        time_to_wait = 500-100*(score1+score2)
+        time_to_wait = 500-50*(score1+score2)
         while True:
+            result = controller.get_button_pressed()
+            if result == "Restart":
+                break
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
                 paddle_top.posx -=1
@@ -139,15 +139,12 @@ def run_game():
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2),24,0)
             if ball.posx == 0:
                 ball.orientation_x = -ball.orientation_x
-                pygame.mixer.Sound.play(abpraller_sound)
 
             if ball.posx == 9:
                 ball.orientation_x = -ball.orientation_x
-                pygame.mixer.Sound.play(abpraller_sound)
 
             if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
                 ball.orientation_y = -ball.orientation_y
-                pygame.mixer.Sound.play(abpraller_sound)
                 if time_to_wait > 0:
                     time_to_wait -=10
             if object_is_above_beginning(ball) == True:
@@ -166,7 +163,6 @@ def run_game():
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
                 red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
                 led_matrix_drawer.draw_playground(red_playground)
-                pygame.mixer.Sound.play(fail)
                 break
 
             ball.posx = ball.posx + ball.orientation_x
@@ -178,7 +174,6 @@ def run_game():
             color_playground.clear()
 
             red_playground.clear()
-
             pygame.time.wait(time_to_wait)
         if score1 == 3:
             game_over = True
@@ -190,10 +185,12 @@ def run_game():
 
         color_playground.clear()
         red_playground.clear()
+        result = controller.get_button_pressed()
+        if result == "Restart":
+            break
 
 
     pygame.mixer.Sound.play(gameover_sound)
-    # Spiel
     pygame.time.wait(10000)
     del led_matrix_drawer
     del rgb_led_drawer
