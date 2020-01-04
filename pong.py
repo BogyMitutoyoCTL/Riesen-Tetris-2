@@ -63,14 +63,14 @@ def run_game():
 
     # use Joystick and Controller
     pygame.joystick.init()
-    joystick = pygame.joystick.Joystick(1)
+    joystick = pygame.joystick.Joystick(0)
     joystick.init()
 
-    #joystick2 = pygame.joystick.Joystick(1)
-    #joystick2.init()
+    joystick2 = pygame.joystick.Joystick(1)
+    joystick2.init()
 
     gamepad = controller.Controller(joystick)
-    #gamepad2 = controller.Controller(joystick2)
+    gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
