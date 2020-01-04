@@ -121,7 +121,7 @@ def run_game():
         time_to_wait = 500 - 50 * (score1 + score2)
         ball.posx = 5
         while True:
-            Runde += 2
+            Runde += 1
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
                 paddle_top.posx -= 1
@@ -139,19 +139,19 @@ def run_game():
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
             if ball.posx == 0:
-                Runde += 2
+                Runde += 1
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
             if ball.posx == 9:
-                Runde += 2
+                Runde += 1
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
             if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball,
                                                         ball.posx + ball.orientation_x,
                                                         ball.posy + ball.orientation_y) == True:
-                Runde += 2
+                Runde += 1
                 ball.orientation_y = -ball.orientation_y
                 pygame.mixer.Sound.play(abpraller_sound)
                 if time_to_wait > 0:
