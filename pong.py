@@ -63,14 +63,14 @@ def run_game():
 
     # use Joystick and Controller
     pygame.joystick.init()
-    joystick = pygame.joystick.Joystick(0)
+    joystick = pygame.joystick.Joystick(1)
     joystick.init()
 
-    joystick2 = pygame.joystick.Joystick(1)
-    joystick2.init()
+    #joystick2 = pygame.joystick.Joystick(1)
+    #joystick2.init()
 
     gamepad = controller.Controller(joystick)
-    gamepad2 = controller.Controller(joystick2)
+    #gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -128,12 +128,12 @@ def run_game():
             while paddle_top.posx < 0:
                 paddle_top.posx += 1
             # bot_steuerung_mit_fail(paddle_top,ball)
-            gamepad2.Paddle_Steuerung(paddle_bot)
-            while paddle_bot.posx > 7:
-                paddle_bot.posx -= 1
-            while paddle_bot.posx < 0:
-                paddle_bot.posx += 1
-            #bot_steuerung_mit_fail(paddle_bot, ball, score1)
+            #gamepad2.Paddle_Steuerung(paddle_bot)
+            #while paddle_bot.posx > 7:
+                #paddle_bot.posx -= 1
+            #while paddle_bot.posx < 0:
+                #paddle_bot.posx += 1
+            bot_steuerung_mit_fail(paddle_bot, ball, score1)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
