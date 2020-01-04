@@ -37,3 +37,9 @@ class Controller:
                     paddle.posx += 1
                 if x < -0.3:
                     paddle.posx -= 1
+
+            if event.type == pygame.JOYBUTTONDOWN:
+                if event.button == 4:
+                    paddle.posx -=1
+                if event.button == 5:
+                    paddle.posx +=1
