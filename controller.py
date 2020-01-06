@@ -2,6 +2,7 @@ import pygame
 from pygame.joystick import Joystick
 import Collision
 from playground import Playground
+from objects import Object
 
 
 class Controller:
