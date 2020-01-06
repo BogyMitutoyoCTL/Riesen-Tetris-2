@@ -1,6 +1,6 @@
 from luma.led_matrix.device import neopixel
 from luma.core.render import canvas
-import playground
+import object_playground
 
 
 class RgbLedDrawer:
@@ -9,7 +9,7 @@ class RgbLedDrawer:
         device = neopixel(width=width, height=height, rotate=0, mapping=hat)
         self.device = device
 
-    def draw_playground(self, pg: playground.Playground):
+    def draw_playground(self, pg: object_playground.Playground):
         with canvas(self.device)as draw:
             for x in range(0, pg.width):
                 for y in range(0, pg.height):

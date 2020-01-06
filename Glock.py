@@ -1,4 +1,4 @@
-import playground
+import object_playground
 import rgbleddrawer
 import numbertoblock
 import ledmatrixdrawer
@@ -7,8 +7,8 @@ import time
 import datetime
 
 def run_game():
-    color_playground = playground.Playground(20, 10)
-    red_playground = playground.Playground(8, 32)
+    color_playground = object_playground.Playground(20, 10)
+    red_playground = object_playground.Playground(8, 32)
     led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
     while True:

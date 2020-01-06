@@ -1,4 +1,4 @@
-from playground import Playground
+from object_playground import Playground
 import RPi.GPIO as GPIO
 from time import sleep, strftime
 from datetime import datetime

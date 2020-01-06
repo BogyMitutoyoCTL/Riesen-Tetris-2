@@ -1,6 +1,6 @@
 import objects
 import ledmatrixdrawer
-import playground
+import object_playground
 import points
 # import random_blocks
 import rgbleddrawer
@@ -8,14 +8,14 @@ import controller
 import pygame
 import numbertoblock
 import datetime
-import Collision
+import Pong_collisions
 import gamespeed
 import time
 import random
 import Ball_Steuerung
 
 
-def titlescreen(rgb:rgbleddrawer.RgbLedDrawer(), playground:playground.Playground, ball, paddle_top, paddle_bot):
+def titlescreen(rgb:rgbleddrawer.RgbLedDrawer(), playground:object_playground.Playground, ball, paddle_top, paddle_bot):
     paddle_top.posx = 4
     paddle_bot.posx = 4
     paddle_top.posy = 0
@@ -60,8 +60,8 @@ def run_game():
     led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
     # Playgrounds
-    color_playground = playground.Playground(20, 10)
-    red_playground = playground.Playground(8, 32)
+    color_playground = object_playground.Playground(20, 10)
+    red_playground = object_playground.Playground(8, 32)
     color_playground.clear()
 
     titlescreen(rgb_led_drawer, color_playground, ball, paddle_top, paddle_bot)
@@ -129,7 +129,7 @@ def run_game():
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
-            if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
+            if Pong_collisions.Collision_Dedektor.with_object(Pong_collisions.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
                 Runde += 1
                 ball.orientation_y = -ball.orientation_y
                 pygame.mixer.Sound.play(abpraller_sound)
@@ -203,7 +203,7 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
     return score
 
 
-def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p: playground, bs: Ball_Steuerung, joy1,
+def round(b: object, b1: object, b2: object, c: Pong_collisions.Collision_Dedektor, p: object_playground, bs: Ball_Steuerung, joy1,
           joy2):
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
     # Controller.Paddle_Steuerung(joy1, b1)
