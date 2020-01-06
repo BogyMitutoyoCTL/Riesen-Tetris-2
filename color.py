@@ -22,3 +22,7 @@ class BlockColor:
     orange = Color(255, 140, 0)
 
     turquoise = Color(135, 206, 250)
+class ObjectColor:
+    yellow =Color(255, 255, 0)
+
+    red =   Color(255, 0, 0)
