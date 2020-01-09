@@ -114,8 +114,13 @@ def run_game():
 
     # gamestruktur
     game_over = False
+    secstart = now.time().second
+    gamespeed = 0
     while game_over == False:
-        Runde = 0
+        sec5 = now.time().second-secstart
+        if sec5 = 5:
+            gamespeed += 1
+            secstart = now.time().second
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
         time_to_wait = 500 - 50 * (score1 + score2)
         ball.posx = 5
@@ -176,7 +181,7 @@ def run_game():
             color_playground.clear()
             red_playground.clear()
 
-            pygame.time.wait(time_to_wait - Runde)
+            pygame.time.wait(time_to_wait - gamespeed)
         if score1 == 3:
             pygame.time.wait(3000)
             game_over = True
