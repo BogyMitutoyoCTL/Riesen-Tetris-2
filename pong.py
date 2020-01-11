@@ -119,6 +119,8 @@ def run_game():
     gamespeed = 0
     while game_over == False:
         sec5 = now.time().second-secstart
+        if sec5 < secstart:
+            sec5 += 60
         if sec5 == 5:
             gamespeed += 1
             secstart = now.time().second
