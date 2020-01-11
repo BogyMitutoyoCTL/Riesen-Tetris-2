@@ -234,7 +234,7 @@ def round(b: object, b1: object, b2: object, c: Pong_collisions.Collision_Dedekt
 def bot_steuerung_mit_fail(s:object,b:object,score1):
     fail = random.random()
     if score1 == 0:
-        if fail > 0.3:
+        if fail > 0.15:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
                     s.posx -= 1
@@ -242,7 +242,7 @@ def bot_steuerung_mit_fail(s:object,b:object,score1):
                 if s.posx < 7:
                     s.posx += 1
     if score1 == 1:
-        if fail > 0.2:
+        if fail > 0.1:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
                     s.posx -= 1
@@ -250,7 +250,7 @@ def bot_steuerung_mit_fail(s:object,b:object,score1):
                 if s.posx < 7:
                     s.posx += 1
     if score1 == 2:
-        if fail > 0.1:
+        if fail > 0.05:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
                     s.posx -= 1
