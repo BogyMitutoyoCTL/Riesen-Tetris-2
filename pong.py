@@ -122,7 +122,7 @@ def run_game():
         if sec5 < secstart:
             sec5 += 60
         if sec5 == 5:
-            gamespeed += 1
+            gamespeed += 5
             secstart = now.time().second
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
         time_to_wait = 500 - 50 * (score1 + score2)
@@ -234,7 +234,7 @@ def round(b: object, b1: object, b2: object, c: Pong_collisions.Collision_Dedekt
 def bot_steuerung_mit_fail(s:object,b:object,score1):
     fail = random.random()
     if score1 == 0:
-        if fail > 0.1:
+        if fail > 0.2:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
                     s.posx -= 1
@@ -242,7 +242,7 @@ def bot_steuerung_mit_fail(s:object,b:object,score1):
                 if s.posx < 7:
                     s.posx += 1
     if score1 == 1:
-        if fail > 0.5:
+        if fail > 0.1:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
                     s.posx -= 1
@@ -250,7 +250,7 @@ def bot_steuerung_mit_fail(s:object,b:object,score1):
                 if s.posx < 7:
                     s.posx += 1
     if score1 == 2:
-        if fail > 0.01:
+        if fail > 0.05:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
                     s.posx -= 1
