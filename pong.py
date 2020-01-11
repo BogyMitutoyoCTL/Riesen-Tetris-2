@@ -121,7 +121,7 @@ def run_game():
         sec5 = now.time().second-secstart
         if sec5 < secstart:
             sec5 += 60
-        if sec5 == 5:
+        if sec5 == 2:
             gamespeed += 5
             secstart = now.time().second
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
