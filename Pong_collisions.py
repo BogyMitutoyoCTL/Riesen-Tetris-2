@@ -1,4 +1,4 @@
-from playground import Playground
+from object_playground import Playground
 from objects import Object
 
 class Collision_Dedektor:

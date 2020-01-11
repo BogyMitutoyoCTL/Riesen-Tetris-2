@@ -1,6 +1,6 @@
 import objects
 import ledmatrixdrawer
-import playground
+import object_playground
 import points
 # import random_blocks
 import rgbleddrawer
@@ -8,7 +8,7 @@ import controller
 import pygame
 import numbertoblock
 import datetime
-import Collision
+import Pong_collisions
 import gamespeed
 import time
 import random
@@ -45,7 +45,6 @@ def show_clock_until_start_is_pressed(color_playground, rgg_led_drawer, red_play
     color_playground.clear()
     red_playground.clear()
 
-
 def run_game():
     # variables for objects
     paddle_left = objects.object_list[0]
@@ -66,11 +65,11 @@ def run_game():
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
 
-    joystick2 = pygame.joystick.Joystick(1)
-    joystick2.init()
+    #joystick2 = pygame.joystick.Joystick(1)
+    #joystick2.init()
 
     gamepad = controller.Controller(joystick)
-    gamepad2 = controller.Controller(joystick2)
+    #gamepad2 = controller.Controller(joystick2)
 
     # drawer for playfield
     rgb_led_drawer = rgbleddrawer.RgbLedDrawer()
@@ -79,8 +78,8 @@ def run_game():
     led_matrix_drawer = ledmatrixdrawer.LedMatrixDrawer()
 
     # Playgrounds
-    color_playground = playground.Playground(20, 10)
-    red_playground = playground.Playground(8, 32)
+    color_playground = object_playground.Playground(20, 10)
+    red_playground = object_playground.Playground(8, 32)
     color_playground.clear()
 
     show_clock_until_start_is_pressed(color_playground, rgb_led_drawer, red_playground, led_matrix_drawer, gamepad)
@@ -115,13 +114,17 @@ def run_game():
 
     # gamestruktur
     game_over = False
+    secstart = now.time().second
+    gamespeed = 0
     while game_over == False:
-        Runde = 0
+        sec5 = now.time().second-secstart
+        if sec5 = 5:
+            gamespeed += 1
+            secstart = now.time().second
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
         time_to_wait = 500 - 50 * (score1 + score2)
         ball.posx = 5
         while True:
-            Runde += 1
             gamepad.Paddle_Steuerung(paddle_top)
             while paddle_top.posx > 7:
                 paddle_top.posx -= 1
@@ -139,19 +142,14 @@ def run_game():
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score2), 24, 0)
             if ball.posx == 0:
-                Runde += 1
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
             if ball.posx == 9:
-                Runde += 1
                 ball.orientation_x = -ball.orientation_x
                 pygame.mixer.Sound.play(abpraller_sound)
 
-            if Collision.Collision_Dedektor.with_object(Collision.Collision_Dedektor, color_playground, ball,
-                                                        ball.posx + ball.orientation_x,
-                                                        ball.posy + ball.orientation_y) == True:
-                Runde += 1
+            if Pong_collisions.Collision_Dedektor.with_object(Pong_collisions.Collision_Dedektor, color_playground, ball, ball.posx + ball.orientation_x, ball.posy + ball.orientation_y) == True:
                 ball.orientation_y = -ball.orientation_y
                 pygame.mixer.Sound.play(abpraller_sound)
                 if time_to_wait > 0:
@@ -183,7 +181,7 @@ def run_game():
             color_playground.clear()
             red_playground.clear()
 
-            pygame.time.wait(time_to_wait - Runde)
+            pygame.time.wait(time_to_wait - gamespeed)
         if score1 == 3:
             pygame.time.wait(3000)
             game_over = True
@@ -192,7 +190,6 @@ def run_game():
             pygame.time.wait(3000)
             game_over = True
             break
-        pygame.mixer.Sound.play(gameover_sound)
         pygame.time.wait(3000)
 
         color_playground.clear()
@@ -223,28 +220,38 @@ def check_for_full_lines(calculator, color_playground, full_line_detector, score
     return score
 
 
-def round(b: object, b1: object, b2: object, c: Collision.Collision_Dedektor, p: playground, bs: Ball_Steuerung, joy1,
+def round(b: object, b1: object, b2: object, c: Pong_collisions.Collision_Dedektor, p: object_playground, bs: Ball_Steuerung, joy1,
           joy2):
     Ball_Steuerung.position_calculator(bs, p, b1, b2, c, b)
     # Controller.Paddle_Steuerung(joy1, b1)
     # Controller.Paddle_Steuerung(joy2, b2)
 
-
 def bot_steuerung_mit_fail(s:object,b:object,score1):
-    scorediff = 0
-    if score1 == 1:
-        scorediff = 0.5
-    if score1 == 2:
-        scorediff = 1
     fail = random.random()
-    if fail > 0.3-scorediff:
-        if s.posx-b.posx >= 0:
-            if s.posx > 0:
-                s.posx -= 1
-        if s.posx-b.posx+2 <= 0:
-            if s.posx < 7:
-                s.posx += 1
-
+    if score1 == 0:
+        if fail > 0.3:
+            if s.posx-b.posx >= 0:
+                if s.posx > 0:
+                    s.posx -= 1
+            if s.posx-b.posx+2 <= 0:
+                if s.posx < 7:
+                    s.posx += 1
+    if score1 == 1:
+        if fail > 0.2:
+            if s.posx-b.posx >= 0:
+                if s.posx > 0:
+                    s.posx -= 1
+            if s.posx-b.posx+2 <= 0:
+                if s.posx < 7:
+                    s.posx += 1
+    if score1 == 2:
+        if fail > 0.1:
+            if s.posx-b.posx >= 0:
+                if s.posx > 0:
+                    s.posx -= 1
+            if s.posx-b.posx+2 <= 0:
+                if s.posx < 7:
+                    s.posx += 1
 def bot_steuerung(s:object,b:object):
     if s.posx-b.posx >= 0:
         if s.posx > 0:

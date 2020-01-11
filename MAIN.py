@@ -4,8 +4,6 @@ import pong
 
 pygame.init()
 pygame.fastevent.init()
-
 pong.run_game()
-
 pygame.quit()
 quit()

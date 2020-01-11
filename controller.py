@@ -1,8 +1,8 @@
 import pygame
 from objects import Object
 from pygame.joystick import Joystick
-import Collision
-import playground
+import Pong_collisions
+import object_playground
 
 class Controller:
     def __init__(self, joystick: Joystick):
