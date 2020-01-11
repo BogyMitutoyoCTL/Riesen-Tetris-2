@@ -113,12 +113,13 @@ def run_game():
     score2 = 0
 
     # gamestruktur
+    now = datetime.datetime.now()
     game_over = False
     secstart = now.time().second
     gamespeed = 0
     while game_over == False:
         sec5 = now.time().second-secstart
-        if sec5 = 5:
+        if sec5 == 5:
             gamespeed += 1
             secstart = now.time().second
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
