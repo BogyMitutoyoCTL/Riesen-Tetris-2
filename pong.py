@@ -121,7 +121,7 @@ def run_game():
         sec5 = now.time().second-secstart
         if sec5 < secstart:
             sec5 += 60
-        if sec5 == 5:
+        if sec5 == 2:
             gamespeed += 5
             secstart = now.time().second
         Ball_Steuerung.Ball_Steuerung.ball_orientation(Ball_Steuerung.Ball_Steuerung, ball)
@@ -139,7 +139,7 @@ def run_game():
                 #paddle_bot.posx -= 1
             #while paddle_bot.posx < 0:
                 #paddle_bot.posx += 1
-            bot_steuerung_mit_fail(paddle_bot, ball, score1)
+            bot_steuerung_mit_fail(paddle_bot, ball, score1,score2)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
             red_playground.add_block(numbertoblock.NumberToBlock.get_block_einzelne_zahl(score1), 0, 0)
@@ -229,9 +229,10 @@ def round(b: object, b1: object, b2: object, c: Pong_collisions.Collision_Dedekt
     # Controller.Paddle_Steuerung(joy1, b1)
     # Controller.Paddle_Steuerung(joy2, b2)
 
-def bot_steuerung_mit_fail(s:object,b:object,score1):
+def bot_steuerung_mit_fail(s:object,b:object,score1,score2):
     fail = random.random()
-    if score1 == 0:
+    scorediff = score2-score1
+    if scorediff <= 0:
         if fail > 0.2:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
@@ -239,7 +240,7 @@ def bot_steuerung_mit_fail(s:object,b:object,score1):
             if s.posx-b.posx+2 <= 0:
                 if s.posx < 7:
                     s.posx += 1
-    if score1 == 1:
+    if scorediff == 1:
         if fail > 0.1:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
@@ -247,7 +248,7 @@ def bot_steuerung_mit_fail(s:object,b:object,score1):
             if s.posx-b.posx+2 <= 0:
                 if s.posx < 7:
                     s.posx += 1
-    if score1 == 2:
+    if scorediff == 2:
         if fail > 0.05:
             if s.posx-b.posx >= 0:
                 if s.posx > 0:
