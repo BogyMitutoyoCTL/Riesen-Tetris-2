@@ -116,7 +116,7 @@ def run_game():
     now = datetime.datetime.now()
     game_over = False
     secstart = now.time().second
-    gamespeed = 0
+    gamespeed = 100
     while game_over == False:
         sec5 = now.time().second-secstart
         if sec5 < secstart:
@@ -133,12 +133,6 @@ def run_game():
                 paddle_top.posx -= 1
             while paddle_top.posx < 0:
                 paddle_top.posx += 1
-            # bot_steuerung_mit_fail(paddle_top,ball)
-            #gamepad2.Paddle_Steuerung(paddle_bot)
-            #while paddle_bot.posx > 7:
-                #paddle_bot.posx -= 1
-            #while paddle_bot.posx < 0:
-                #paddle_bot.posx += 1
             bot_steuerung_mit_fail(paddle_bot, ball, score1,score2)
             color_playground.add_object(paddle_top, paddle_top.posx, paddle_top.posy)
             color_playground.add_object(paddle_bot, paddle_bot.posx, paddle_bot.posy)
